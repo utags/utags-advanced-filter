@@ -1,64 +1,64 @@
 # UTags Advanced Filter
 
-一个在任意网站对列表型内容进行实时过滤与隐藏的工具，提供用户脚本和浏览器扩展两种版本。区别于站点自身的搜索/筛选，它在页面内直接隐藏不满足条件的条目，支持即时切换与叠加条件查看过滤后的结果。
+A tool that filters and hides list-style content in real time on any website. It is available as both a userscript and a browser extension. Unlike a site's own search or filtering, it hides items directly on the page and supports instant toggling and stacking conditions to view filtered results.
 
-当前已适配 Greasy Fork 的脚本列表，后续将通过“规则”适配更多站点。
+Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
 
-## 已实现功能 (Implemented Features)
+## Implemented Features
 
 ### UI & UX
 
-- **样式隔离**: 使用 `ShadowRoot` 承载 UI，完全避免目标网站的 CSS 样式污染。
-- **悬浮面板**: 筛选器 UI 以一个可拖拽的悬浮面板形式呈现，固定在页面右侧。
-- **可折叠设计**: 面板可折叠为一个半透明的 `SlidersHorizontal` Lucide 图标，鼠标悬停时不透明。折叠状态会被持久化。
-- **优化的布局**:
-  - **双行结构**: 顶部为标题和操作区（重置、折叠），下方为统计和总开关。
-  - **安全重置**: “重置”按钮默认隐藏，鼠标悬停 3 秒后才显示，且点击后有二次确认弹窗，防止误操作。
-  - **主控开关**: 在统计信息左侧提供一个主复选框，可一键启用/禁用所有筛选器，并在部分启用时显示为“半选”状态。
-- **统一的组件**:
-  - **日期预设组件**: 将日期筛选（更新日期、创建日期）封装为可复用的 `createDatePresetInput` 组件，支持“半年/一年/两年”等预设及自定义天数。
-  - **下拉菜单**: 支持按 `Esc` 键关闭，拥有独立的边框和阴影样式。
-  - **统一的复选框样式**: 所有复选框使用统一的 `utaf-checkbox` CSS 类，增大了点击区域。
+- Style isolation: The UI is hosted inside a `ShadowRoot` to completely avoid CSS pollution from the target website.
+- Floating panel: The filter UI appears as a draggable floating panel fixed to the right side of the page.
+- Collapsible design: The panel can collapse into a semi-transparent Lucide `SlidersHorizontal` icon and becomes opaque on hover. The collapsed state is persisted.
+- Optimized layout:
+  - Two-row structure: The top row contains the title and actions (Reset, Collapse), and the bottom row shows stats and the master switch.
+  - Safe reset: The “Reset” button is hidden by default, appears only after hovering for 3 seconds, and shows a second-confirmation dialog before applying, preventing misclicks.
+  - Master switch: A main checkbox next to the stats can enable/disable all filters at once and shows an indeterminate state when partially enabled.
+- Unified components:
+  - Date preset component: Date filters (Updated date, Created date) are encapsulated into a reusable `createDatePresetInput` component, supporting presets like half-year, one year, two years, and custom days.
+  - Dropdown menu: Supports closing with `Esc`, and has its own border and shadow styles.
+  - Unified checkbox style: All checkboxes use the `utaf-checkbox` CSS class to enlarge the hit area.
 
-### 过滤能力 (Filtering) - Greasy Fork
+### Filtering — Greasy Fork
 
-- **更新日期**: 隐藏超过指定时间（如 N 天/月/年）未更新的脚本。
-- **创建日期**:
-  - 隐藏创建于指定日期之前的脚本。
-  - 隐藏创建于指定日期之内的脚本。
-- **安装量**:
-  - 隐藏总安装量小于 N 的脚本。
-  - 隐藏日安装量小于 N 的脚本。
-- **即时生效**: 所有筛选条件的变更都会立即应用，并实时更新“显示/隐藏”统计。
+- Updated date: Hide scripts that have not been updated within a specified time (e.g., N days/months/years).
+- Created date:
+  - Hide scripts created before a specified date.
+  - Hide scripts created within a specified date range.
+- Install counts:
+  - Hide scripts with total installs less than N.
+  - Hide scripts with daily installs less than N.
+- Immediate effect: All filter changes take effect instantly and the “shown/hidden” stats update in real time.
 
-### 数据与状态 (Data & State)
+### Data & State
 
-- **按站点存储**: 过滤设置按域名独立存储，键名格式为 `utaf_{hostname}_filters`，确保不同站点的配置互不干扰。
-- **首次使用检测**: 通过全局状态 `utaf_global_state` 中的 `isFirstUse` 字段判断，首次在任意网站使用时，面板默认为展开状态，之后默认为折叠。
-- **性能缓存**: 使用 `WeakMap` 缓存已解析的列表项指标（如时间戳、安装量），在重复过滤时避免重复的 DOM 查询和解析，提升性能。
+- Per-site storage: Filter settings are stored per domain, using the key format `utaf_{hostname}_filters`, ensuring configurations do not interfere across sites.
+- First-use detection: Using the global state `utaf_global_state.isFirstUse`, the panel defaults to expanded on first use on any site, and collapses by default afterward.
+- Performance cache: A `WeakMap` caches parsed metrics for list items (e.g., timestamps, install counts) to avoid repeated DOM queries and parsing during subsequent filtering.
 
-## 安装与使用
+## Installation & Usage
 
-- **环境**: 推荐使用 Tampermonkey / Violentmonkey 等现代用户脚本管理器。
-- **安装**: 将 `utags-advanced-filter.user.js` 安装到管理器中。
-- **使用**:
-  - 打开 Greasy Fork 脚本列表页（如搜索、用户页等）。
-  - 筛选器面板将自动出现在页面右侧。
-  - 调整筛选条件，列表将实时过滤。
+- Environment: Tampermonkey / Violentmonkey or other modern userscript managers are recommended.
+- Installation: Install `utags-advanced-filter.user.js` in your userscript manager.
+- Usage:
+  - Open a Greasy Fork script list page (e.g., search results, user page).
+  - The filter panel will automatically appear on the right side of the page.
+  - Adjust filter conditions; the list will be filtered in real time.
 
-## 未来规划 (Future Plans)
+## Future Plans
 
-- **规则引擎**: 抽象统一的站点适配接口，通过外部规则配置（如 JSON）即可轻松适配新网站，而无需修改主脚本。规划中的规则将包含：
-  - **站点检测**: 域名、路径匹配。
-  - **列表项选择器**: 定义列表容器与条目。
-  - **指标解析器**: 如何从条目中提取更新时间、创建时间、安装量等数据。
-- **适配更多站点**:
-  - **论坛类**: Discourse, Flarum 等。
-  - **代码托管**: GitHub Issues/PRs。
-  - **社区**: Reddit, V2EX 等。
-- **功能增强**:
-  - **设置同步**: 提供导入/导出功能，或通过云服务同步配置。
-  - **单项隐藏**: 为列表中的每个项目添加独立的“隐藏”按钮，并持久化记录。
+- Rules engine: Abstract a unified site-adaptation interface so that new websites can be adapted via external rule configuration (e.g., JSON) without modifying the main script. Planned rules include:
+  - Site detection: Domain and path matching.
+  - List item selectors: Define the list container and items.
+  - Metric parsers: How to extract updated time, created time, install counts, etc., from items.
+- Adapt more sites:
+  - Forums: Discourse, Flarum, etc.
+  - Code hosting: GitHub Issues/PRs.
+  - Communities: Reddit, V2EX, etc.
+- Feature enhancements:
+  - Settings sync: Provide import/export or sync via cloud services.
+  - Per-item hide: Add a “Hide” button to each list item, with persistent records.
 
 ## License
 

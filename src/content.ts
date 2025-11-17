@@ -64,6 +64,9 @@ if (
 export const config: PlasmoCSConfig = {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   run_at: 'document_end',
+  // matches: ['https://greasyfork.org/*'],
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  all_frames: false,
 }
 
 const getSettingsTable = (): SettingsTable => {
