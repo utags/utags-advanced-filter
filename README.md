@@ -43,7 +43,7 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 - Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-add-usertags-to-lin/kofjcnaphffjoookgahgjidofbdplgig)
 - Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-add-usertags-to-l/bhlbflbehfoccjjenpekilgabbjjnphe)
-- Firefox: [Firefox Addon Store](https://addons.mozilla.org/firefox/addon/utags/)
+- Firefox: [Firefox Addon Store](https://addons.mozilla.org/firefox/addon/utags-advanced-filter/)
 - User Script: [Greasy Fork](https://greasyfork.org/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/en/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)
 - [Manually install browser extensions](https://github.com/utags/utags-advanced-filter/blob/main/manual-installation.md)
 - Usage:
