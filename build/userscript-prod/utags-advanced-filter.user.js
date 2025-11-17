@@ -5,8 +5,8 @@
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
 // @version              0.0.1
-// @description          Open external links in a new tab, open internal links matching the specified rules in a new tab, convert text to hyperlinks, convert image links to image tags(<img>), parse Markdown style links and image tags, parse BBCode style links and image tags
-// @description:zh-CN    支持所有网站在新标签页中打开第三方网站链接（外链），在新标签页中打开符合指定规则的本站链接，解析文本链接为超链接，微信公众号文本转可点击的超链接，图片链接转图片标签，解析 Markdown 格式链接与图片标签，解析 BBCode 格式链接与图片标签
+// @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
+// @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Flinks-helper%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
 // @author               Pipecraft
 // @license              MIT

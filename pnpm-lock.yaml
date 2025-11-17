@@ -21,8 +21,8 @@ importers:
         specifier: ^0.2.2
         version: 0.2.2
       lucide:
-        specifier: ^0.553.0
-        version: 0.553.0
+        specifier: ^0.554.0
+        version: 0.554.0
       plasmo:
         specifier: ^0.90.5
         version: 0.90.5(@swc/core@1.15.2(@swc/helpers@0.5.17))(@swc/helpers@0.5.17)(@types/node@24.10.1)(cssnano@7.1.2(postcss@8.5.6))(lodash@4.17.21)(postcss@8.5.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(terser@5.44.1)
@@ -55,8 +55,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.5)
       addons-linter:
-        specifier: ^9.0.0
-        version: 9.0.0(jiti@2.6.1)
+        specifier: ^9.1.0
+        version: 9.1.0(jiti@2.6.1)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.22(postcss@8.5.6)
@@ -2458,8 +2458,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  addons-linter@9.0.0:
-    resolution: {integrity: sha512-S6kqkEjIvdA/yr29o/6OUfGOXVRMoQ3GqKpLAuhJn8epDsUjA4wrJE5qtQI0/4CHj30PlIqyYqK0WuOcr+0vRA==}
+  addons-linter@9.1.0:
+    resolution: {integrity: sha512-W2iVeTYZ/uP2lFEgKn/WdZXOwUpLrOx6s5qwNOgjxExIXg2kqVTg5vxu29iNd7pO5t7AKNNm0UW6BLXZMJOUyA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -4460,8 +4460,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  lucide@0.553.0:
-    resolution: {integrity: sha512-zdU8nM8mTqFUE6uBP+ncZRN+CTONxwhZbOL2dy+7gINRb1/6zCNQnv6nqpdSrEy5/gy/aJj6FxWHO8WdQgfN0g==}
+  lucide@0.554.0:
+    resolution: {integrity: sha512-heltqxp+r6FbXs5FKMwARbE9aiDLLz9rlAlOU48NYHU4nWi2oVkQIz+Uv7LHZNsFVfgtgLBv7VOjM7QUvT6F3A==}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -6997,7 +6997,7 @@ snapshots:
       json5: 2.2.3
       msgpackr: 1.11.5
       nullthrows: 1.1.1
-      semver: 7.7.1
+      semver: 7.7.3
 
   '@parcel/diagnostic@2.8.3':
     dependencies:
@@ -7083,7 +7083,7 @@ snapshots:
       '@parcel/fs': 2.9.3(@parcel/core@2.9.3)
       '@parcel/utils': 2.9.3
       nullthrows: 1.1.1
-      semver: 7.7.1
+      semver: 7.7.3
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -7176,7 +7176,7 @@ snapshots:
       '@parcel/types': 2.9.3(@parcel/core@2.9.3)
       '@parcel/utils': 2.9.3
       '@parcel/workers': 2.9.3(@parcel/core@2.9.3)
-      semver: 7.7.1
+      semver: 7.7.3
 
   '@parcel/packager-css@2.9.3(@parcel/core@2.9.3)':
     dependencies:
@@ -7317,7 +7317,7 @@ snapshots:
       browserslist: 4.28.0
       json5: 2.2.3
       nullthrows: 1.1.1
-      semver: 7.7.1
+      semver: 7.7.3
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -7350,7 +7350,7 @@ snapshots:
       posthtml: 0.16.7
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
-      semver: 7.7.1
+      semver: 7.7.3
       srcset: 4.0.0
     transitivePeerDependencies:
       - '@parcel/core'
@@ -7381,7 +7381,7 @@ snapshots:
       browserslist: 4.28.0
       nullthrows: 1.1.1
       regenerator-runtime: 0.13.11
-      semver: 7.7.1
+      semver: 7.7.3
 
   '@parcel/transformer-json@2.9.3(@parcel/core@2.9.3)':
     dependencies:
@@ -7407,7 +7407,7 @@ snapshots:
       clone: 2.1.2
       nullthrows: 1.1.1
       postcss-value-parser: 4.2.0
-      semver: 7.7.1
+      semver: 7.7.3
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -7419,7 +7419,7 @@ snapshots:
       posthtml: 0.16.7
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
-      semver: 7.7.1
+      semver: 7.7.3
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -7464,7 +7464,7 @@ snapshots:
       posthtml: 0.16.7
       posthtml-parser: 0.10.2
       posthtml-render: 3.0.0
-      semver: 7.7.1
+      semver: 7.7.3
     transitivePeerDependencies:
       - '@parcel/core'
 
@@ -8606,7 +8606,7 @@ snapshots:
 
   acorn@8.15.0: {}
 
-  addons-linter@9.0.0(jiti@2.6.1):
+  addons-linter@9.1.0(jiti@2.6.1):
     dependencies:
       '@fluent/syntax': 0.19.0
       '@fregante/relaxed-json': 2.0.0
@@ -10876,7 +10876,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide@0.553.0: {}
+  lucide@0.554.0: {}
 
   magic-string@0.30.21:
     dependencies:
@@ -11165,7 +11165,7 @@ snapshots:
       ky: 1.14.0
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
-      semver: 7.7.1
+      semver: 7.7.3
 
   parent-module@1.0.1:
     dependencies:
@@ -11867,7 +11867,7 @@ snapshots:
     dependencies:
       color: 4.2.3
       detect-libc: 2.1.2
-      semver: 7.7.1
+      semver: 7.7.3
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.33.5
       '@img/sharp-darwin-x64': 0.33.5
