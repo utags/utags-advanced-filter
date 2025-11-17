@@ -4,6 +4,8 @@
 
 当前已适配 Greasy Fork 的脚本列表，后续将通过“规则”适配更多站点。
 
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-18-00-21-06.png)
+
 ## 已实现功能 (Implemented Features)
 
 ### UI & UX

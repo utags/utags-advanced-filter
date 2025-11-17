@@ -4,6 +4,8 @@ A tool that filters and hides list-style content in real time on any website. It
 
 Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
 
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-18-00-21-06.png)
+
 ## Implemented Features
 
 ### UI & UX

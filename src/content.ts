@@ -28,12 +28,12 @@ import {
 } from 'browser-extension-utils'
 import styleText from 'data-text:./content.scss'
 import tailwindCssText from 'data-text:./tailwind.css'
+import iconNoBgSvgText from 'data-text:./ui/icon-no-bg.svg'
 import {
   ChevronUp,
   createElement as createIconElement,
   createIcons,
   RotateCcw,
-  SlidersHorizontal,
 } from 'lucide'
 import type { PlasmoCSConfig } from 'plasmo'
 
@@ -455,10 +455,18 @@ async function injectGreasyForkFilters() {
   const panel = document.createElement('div')
   panel.className = 'bg-white shadow-xl rounded-xl p-3 w-80 font-sans'
   const header = document.createElement('div')
-  header.className = 'mb-2 space-y-1'
+  header.className = 'mb-2 space-y-4'
   const title = document.createElement('div')
   title.className = 'font-semibold text-gray-900 text-sm'
   title.textContent = 'UTags Advanced Filter'
+  const titleIcon = new DOMParser().parseFromString(
+    iconNoBgSvgText,
+    'image/svg+xml'
+  ).documentElement
+  titleIcon.setAttribute('width', '16')
+  titleIcon.setAttribute('height', '16')
+  titleIcon.classList.add('inline-block', 'mr-2')
+  title.prepend(titleIcon)
   const headerRow1 = document.createElement('div')
   headerRow1.className = 'flex items-center'
   headerRow1.append(title)
@@ -517,11 +525,10 @@ async function injectGreasyForkFilters() {
   fab.className = 'utaf-fab'
   fab.setAttribute('title', '打开筛选')
   fab.setAttribute('aria-label', '打开筛选')
-  const iconFab = createIconElement(SlidersHorizontal, {
-    width: 18,
-    height: 18,
-    'stroke-width': 2,
-  })
+  const iconFab = new DOMParser().parseFromString(
+    iconNoBgSvgText,
+    'image/svg+xml'
+  ).documentElement
   fab.append(iconFab)
 
   async function setCollapsed(next) {
