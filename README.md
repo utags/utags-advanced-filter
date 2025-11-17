@@ -39,8 +39,11 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 ## Installation & Usage
 
-- Environment: Tampermonkey / Violentmonkey or other modern userscript managers are recommended.
-- Installation: Install `utags-advanced-filter.user.js` in your userscript manager.
+- Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-add-usertags-to-lin/kofjcnaphffjoookgahgjidofbdplgig)
+- Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-add-usertags-to-l/bhlbflbehfoccjjenpekilgabbjjnphe)
+- Firefox: [Firefox Addon Store](https://addons.mozilla.org/firefox/addon/utags/)
+- User Script: [Greasy Fork](https://greasyfork.org/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/en/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)
+- [Manually install browser extensions](https://github.com/utags/utags-advanced-filter/blob/main/manual-installation.md)
 - Usage:
   - Open a Greasy Fork script list page (e.g., search results, user page).
   - The filter panel will automatically appear on the right side of the page.
@@ -62,4 +65,4 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 ## License
 
-Copyright (c) 2025 [Pipecraft](https://www.pipecraft.net). Licensed under the [MIT License](LICENSE).
+Copyright (c) 2025 [Pipecraft](https://www.pipecraft.net). Licensed under the [MIT License](https://github.com/utags/utags-advanced-filter/blob/main/LICENSE).
