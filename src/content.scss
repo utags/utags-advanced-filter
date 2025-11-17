@@ -1,0 +1,59 @@
+/* Settings */
+.bes_tip_content {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.bes_textarea textarea {
+  padding: 4px 8px;
+}
+
+.utaf-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  margin-right: calc(var(--spacing) * 2);
+}
+
+.utaf-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.utaf-reset-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  position: relative;
+}
+
+.utaf-reset-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.utaf-reset-btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.utaf-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.utaf-fab:hover {
+  opacity: 1;
+}
