@@ -2,13 +2,13 @@
   "name": "utags-advanced-filter",
   "displayName": "UTags Advanced Filter",
   "displayName:zh-CN": "UTags Advanced Filter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page.",
   "description_userscript": "Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.",
   "description_userscript:zh-CN": "对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。",
   "author": "Pipecraft",
   "namespace": "https://github.com/utags",
-  "icon": "https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Flinks-helper%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png",
+  "icon": "https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/utags/utags-advanced-filter/issues"
