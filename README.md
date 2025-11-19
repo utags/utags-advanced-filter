@@ -32,6 +32,13 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 - Install counts:
   - Hide scripts with total installs less than N.
   - Hide scripts with daily installs less than N.
+- Keywords:
+  - Manage keywords in a list with per-item toggle, edit, delete, and score (default 5).
+  - Configure a hide threshold (e.g., 15); when the sum of matched keyword scores in the checked scope ≥ threshold, the script is hidden.
+  - Duplicate occurrences of the same keyword are counted once.
+  - Scope options: Title only, Description only, Title + Description.
+  - Case sensitivity and regex support (use `/regex/flags`, e.g., `/foo/i`).
+  - Negative scores as offsets: Assign negative scores to “valuable keywords” to reduce the total and avoid hiding. Example: Threshold 4; `foo` is 5 points and `bar` is -2 points. When both match, the total is 3 and the item is not hidden; when only `foo` matches, the total is 5 and the item is hidden.
 - Authors:
   - Author table management: Manage authors (ID, name) in a table with per-author enable/disable, deletion, inline editing of ID/name, and a dedicated “Add” row.
   - Master checkbox: A header master checkbox supports enable-all/disable-all and shows an indeterminate state.

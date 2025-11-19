@@ -141,6 +141,11 @@ const DEFAULTS = (() => {
     totalInstallsLimit: 100,
     dailyInstallsLimit: 10,
     blockedAuthors: [] as Array<{ id: string; name: string; enabled: boolean }>,
+    keywordsEnabled: false,
+    keywordsThreshold: 15,
+    keywordsScope: 'both' as const,
+    keywordsCaseSensitive: false,
+    keywords: [] as Array<{ keyword: string; score: number; enabled: boolean }>,
   }
   return base
 })()
@@ -316,6 +321,22 @@ function getDailyInstallsInItem(item) {
   return null
 }
 
+function getTitleTextInItem(item: Element): string | undefined {
+  const a =
+    item.querySelector('a.script-link') ||
+    item.querySelector('a[href^="/scripts/"]')
+  const t = (a?.textContent || '').trim()
+  return t ? t : undefined
+}
+
+function getDescriptionTextInItem(item: Element): string | undefined {
+  const el =
+    item.querySelector('dd.script-list-description') ||
+    item.querySelector('.script-description')
+  const t = (el?.textContent || '').trim()
+  return t ? t : undefined
+}
+
 function collectScriptItems() {
   const candidates = Array.from(document.querySelectorAll('li[data-script-id]'))
   return candidates.filter((el) => {
@@ -344,6 +365,8 @@ function readItemMetrics(item) {
       totalInstalls: getTotalInstallsInItem(item),
       dailyInstalls: getDailyInstallsInItem(item),
       authorIds: getAuthorIdsInItem(item),
+      titleText: getTitleTextInItem(item),
+      descriptionText: getDescriptionTextInItem(item),
     }
     itemMetricsCache.set(item, m)
   }
@@ -357,7 +380,17 @@ function applyCombinedFilters(
   createdRecentDays,
   totalLessThan,
   dailyLessThan,
-  blockedIds
+  blockedIds,
+  keywordsThreshold,
+  keywordsScope: 'title' | 'description' | 'both',
+  keywordsList: Array<{
+    keyword: string
+    score: number
+    enabled: boolean
+    isRegex?: boolean
+    regex?: RegExp
+  }>,
+  keywordsCaseSensitive: boolean
 ) {
   const items = collectScriptItems()
   if (items.length === 0) return { visible: 0, hidden: 0, total: 0 }
@@ -403,6 +436,40 @@ function applyCombinedFilters(
       }
     }
 
+    if (!hide && keywordsThreshold && keywordsThreshold > 0) {
+      const title = String(metrics.titleText || '')
+      const desc = String(metrics.descriptionText || '')
+      const src =
+        keywordsScope === 'title'
+          ? title
+          : keywordsScope === 'description'
+            ? desc
+            : `${title}\n${desc}`
+      const baseText = src
+      const text = keywordsCaseSensitive ? baseText : baseText.toLowerCase()
+      let sum = 0
+      for (const k of keywordsList || []) {
+        if (!k) continue
+        const kw = k.keyword
+        if (!kw) continue
+        if (k.isRegex && k.regex) {
+          if (k.regex.test(baseText)) {
+            sum += k.score
+            if (sum >= keywordsThreshold) {
+              hide = true
+              break
+            }
+          }
+        } else if (text.includes(kw)) {
+          sum += k.score
+          if (sum >= keywordsThreshold) {
+            hide = true
+            break
+          }
+        }
+      }
+    }
+
     if (hide) {
       item.classList.add('fsfts-hidden')
       hidden += 1
@@ -413,6 +480,12 @@ function applyCombinedFilters(
   }
 
   return { visible, hidden, total: items.length }
+}
+
+function createDivider() {
+  const divider = document.createElement('div')
+  divider.className = cn('my-5 h-[0.5px] bg-gray-200 opacity-70')
+  return divider
 }
 
 async function injectGreasyForkFilters() {
@@ -464,6 +537,23 @@ async function injectGreasyForkFilters() {
         enabled: boolean
       }>)
     : DEFAULTS.blockedAuthors
+  let keywordsEnabled = Boolean(saved.keywordsEnabled as boolean | undefined)
+  let keywordsThreshold = Number(
+    saved.keywordsThreshold ?? DEFAULTS.keywordsThreshold
+  )
+  let keywordsScope =
+    (saved.keywordsScope as 'title' | 'description' | 'both') ??
+    DEFAULTS.keywordsScope
+  let keywordsCaseSensitive = Boolean(
+    saved.keywordsCaseSensitive ?? DEFAULTS.keywordsCaseSensitive
+  )
+  let keywords = Array.isArray(saved.keywords)
+    ? (saved.keywords as Array<{
+        keyword: string
+        score: number
+        enabled: boolean
+      }>)
+    : DEFAULTS.keywords
   let totalInstallsLimit = Number(
     saved.totalInstallsLimit ?? DEFAULTS.totalInstallsLimit
   )
@@ -499,7 +589,7 @@ async function injectGreasyForkFilters() {
 
   const panel = document.createElement('div')
   panel.className =
-    'bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans'
+    'bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans text-sm'
   panel.style.maxHeight = 'calc(100vh - 24px)'
   const header = document.createElement('div')
   header.className =
@@ -655,13 +745,67 @@ async function injectGreasyForkFilters() {
         .filter((x) => Boolean(x.enabled))
         .map((x) => String(x.id))
     )
+    const kwThreshold = keywordsEnabled ? Math.max(keywordsThreshold, 0) : 0
+    const kwScope = keywordsScope
+    const caseSensitive = keywordsCaseSensitive
+    const enabledKeywords = (keywords || []).filter((x) => Boolean(x.enabled))
+    const map = new Map<
+      string,
+      {
+        keyword: string
+        score: number
+        enabled: true
+        isRegex?: boolean
+        regex?: RegExp
+      }
+    >()
+    for (const x of enabledKeywords) {
+      const raw = String(x.keyword || '').trim()
+      const score = Number.isFinite(Number(x.score)) ? Number(x.score) : 5
+      if (!raw) continue
+      if (raw.startsWith('/') && raw.lastIndexOf('/') > 1) {
+        const last = raw.lastIndexOf('/')
+        const pattern = raw.slice(1, last)
+        let flags = raw.slice(last + 1)
+        try {
+          const hasI = flags.includes('i')
+          if (!hasI && !caseSensitive) flags += 'i'
+          const re = new RegExp(pattern, flags)
+          const key = `/${pattern}/${flags}`
+          console.log('pattern', re, key)
+          const prev = map.get(key)
+          if (!prev || score > prev.score) {
+            map.set(key, {
+              keyword: key,
+              score,
+              enabled: true,
+              isRegex: true,
+              regex: re,
+            })
+          }
+        } catch {}
+      } else {
+        const norm = caseSensitive ? raw : raw.toLowerCase()
+        if (!norm) continue
+        const prev = map.get(norm)
+        if (!prev || score > prev.score) {
+          map.set(norm, { keyword: norm, score, enabled: true })
+        }
+      }
+    }
+
+    const kwList = Array.from(map.values())
     const counts = applyCombinedFilters(
       updatedDays,
       olderDays,
       recentDays,
       totalLess,
       dailyLess,
-      blockedIds
+      blockedIds,
+      kwThreshold,
+      kwScope,
+      kwList,
+      caseSensitive
     )
     stats.textContent = `显示 ${counts.visible} | 隐藏 ${counts.hidden}`
     const states = [
@@ -670,6 +814,7 @@ async function injectGreasyForkFilters() {
       createdRecentEnabled,
       totalInstallsEnabled,
       dailyInstallsEnabled,
+      keywordsEnabled,
     ]
     const any = states.some(Boolean)
     const all = states.every(Boolean)
@@ -685,6 +830,7 @@ async function injectGreasyForkFilters() {
       createdRecentEnabled,
       totalInstallsEnabled,
       dailyInstallsEnabled,
+      keywordsEnabled,
     ]
     const any = states.some(Boolean)
     const next = !any
@@ -693,19 +839,23 @@ async function injectGreasyForkFilters() {
     createdRecentEnabled = next
     totalInstallsEnabled = next
     dailyInstallsEnabled = next
+    keywordsEnabled = next
     updatedComp.setEnabledSilently(next)
     olderComp.setEnabledSilently(next)
     recentComp.setEnabledSilently(next)
     chkTotal.checked = next
     chkDaily.checked = next
+    chkKeywords.checked = next
     await saveFilterSettings({
       updatedEnabled,
       createdOlderEnabled,
       createdRecentEnabled,
       totalInstallsEnabled,
       dailyInstallsEnabled,
+      keywordsEnabled,
     })
     updateControlsDisabled()
+    updateKeywordsControlsDisabled()
     applyAndUpdateStatus()
   })
 
@@ -823,9 +973,7 @@ async function injectGreasyForkFilters() {
   quickTable.append(qtb)
   quickSection.append(quickTable)
   panel.append(quickSection)
-  const divider = document.createElement('div')
-  divider.className = cn('my-5 h-[0.5px] bg-gray-200 opacity-70')
-  panel.append(divider)
+  panel.append(createDivider())
 
   function appendQuickRow(
     chkEl: HTMLElement,
@@ -960,7 +1108,7 @@ async function injectGreasyForkFilters() {
   chkSelectAll.type = 'checkbox'
   chkSelectAll.className = 'utaf-checkbox'
   const lblSelectAll = document.createElement('span')
-  lblSelectAll.className = cn('utaf-label')
+  lblSelectAll.className = cn('utaf-label text-xs font-semibold')
   lblSelectAll.textContent = '全选/全不选'
   const btnRefreshPicker = document.createElement('button')
   btnRefreshPicker.className =
@@ -1370,6 +1518,392 @@ async function injectGreasyForkFilters() {
 
   renderAuthorsTable()
 
+  panel.append(createDivider())
+
+  const keywordsSection = document.createElement('div')
+  keywordsSection.className = cn('space-y-2')
+  const keywordsTitle = document.createElement('div')
+  keywordsTitle.className = cn('text-sm font-semibold text-gray-900')
+  keywordsTitle.textContent = '关键字过滤'
+  keywordsSection.append(keywordsTitle)
+
+  const keywordsControls = document.createElement('div')
+  keywordsControls.className = cn('space-y-2')
+  const chkKeywords = document.createElement('input')
+  chkKeywords.type = 'checkbox'
+  chkKeywords.className = 'utaf-checkbox'
+  chkKeywords.checked = keywordsEnabled
+  const lblThresholdPre = document.createElement('span')
+  lblThresholdPre.className = cn('utaf-label text-xs leading-5')
+  lblThresholdPre.textContent = '当分数 ≥'
+  const inputKwThreshold = document.createElement('input')
+  inputKwThreshold.type = 'number'
+  inputKwThreshold.min = '0'
+  inputKwThreshold.step = '1'
+  inputKwThreshold.value = String(keywordsThreshold)
+  inputKwThreshold.className =
+    'h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs'
+  const lblScopePre = document.createElement('span')
+  lblScopePre.className = cn('utaf-label text-xs leading-5')
+  lblScopePre.textContent = '范围'
+  const selectScope = document.createElement('select')
+  selectScope.className =
+    'h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs'
+  const optTitle = document.createElement('option')
+  optTitle.value = 'title'
+  optTitle.textContent = '标题'
+  const optDesc = document.createElement('option')
+  optDesc.value = 'description'
+  optDesc.textContent = '描述'
+  const optBoth = document.createElement('option')
+  optBoth.value = 'both'
+  optBoth.textContent = '标题+描述'
+  selectScope.append(optTitle)
+  selectScope.append(optDesc)
+  selectScope.append(optBoth)
+  selectScope.value = keywordsScope
+  const rowEnable = document.createElement('div')
+  rowEnable.className = cn('flex items-center gap-2')
+  const lblEnable = document.createElement('span')
+  lblEnable.className = cn('utaf-label text-xs leading-5')
+  lblEnable.textContent = '启用'
+  rowEnable.append(lblEnable)
+  rowEnable.append(chkKeywords)
+
+  const rowThreshold = document.createElement('div')
+  rowThreshold.className = cn('flex items-center gap-2')
+  rowThreshold.append(lblThresholdPre)
+  rowThreshold.append(inputKwThreshold)
+
+  const rowScope = document.createElement('div')
+  rowScope.className = cn('flex items-center gap-2')
+  rowScope.append(lblScopePre)
+  rowScope.append(selectScope)
+  const chkCaseSensitive = document.createElement('input')
+  chkCaseSensitive.type = 'checkbox'
+  chkCaseSensitive.className = 'utaf-checkbox'
+  chkCaseSensitive.checked = keywordsCaseSensitive
+  const lblCaseSensitive = document.createElement('span')
+  lblCaseSensitive.className = cn('utaf-label text-xs leading-5')
+  lblCaseSensitive.textContent = '大小写敏感'
+  const rowCase = document.createElement('div')
+  rowCase.className = cn('flex items-center gap-2')
+  rowCase.append(lblCaseSensitive)
+  rowCase.append(chkCaseSensitive)
+  keywordsControls.append(rowEnable)
+  keywordsControls.append(rowThreshold)
+  keywordsControls.append(rowScope)
+  keywordsControls.append(rowCase)
+  keywordsSection.append(keywordsControls)
+
+  const keywordsTable = document.createElement('table')
+  keywordsTable.className = cn(
+    'w-full table-fixed rounded-md border border-gray-200'
+  )
+  const keywordsMasterChk = document.createElement('input')
+  keywordsMasterChk.type = 'checkbox'
+  keywordsMasterChk.className = 'utaf-checkbox h-4 w-4 align-middle'
+  function updateKeywordsMasterChk() {
+    const list = Array.isArray(keywords) ? keywords : []
+    const total = list.length
+    const enabledCount = list.reduce((n, k) => n + (k.enabled ? 1 : 0), 0)
+    keywordsMasterChk.indeterminate = enabledCount > 0 && enabledCount < total
+    keywordsMasterChk.checked = total > 0 && enabledCount === total
+    keywordsMasterChk.disabled = total === 0
+  }
+
+  keywordsMasterChk.addEventListener('change', async () => {
+    const next = keywordsMasterChk.checked
+    keywords = (keywords || []).map((k) => ({ ...k, enabled: next }))
+    await saveFilterSettings({ keywords })
+    renderKeywordsTable()
+    applyAndUpdateStatus()
+    updateKeywordsMasterChk()
+  })
+  const kwThd = document.createElement('thead')
+  const kwThr = document.createElement('tr')
+  const kwTh0 = document.createElement('th')
+  kwTh0.className = cn(
+    'w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
+  )
+  kwTh0.append(keywordsMasterChk)
+  const kwTh1 = document.createElement('th')
+  kwTh1.className = cn(
+    'min-w-0 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
+  )
+  kwTh1.textContent = '关键字'
+  const kwTh2 = document.createElement('th')
+  kwTh2.className = cn(
+    'w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
+  )
+  kwTh2.textContent = '分数'
+  const kwTh3 = document.createElement('th')
+  kwTh3.className = cn(
+    'w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
+  )
+  kwTh3.textContent = '操作'
+  kwThr.append(kwTh0)
+  kwThr.append(kwTh1)
+  kwThr.append(kwTh2)
+  kwThr.append(kwTh3)
+  kwThd.append(kwThr)
+  const kwTb = document.createElement('tbody')
+  keywordsTable.append(kwThd)
+  keywordsTable.append(kwTb)
+  keywordsSection.append(keywordsTable)
+  panel.append(keywordsSection)
+
+  function renderKeywordsTable() {
+    kwTb.textContent = ''
+    for (const k of keywords) {
+      const tr = document.createElement('tr')
+      const td0 = document.createElement('td')
+      td0.className = cn(
+        'border-t border-gray-200 px-2 py-1 text-left align-middle'
+      )
+      const td1 = document.createElement('td')
+      td1.className = cn(
+        'min-w-0 border-t border-gray-200 px-2 py-1 align-middle'
+      )
+      const td2 = document.createElement('td')
+      td2.className = cn('w-14 border-t border-gray-200 px-2 py-1 align-middle')
+      const td3 = document.createElement('td')
+      td3.className = cn(
+        'w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap'
+      )
+
+      const rowWrap = document.createElement('div')
+      rowWrap.className = cn('flex min-w-0 items-center gap-2')
+      const chk = document.createElement('input')
+      chk.type = 'checkbox'
+      chk.className = 'utaf-checkbox h-4 w-4 align-middle'
+      chk.checked = Boolean(k.enabled)
+      chk.addEventListener('change', async () => {
+        k.enabled = chk.checked
+        await saveFilterSettings({ keywords })
+        applyAndUpdateStatus()
+        updateKeywordsMasterChk()
+      })
+      td0.append(chk)
+
+      const kwLabel = document.createElement('span')
+      kwLabel.className = cn(
+        'utaf-label block cursor-pointer truncate text-sm text-gray-800'
+      )
+      kwLabel.textContent = String(k.keyword || '')
+      kwLabel.title = String(k.keyword || '')
+      const kwInput = document.createElement('input')
+      kwInput.type = 'text'
+      kwInput.className = cn(
+        'hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs'
+      )
+      kwInput.value = String(k.keyword || '')
+      const commitKw = async () => {
+        const v = String(kwInput.value || '').trim()
+        if (v) {
+          k.keyword = v
+          await saveFilterSettings({ keywords })
+          applyAndUpdateStatus()
+        } else {
+          kwInput.value = String(k.keyword || '')
+        }
+
+        kwInput.classList.add('hidden')
+        kwLabel.textContent = String(k.keyword || '')
+        kwLabel.title = String(k.keyword || '')
+        kwLabel.style.display = 'block'
+      }
+
+      kwLabel.addEventListener('click', () => {
+        kwLabel.style.display = 'none'
+        kwInput.classList.remove('hidden')
+        kwInput.focus()
+        kwInput.select()
+      })
+      kwInput.addEventListener('blur', commitKw)
+      kwInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          void commitKw()
+        }
+      })
+
+      rowWrap.append(kwLabel)
+      rowWrap.append(kwInput)
+      td1.append(rowWrap)
+
+      const scoreInput = document.createElement('input')
+      scoreInput.type = 'number'
+
+      scoreInput.step = '1'
+      scoreInput.value = String(
+        Number.isFinite(Number(k.score)) ? Number(k.score) : 5
+      )
+      scoreInput.className = cn(
+        'h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs'
+      )
+      scoreInput.addEventListener('change', async () => {
+        let v = Number(scoreInput.value)
+        if (!Number.isFinite(v)) v = 5
+        k.score = v
+        await saveFilterSettings({ keywords })
+        applyAndUpdateStatus()
+      })
+      td2.append(scoreInput)
+
+      const btnDel = document.createElement('button')
+      btnDel.className = cn(
+        'inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200'
+      )
+      btnDel.textContent = '删除'
+      btnDel.addEventListener('click', async () => {
+        keywords = keywords.filter(
+          (x) => String(x.keyword) !== String(k.keyword)
+        )
+        await saveFilterSettings({ keywords })
+        renderKeywordsTable()
+        applyAndUpdateStatus()
+      })
+      td3.append(btnDel)
+
+      tr.append(td0)
+      tr.append(td1)
+      tr.append(td2)
+      tr.append(td3)
+      kwTb.append(tr)
+    }
+
+    const addTr = document.createElement('tr')
+    const addTd0 = document.createElement('td')
+    addTd0.className = cn(
+      'border-t border-gray-200 px-2 py-1 text-left align-middle'
+    )
+    const addTd1 = document.createElement('td')
+    addTd1.className = cn(
+      'min-w-0 border-t border-gray-200 px-2 py-1 align-middle'
+    )
+    const addKwInput = document.createElement('input')
+    addKwInput.type = 'text'
+    addKwInput.placeholder = '关键字'
+    addKwInput.className = cn(
+      'h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs'
+    )
+    addTd1.append(addKwInput)
+    const addTd2 = document.createElement('td')
+    addTd2.className = cn(
+      'w-14 border-t border-gray-200 px-2 py-1 align-middle'
+    )
+    const addScoreInput = document.createElement('input')
+    addScoreInput.type = 'number'
+
+    addScoreInput.step = '1'
+    addScoreInput.placeholder = '分数'
+    addScoreInput.value = '5'
+    addScoreInput.className = cn(
+      'h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs'
+    )
+    addTd2.append(addScoreInput)
+    const addTd3 = document.createElement('td')
+    addTd3.className = cn(
+      'w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap'
+    )
+    const addBtn = document.createElement('button')
+    addBtn.className = cn(
+      'inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200'
+    )
+    addBtn.textContent = '添加'
+    const doAdd = async () => {
+      const kw = String(addKwInput.value || '').trim()
+      let sc = Number(addScoreInput.value)
+      if (!Number.isFinite(sc)) sc = 5
+      if (!kw) return
+      const exists = keywords.find(
+        (x) => String(x.keyword).toLowerCase() === kw.toLowerCase()
+      )
+      if (exists) {
+        exists.score = sc
+        exists.enabled = true
+      } else {
+        keywords.push({ keyword: kw, score: sc, enabled: true })
+      }
+
+      addKwInput.value = ''
+      addScoreInput.value = '5'
+      await saveFilterSettings({ keywords })
+      renderKeywordsTable()
+      applyAndUpdateStatus()
+      // Scroll add keyword input into view
+      const lastRow = kwTb.querySelector('tr:last-child')
+      if (lastRow) {
+        lastRow.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+
+    addBtn.addEventListener('click', doAdd)
+    addKwInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        void doAdd()
+      }
+    })
+    addScoreInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        void doAdd()
+      }
+    })
+    addTd3.append(addBtn)
+    addTr.append(addTd0)
+    addTr.append(addTd1)
+    addTr.append(addTd2)
+    addTr.append(addTd3)
+    kwTb.append(addTr)
+  }
+
+  renderKeywordsTable()
+  updateKeywordsMasterChk()
+
+  function updateKeywordsControlsDisabled() {
+    inputKwThreshold.disabled = !chkKeywords.checked
+    selectScope.disabled = !chkKeywords.checked
+    chkCaseSensitive.disabled = !chkKeywords.checked
+    inputKwThreshold.className = inputKwThreshold.disabled
+      ? 'h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed'
+      : 'h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs'
+    selectScope.className = selectScope.disabled
+      ? 'h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed'
+      : 'h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs'
+    lblCaseSensitive.className = chkCaseSensitive.disabled
+      ? 'utaf-label text-xs leading-5 opacity-50 cursor-not-allowed'
+      : 'utaf-label text-xs leading-5'
+  }
+
+  updateKeywordsControlsDisabled()
+  chkKeywords.addEventListener('change', async () => {
+    keywordsEnabled = chkKeywords.checked
+    await saveFilterSettings({ keywordsEnabled })
+    updateKeywordsControlsDisabled()
+    applyAndUpdateStatus()
+  })
+  chkCaseSensitive.addEventListener('change', async () => {
+    keywordsCaseSensitive = chkCaseSensitive.checked
+    await saveFilterSettings({ keywordsCaseSensitive })
+    applyAndUpdateStatus()
+  })
+  inputKwThreshold.addEventListener('change', async () => {
+    let v = Number(inputKwThreshold.value)
+    if (!Number.isFinite(v) || v < 0) v = 15
+    keywordsThreshold = v
+    await saveFilterSettings({ keywordsThreshold })
+    applyAndUpdateStatus()
+  })
+  selectScope.addEventListener('change', async () => {
+    const v = String(selectScope.value || 'both') as
+      | 'title'
+      | 'description'
+      | 'both'
+    keywordsScope = v
+    await saveFilterSettings({ keywordsScope })
+    applyAndUpdateStatus()
+  })
+
   function updateControlsDisabled() {
     inputTotal.disabled = !chkTotal.checked
     inputDaily.disabled = !chkDaily.checked
@@ -1403,6 +1937,11 @@ async function injectGreasyForkFilters() {
     totalInstallsLimit = DEFAULTS.totalInstallsLimit
     dailyInstallsLimit = DEFAULTS.dailyInstallsLimit
     blockedAuthors = DEFAULTS.blockedAuthors
+    keywordsEnabled = DEFAULTS.keywordsEnabled
+    keywordsThreshold = DEFAULTS.keywordsThreshold
+    keywordsScope = DEFAULTS.keywordsScope
+    keywordsCaseSensitive = DEFAULTS.keywordsCaseSensitive
+    keywords = DEFAULTS.keywords
     updatedComp.setState({
       enabled: updatedEnabled,
       mode: currentMode,
@@ -1423,10 +1962,15 @@ async function injectGreasyForkFilters() {
     })
     chkTotal.checked = totalInstallsEnabled
     chkDaily.checked = dailyInstallsEnabled
+    chkKeywords.checked = keywordsEnabled
 
     inputTotal.value = String(totalInstallsLimit)
     inputDaily.value = String(dailyInstallsLimit)
+    inputKwThreshold.value = String(keywordsThreshold)
+    selectScope.value = keywordsScope
+    chkCaseSensitive.checked = keywordsCaseSensitive
     updateControlsDisabled()
+    updateKeywordsControlsDisabled()
     await saveFilterSettings({
       updatedThresholdMode: currentMode,
       updatedThresholdMonths: currentMonths,
@@ -1445,6 +1989,11 @@ async function injectGreasyForkFilters() {
       dailyInstallsEnabled,
       dailyInstallsLimit,
       blockedAuthors,
+      keywordsEnabled,
+      keywordsThreshold,
+      keywordsScope,
+      keywordsCaseSensitive,
+      keywords,
     })
     applyAndUpdateStatus()
   }
