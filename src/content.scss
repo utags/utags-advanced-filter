@@ -7,12 +7,18 @@
   padding: 4px 8px;
 }
 
+:host {
+  color: black;
+}
+
 .utaf-checkbox {
   width: 20px;
   height: 20px;
   vertical-align: middle;
   cursor: pointer;
   flex: 0 0 auto;
+  color-scheme: light;
+  accent-color: #3b82f6;
 }
 
 .shadow-xl > .flex .utaf-checkbox {
@@ -22,6 +28,13 @@
 .utaf-label {
   cursor: pointer;
   user-select: none;
+}
+
+/* Force light color scheme for form controls inside panel */
+input,
+select,
+textarea {
+  color-scheme: light;
 }
 
 .utaf-reset-slot {

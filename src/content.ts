@@ -591,6 +591,8 @@ async function injectGreasyForkFilters() {
   panel.className =
     'bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans text-sm'
   panel.style.maxHeight = 'calc(100vh - 24px)'
+  panel.style.setProperty('filter', 'revert', 'important')
+  panel.style.setProperty('color-scheme', 'light')
   const header = document.createElement('div')
   header.className =
     'sticky top-0 bg-white z-10 mb-2 space-y-4 transition-shadow -ml-3 -mr-5 pl-3 pr-5 py-2'

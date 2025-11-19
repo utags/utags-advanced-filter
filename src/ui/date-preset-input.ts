@@ -42,9 +42,6 @@ export function createDatePresetInput(opts: {
   dropdown.style.position = 'fixed'
   dropdown.style.zIndex = '2147483647'
   dropdown.style.display = 'none'
-  dropdown.style.background = '#fff'
-  dropdown.style.border = '1px solid #d1d5db'
-  dropdown.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)'
 
   function setInputMode() {
     if (state.mode === 'months') {
