@@ -10,7 +10,13 @@ module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
   bracketSameLine: true,
-  plugins: [require.resolve('@ianvs/prettier-plugin-sort-imports')],
+  plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss',
+  ],
+  tailwindStylesheet: './src/tailwind.css',
+  tailwindAttributes: ['class', 'className'],
+  tailwindFunctions: ['clsx', 'cn', 'tw'],
   importOrder: [
     '<BUILTIN_MODULES>',
     '<THIRD_PARTY_MODULES>',

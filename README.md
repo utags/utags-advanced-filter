@@ -4,7 +4,7 @@ A tool that filters and hides list-style content in real time on any website. It
 
 Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
 
-![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-18-00-21-06.png)
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-19-13-21-06.png)
 
 ## Implemented Features
 
@@ -12,11 +12,12 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 - Style isolation: The UI is hosted inside a `ShadowRoot` to completely avoid CSS pollution from the target website.
 - Floating panel: The filter UI appears as a draggable floating panel fixed to the right side of the page.
-- Collapsible design: The panel can collapse into a semi-transparent Lucide `SlidersHorizontal` icon and becomes opaque on hover. The collapsed state is persisted.
+- Collapsible design: The panel collapses into a semi-transparent UTags brand icon and becomes opaque on hover; the collapsed state is persisted.
 - Optimized layout:
   - Two-row structure: The top row contains the title and actions (Reset, Collapse), and the bottom row shows stats and the master switch.
   - Safe reset: The “Reset” button is hidden by default, appears only after hovering for 3 seconds, and shows a second-confirmation dialog before applying, preventing misclicks.
   - Master switch: A main checkbox next to the stats can enable/disable all filters at once and shows an indeterminate state when partially enabled.
+  - Quick controls: Unified rows for Updated/Created date filters with enable checkboxes, mode switch (days/months), presets and custom days; the stats on the right update in real time as “Shown X | Hidden X”.
 - Unified components:
   - Date preset component: Date filters (Updated date, Created date) are encapsulated into a reusable `createDatePresetInput` component, supporting presets like half-year, one year, two years, and custom days.
   - Dropdown menu: Supports closing with `Esc`, and has its own border and shadow styles.
@@ -31,6 +32,11 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 - Install counts:
   - Hide scripts with total installs less than N.
   - Hide scripts with daily installs less than N.
+- Authors:
+  - Author table management: Manage authors (ID, name) in a table with per-author enable/disable, deletion, inline editing of ID/name, and a dedicated “Add” row.
+  - Master checkbox: A header master checkbox supports enable-all/disable-all and shows an indeterminate state.
+  - Author picker: Collect authors from the current page, with “Select all/none”, “Refresh”, “Add selected”, and “Close” actions to avoid manual typing.
+  - Immediate persistence: All author changes are saved instantly and integrated with the live stats updates.
 - Immediate effect: All filter changes take effect instantly and the “shown/hidden” stats update in real time.
 
 ### Data & State
@@ -41,8 +47,8 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 ## Installation & Usage
 
-- Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-add-usertags-to-lin/kofjcnaphffjoookgahgjidofbdplgig)
-- Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-add-usertags-to-l/bhlbflbehfoccjjenpekilgabbjjnphe)
+- Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-advanced-filter/kofjcnaphffjoookgahgjidofbdplgig)
+- Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-advanced-filter/ndhiahnkcnongmecnaamaampfelobblg)
 - Firefox: [Firefox Addon Store](https://addons.mozilla.org/firefox/addon/utags-advanced-filter/)
 - User Script: [Greasy Fork](https://greasyfork.org/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/en/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)
 - [Manually install browser extensions](https://github.com/utags/utags-advanced-filter/blob/main/manual-installation.md)

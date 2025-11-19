@@ -4,7 +4,7 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.0.4
+// @version              0.0.5
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
@@ -1260,9 +1260,9 @@
     handleShowSettingsUrl()
   }
   var content_default =
-    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}.utaf-checkbox{cursor:pointer;flex:0 0 auto;height:16px;margin-right:calc(var(--spacing)*2);width:16px}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}"
+    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}.utaf-checkbox{cursor:pointer;flex:0 0 auto;height:16px;vertical-align:middle;width:16px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}"
   var tailwind_default =
-    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-900:oklch(21% 0.034 264.665);--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-semibold:600;--radius-md:0.375rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.collapse{visibility:collapse}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-block{display:inline-block}.table{display:table}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-80{width:calc(var(--spacing)*80)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.items-center{align-items:center}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-gray-300{border-color:var(--color-gray-300)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-white{background-color:var(--color-white)}.p-3{padding:calc(var(--spacing)*3)}.px-2{padding-inline:calc(var(--spacing)*2)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.text-gray-500{color:var(--color-gray-500)}.text-gray-700{color:var(--color-gray-700)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{@supports ((-webkit-hyphens:none) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}}'
+    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-semibold:600;--radius-md:0.375rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.collapse{visibility:collapse}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.z-10{z-index:10}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.my-5{margin-block:calc(var(--spacing)*5)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-\\[0\\.5px\\]{height:.5px}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-full{width:100%}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-3{padding:calc(var(--spacing)*3)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-gray-500{color:var(--color-gray-500)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
   var icon_no_bg_default =
     '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">\n  <path d="M10 5H3" stroke="#4285F4"></path>\n  <path d="M21 5h-7" stroke="#4285F4"></path>\n  <path d="M14 3v4" stroke="#FBBC05"></path>\n\n  <path d="M8 12H3" stroke="#EA4335"></path>\n  <path d="M21 12h-9" stroke="#EA4335"></path>\n  <path d="M8 10v4" stroke="#FBBC05"></path>\n\n  <path d="M12 19H3" stroke="#34A853"></path>\n  <path d="M21 19h-5" stroke="#34A853"></path>\n  <path d="M16 17v4" stroke="#FBBC05"></path>\n</svg>'
   var defaultAttributes = {
@@ -1387,17 +1387,18 @@
   function createDatePresetInput(opts) {
     let state = __spreadValues({}, opts.initial)
     const root = document.createElement("div")
-    root.className = "flex items-center"
+    root.className = "flex items-center text-sm"
     const chk = document.createElement("input")
     chk.type = "checkbox"
     chk.className = "utaf-checkbox"
     chk.checked = state.enabled
     const pre = document.createElement("span")
-    pre.className = "utaf-label"
+    pre.className = "utaf-label text-sm"
     pre.textContent = opts.preLabel
     const input = document.createElement("input")
-    input.className = "w-24 px-2 py-1 border border-gray-300 rounded-md"
+    input.className = "w-24 px-2 py-1 border border-gray-300 rounded-md text-xs"
     const suf = document.createElement("span")
+    suf.className = "text-sm"
     const dropdown = document.createElement("div")
     dropdown.className =
       "bg-white border border-gray-300 rounded-md shadow px-2 py-1 text-sm"
@@ -1423,8 +1424,8 @@
       }
       input.disabled = !state.enabled
       input.className = input.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md"
+        ? "w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed text-xs"
+        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
     }
     function setInputDisplay() {
       if (state.mode === "months") {
@@ -1556,10 +1557,8 @@
       getState: () => __spreadValues({}, state),
     }
   }
-  var base = location.origin
-  var origin = location.origin
+  var cn = (s) => s
   var host = location.host
-  var hostname = location.hostname
   if (false) {
     const runtime =
       (_c = (_a = globalThis.chrome) == null ? void 0 : _a.runtime) != null
@@ -1601,10 +1600,9 @@
       return "utaf_".concat(host2, "_filters")
     })(),
     GLOBAL_KEY: "utaf_global_state",
-    DEBUG: false,
   }
   var DEFAULTS = /* @__PURE__ */ (() => {
-    const base2 = {
+    const base = {
       updatedMode: "months",
       updatedDays: 90,
       updatedMonths: 24,
@@ -1616,8 +1614,9 @@
       createdRecentMonths: 0,
       totalInstallsLimit: 100,
       dailyInstallsLimit: 10,
+      blockedAuthors: [],
     }
-    return base2
+    return base
   })()
   async function loadFilterSettings() {
     try {
@@ -1722,6 +1721,33 @@
     }
     return null
   }
+  function getAuthorIdsInItem(item) {
+    var _a
+    const ids = []
+    const raw =
+      ((_a = item.dataset) == null ? void 0 : _a.scriptAuthors) || null
+    if (raw) {
+      let text = String(raw)
+      if (text.includes("&quot;")) {
+        text = text.replaceAll("&quot;", '"')
+      }
+      try {
+        const obj = JSON.parse(text)
+        for (const k of Object.keys(obj)) {
+          ids.push(String(k))
+        }
+      } catch (e) {}
+    }
+    if (ids.length === 0) {
+      const a = item.querySelector('dd.script-list-author a[href*="/users/"]')
+      if (a) {
+        const href = String(a.href || "")
+        const m = /\/users\/(\d+)/.exec(href)
+        if (m) ids.push(m[1])
+      }
+    }
+    return ids
+  }
   function getDailyInstallsInItem(item) {
     const dsAttr =
       item.dataset.scriptDailyInstalls ||
@@ -1767,6 +1793,7 @@
         createdTs: getCreatedTimestampInItem(item),
         totalInstalls: getTotalInstallsInItem(item),
         dailyInstalls: getDailyInstallsInItem(item),
+        authorIds: getAuthorIdsInItem(item),
       }
       itemMetricsCache.set(item, m)
     }
@@ -1777,7 +1804,8 @@
     createdOlderDays,
     createdRecentDays,
     totalLessThan,
-    dailyLessThan
+    dailyLessThan,
+    blockedIds
   ) {
     const items = collectScriptItems()
     if (items.length === 0) return { visible: 0, hidden: 0, total: 0 }
@@ -1796,6 +1824,7 @@
       const createdTs = metrics.createdTs
       const totalInstalls = metrics.totalInstalls
       const dailyInstalls = metrics.dailyInstalls
+      const authorIds = metrics.authorIds || []
       let hide = false
       if (ud && updatedTs) {
         const ageU = now - updatedTs
@@ -1811,6 +1840,14 @@
       }
       if (ti && totalInstalls !== null && totalInstalls < ti) hide = true
       if (di && dailyInstalls !== null && dailyInstalls < di) hide = true
+      if (!hide && blockedIds && blockedIds.size > 0) {
+        for (const aid of authorIds) {
+          if (blockedIds.has(String(aid))) {
+            hide = true
+            break
+          }
+        }
+      }
       if (hide) {
         item.classList.add("fsfts-hidden")
         hidden += 1
@@ -1867,6 +1904,9 @@
     let createdRecentEnabled = Boolean(saved.createdRecentEnabled)
     let totalInstallsEnabled = Boolean(saved.totalInstallsEnabled)
     let dailyInstallsEnabled = Boolean(saved.dailyInstallsEnabled)
+    let blockedAuthors = Array.isArray(saved.blockedAuthors)
+      ? saved.blockedAuthors
+      : DEFAULTS.blockedAuthors
     let totalInstallsLimit = Number(
       (_j = saved.totalInstallsLimit) != null ? _j : DEFAULTS.totalInstallsLimit
     )
@@ -1897,11 +1937,14 @@
     globalCss.textContent = content_default
     shadow.append(globalCss)
     const panel = document.createElement("div")
-    panel.className = "bg-white shadow-xl rounded-xl p-3 w-80 font-sans"
+    panel.className =
+      "bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans"
+    panel.style.maxHeight = "calc(100vh - 24px)"
     const header = document.createElement("div")
-    header.className = "mb-2 space-y-4"
+    header.className =
+      "sticky top-0 bg-white z-10 mb-2 space-y-4 transition-shadow -ml-3 -mr-5 pl-3 pr-5 py-2"
     const title = document.createElement("div")
-    title.className = "font-semibold text-gray-900 text-sm"
+    title.className = cn("text-sm font-semibold text-gray-900")
     title.textContent = "UTags Advanced Filter"
     const titleIcon = new DOMParser().parseFromString(
       icon_no_bg_default,
@@ -1912,24 +1955,24 @@
     titleIcon.classList.add("inline-block", "mr-2")
     title.prepend(titleIcon)
     const headerRow1 = document.createElement("div")
-    headerRow1.className = "flex items-center"
+    headerRow1.className = cn("flex items-center")
     headerRow1.append(title)
     const headerRow2 = document.createElement("div")
-    headerRow2.className = "flex items-center gap-2"
+    headerRow2.className = cn("flex items-center gap-2")
     const masterChk = document.createElement("input")
     masterChk.type = "checkbox"
     masterChk.className = "utaf-checkbox"
     masterChk.setAttribute("title", "\u53CD\u9009")
     masterChk.setAttribute("aria-label", "\u53CD\u9009")
     const stats = document.createElement("div")
-    stats.className = "text-xs text-gray-500"
-    headerRow2.append(masterChk)
+    stats.className = cn("text-xs text-gray-500")
     headerRow2.append(stats)
     const headerRight = document.createElement("div")
-    headerRight.className = "ml-auto flex items-center gap-2"
+    headerRight.className = cn("ml-auto flex items-center gap-2")
     const btnCollapse = document.createElement("button")
-    btnCollapse.className =
-      "px-2 py-1 rounded-md bg-gray-100 text-gray-700 text-xs hover:bg-gray-200"
+    btnCollapse.className = cn(
+      "rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
+    )
     btnCollapse.setAttribute("title", "\u6298\u53E0")
     btnCollapse.setAttribute("aria-label", "\u6298\u53E0")
     const iconCollapse = createElement2(ChevronUp, {
@@ -1939,8 +1982,9 @@
     })
     btnCollapse.append(iconCollapse)
     const btnReset = document.createElement("button")
-    btnReset.className =
-      "utaf-reset-btn px-2 py-1 rounded-md bg-gray-100 text-gray-700 text-xs hover:bg-gray-200"
+    btnReset.className = cn(
+      "utaf-reset-btn rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
+    )
     btnReset.setAttribute("title", "\u91CD\u7F6E")
     btnReset.setAttribute("aria-label", "\u91CD\u7F6E")
     const iconReset = createElement2(RotateCcw, {
@@ -1959,8 +2003,20 @@
     header.append(headerRow2)
     panel.append(header)
     const content = document.createElement("div")
-    content.className = "space-y-2"
+    content.className = cn("space-y-2")
     panel.append(content)
+    panel.addEventListener("scroll", () => {
+      const scrolled = panel.scrollTop > 0
+      if (scrolled) {
+        header.classList.add("shadow-md", "border-b", "border-gray-200")
+        header.classList.remove("shadow-sm")
+      } else {
+        header.classList.remove("shadow-md", "border-b", "border-gray-200")
+      }
+    })
+    if (panel.scrollTop > 0) {
+      header.classList.add("shadow-md", "border-b", "border-gray-200")
+    }
     const fab = document.createElement("button")
     fab.className = "utaf-fab"
     fab.setAttribute("title", "\u6253\u5F00\u7B5B\u9009")
@@ -2024,12 +2080,18 @@
         : 0
       const totalLess = totalInstallsEnabled ? totalInstallsLimit : 0
       const dailyLess = dailyInstallsEnabled ? dailyInstallsLimit : 0
+      const blockedIds = new Set(
+        (blockedAuthors || [])
+          .filter((x) => Boolean(x.enabled))
+          .map((x) => String(x.id))
+      )
       const counts = applyCombinedFilters(
         updatedDays,
         olderDays,
         recentDays,
         totalLess,
-        dailyLess
+        dailyLess,
+        blockedIds
       )
       stats.textContent = "\u663E\u793A "
         .concat(counts.visible, " | \u9690\u85CF ")
@@ -2045,6 +2107,7 @@
       const all = states.every(Boolean)
       masterChk.indeterminate = any && !all
       masterChk.checked = all
+      updateAuthorsMasterChk()
     }
     masterChk.addEventListener("change", async () => {
       const states = [
@@ -2103,7 +2166,6 @@
         })
       },
     })
-    panel.append(updatedComp.root)
     const olderComp = createDatePresetInput({
       shadow,
       preLabel: "\u9690\u85CF",
@@ -2131,7 +2193,6 @@
         })
       },
     })
-    panel.append(olderComp.root)
     const recentComp = createDatePresetInput({
       shadow,
       preLabel: "\u9690\u85CF",
@@ -2159,9 +2220,70 @@
         })
       },
     })
-    panel.append(recentComp.root)
-    const blockInstTotal = document.createElement("div")
-    blockInstTotal.className = "flex items-center"
+    const quickSection = document.createElement("div")
+    quickSection.className = cn("space-y-2")
+    const quickTitle = document.createElement("div")
+    quickTitle.className = cn("text-sm font-semibold text-gray-900")
+    quickTitle.textContent = "\u4FBF\u6377\u7B5B\u9009"
+    quickSection.append(quickTitle)
+    const quickTable = document.createElement("table")
+    quickTable.className = cn(
+      "w-full table-fixed rounded-md border border-gray-200 text-sm"
+    )
+    const qthd = document.createElement("thead")
+    const qthr = document.createElement("tr")
+    const qth0 = document.createElement("th")
+    qth0.className = cn(
+      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    qth0.append(masterChk)
+    const qth1 = document.createElement("th")
+    qth1.className = cn(
+      "border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700"
+    )
+    qth1.textContent = "\u5168\u9009/\u5168\u5173"
+    qthr.append(qth0)
+    qthr.append(qth1)
+    qthd.append(qthr)
+    const qtb = document.createElement("tbody")
+    quickTable.append(qthd)
+    quickTable.append(qtb)
+    quickSection.append(quickTable)
+    panel.append(quickSection)
+    const divider = document.createElement("div")
+    divider.className = cn("my-5 h-[0.5px] bg-gray-200 opacity-70")
+    panel.append(divider)
+    function appendQuickRow(chkEl, labelEl, inputEl, suffixEl) {
+      const tr = document.createElement("tr")
+      const td0 = document.createElement("td")
+      td0.className = cn(
+        "w-8 border-t border-gray-200 px-2 py-1 text-left align-middle"
+      )
+      const td1 = document.createElement("td")
+      td1.className = cn("border-t border-gray-200 px-2 py-1 align-middle")
+      const wrap = document.createElement("div")
+      wrap.className = cn("flex items-center gap-2")
+      wrap.append(labelEl)
+      wrap.append(inputEl)
+      wrap.append(suffixEl)
+      td0.append(chkEl)
+      td1.append(wrap)
+      tr.append(td0)
+      tr.append(td1)
+      qtb.append(tr)
+    }
+    {
+      const [c, p, iEl, s] = Array.from(updatedComp.root.children)
+      appendQuickRow(c, p, iEl, s)
+    }
+    {
+      const [c, p, iEl, s] = Array.from(olderComp.root.children)
+      appendQuickRow(c, p, iEl, s)
+    }
+    {
+      const [c, p, iEl, s] = Array.from(recentComp.root.children)
+      appendQuickRow(c, p, iEl, s)
+    }
     const chkTotal = document.createElement("input")
     chkTotal.type = "checkbox"
     chkTotal.className = "utaf-checkbox"
@@ -2174,7 +2296,8 @@
     inputTotal.min = "0"
     inputTotal.step = "1"
     inputTotal.value = String(totalInstallsLimit)
-    inputTotal.className = "w-20 px-2 py-1 border border-gray-300 rounded-md"
+    inputTotal.className =
+      "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
     const lblTotalSuf = document.createElement("span")
     lblTotalSuf.textContent = ""
     chkTotal.addEventListener("change", async () => {
@@ -2192,13 +2315,7 @@
       await saveFilterSettings({ totalInstallsLimit })
       applyAndUpdateStatus()
     })
-    blockInstTotal.append(chkTotal)
-    blockInstTotal.append(lblTotalPre)
-    blockInstTotal.append(inputTotal)
-    blockInstTotal.append(lblTotalSuf)
-    panel.append(blockInstTotal)
-    const blockInstDaily = document.createElement("div")
-    blockInstDaily.className = "flex items-center"
+    appendQuickRow(chkTotal, lblTotalPre, inputTotal, lblTotalSuf)
     const chkDaily = document.createElement("input")
     chkDaily.type = "checkbox"
     chkDaily.className = "utaf-checkbox"
@@ -2211,7 +2328,8 @@
     inputDaily.min = "0"
     inputDaily.step = "1"
     inputDaily.value = String(dailyInstallsLimit)
-    inputDaily.className = "w-20 px-2 py-1 border border-gray-300 rounded-md"
+    inputDaily.className =
+      "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
     const lblDailySuf = document.createElement("span")
     lblDailySuf.textContent = ""
     chkDaily.addEventListener("change", async () => {
@@ -2229,20 +2347,414 @@
       await saveFilterSettings({ dailyInstallsLimit })
       applyAndUpdateStatus()
     })
-    blockInstDaily.append(chkDaily)
-    blockInstDaily.append(lblDailyPre)
-    blockInstDaily.append(inputDaily)
-    blockInstDaily.append(lblDailySuf)
-    panel.append(blockInstDaily)
+    appendQuickRow(chkDaily, lblDailyPre, inputDaily, lblDailySuf)
+    const authorsSection = document.createElement("div")
+    authorsSection.className = cn("space-y-2")
+    const usersFilterTitle = document.createElement("div")
+    usersFilterTitle.className = cn("text-sm font-semibold text-gray-900")
+    usersFilterTitle.textContent = "\u9690\u85CF\u6307\u5B9A\u4F5C\u8005"
+    authorsSection.append(usersFilterTitle)
+    const authorsActions = document.createElement("div")
+    authorsActions.className = cn("flex items-center gap-2")
+    const btnOpenPicker = document.createElement("button")
+    btnOpenPicker.className =
+      "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
+    btnOpenPicker.textContent = "\u91C7\u96C6\u9875\u9762\u4F5C\u8005"
+    authorsActions.append(btnOpenPicker)
+    const authorsPicker = document.createElement("div")
+    authorsPicker.className = cn("space-y-2")
+    authorsPicker.style.display = "none"
+    const authorsPickerControls = document.createElement("div")
+    authorsPickerControls.className = cn("flex items-center gap-2")
+    const chkSelectAll = document.createElement("input")
+    chkSelectAll.type = "checkbox"
+    chkSelectAll.className = "utaf-checkbox"
+    const lblSelectAll = document.createElement("span")
+    lblSelectAll.className = cn("utaf-label")
+    lblSelectAll.textContent = "\u5168\u9009/\u5168\u4E0D\u9009"
+    const btnRefreshPicker = document.createElement("button")
+    btnRefreshPicker.className =
+      "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
+    btnRefreshPicker.textContent = "\u5237\u65B0"
+    const btnAddSelected = document.createElement("button")
+    btnAddSelected.className =
+      "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
+    btnAddSelected.textContent = "\u6DFB\u52A0\u9009\u4E2D"
+    const btnClosePicker = document.createElement("button")
+    btnClosePicker.className =
+      "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
+    btnClosePicker.textContent = "\u5173\u95ED"
+    authorsPickerControls.append(chkSelectAll)
+    authorsPickerControls.append(lblSelectAll)
+    authorsPickerControls.append(btnRefreshPicker)
+    authorsPickerControls.append(btnAddSelected)
+    authorsPickerControls.append(btnClosePicker)
+    const authorsPickerList = document.createElement("div")
+    authorsPickerList.className = cn("space-y-1")
+    authorsPicker.append(authorsPickerControls)
+    authorsPicker.append(authorsPickerList)
+    const authorsMasterChk = document.createElement("input")
+    authorsMasterChk.type = "checkbox"
+    authorsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle"
+    function updateAuthorsMasterChk() {
+      const list = Array.isArray(blockedAuthors) ? blockedAuthors : []
+      const total = list.length
+      const enabledCount = list.reduce((n, a) => n + (a.enabled ? 1 : 0), 0)
+      authorsMasterChk.indeterminate = enabledCount > 0 && enabledCount < total
+      authorsMasterChk.checked = total > 0 && enabledCount === total
+      authorsMasterChk.disabled = total === 0
+    }
+    authorsMasterChk.addEventListener("change", async () => {
+      const next = authorsMasterChk.checked
+      blockedAuthors = (blockedAuthors || []).map((a) =>
+        __spreadProps(__spreadValues({}, a), {
+          enabled: next,
+        })
+      )
+      await saveFilterSettings({ blockedAuthors })
+      renderAuthorsTable()
+      applyAndUpdateStatus()
+      updateAuthorsMasterChk()
+    })
+    const authorsTable = document.createElement("table")
+    authorsTable.className = cn(
+      "w-full table-fixed rounded-md border border-gray-200"
+    )
+    const thd = document.createElement("thead")
+    const thr = document.createElement("tr")
+    const th0 = document.createElement("th")
+    th0.className = cn(
+      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    th0.append(authorsMasterChk)
+    const th1 = document.createElement("th")
+    th1.className = cn(
+      "w-20 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    th1.textContent = "\u7528\u6237ID"
+    const th2 = document.createElement("th")
+    th2.className = cn(
+      "w-24 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    th2.textContent = "\u7528\u6237\u540D"
+    const th3 = document.createElement("th")
+    th3.className = cn(
+      "w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    th3.textContent = "\u64CD\u4F5C"
+    thr.append(th0)
+    thr.append(th1)
+    thr.append(th2)
+    thr.append(th3)
+    thd.append(thr)
+    const tb = document.createElement("tbody")
+    authorsTable.append(thd)
+    authorsTable.append(tb)
+    authorsSection.append(authorsTable)
+    authorsSection.append(authorsActions)
+    authorsSection.append(authorsPicker)
+    panel.append(authorsSection)
+    function collectPageAuthorsMap() {
+      const map = /* @__PURE__ */ new Map()
+      const items = collectScriptItems()
+      for (const item of items) {
+        const a = item.querySelector('dd.script-list-author a[href*="/users/"]')
+        if (a) {
+          const href = String(a.href || "")
+          const m = /\/users\/(\d+)/.exec(href)
+          if (m) {
+            const id = m[1]
+            const name = String((a.textContent || "").trim() || id)
+            if (!map.has(id)) {
+              map.set(id, name)
+            }
+          }
+        }
+      }
+      return map
+    }
+    function populateAuthorsPicker() {
+      authorsPickerList.textContent = ""
+      const map = collectPageAuthorsMap()
+      for (const [id, name] of map) {
+        const row = document.createElement("div")
+        row.className = cn("flex items-center gap-2")
+        const chk = document.createElement("input")
+        chk.type = "checkbox"
+        chk.className = "utaf-checkbox"
+        chk.dataset.id = id
+        chk.dataset.name = name
+        const exists = (blockedAuthors || []).some((x) => String(x.id) === id)
+        if (exists) {
+          chk.disabled = true
+        }
+        const lbl = document.createElement("span")
+        lbl.className = cn("utaf-label text-sm text-gray-800")
+        lbl.textContent = "".concat(name, " (").concat(id, ")")
+        row.append(chk)
+        row.append(lbl)
+        row.addEventListener("click", (e) => {
+          const target = e.target
+          if (target && target.tagName.toLowerCase() === "input") return
+          if (!chk.disabled) chk.checked = !chk.checked
+        })
+        authorsPickerList.append(row)
+      }
+    }
+    btnOpenPicker.addEventListener("click", () => {
+      populateAuthorsPicker()
+      authorsPicker.style.display = "block"
+    })
+    btnRefreshPicker.addEventListener("click", () => {
+      populateAuthorsPicker()
+    })
+    btnClosePicker.addEventListener("click", () => {
+      authorsPicker.style.display = "none"
+    })
+    chkSelectAll.addEventListener("change", () => {
+      const boxes = Array.from(
+        authorsPickerList.querySelectorAll('input[type="checkbox"]')
+      )
+      for (const b of boxes) {
+        if (!b.disabled) b.checked = chkSelectAll.checked
+      }
+    })
+    btnAddSelected.addEventListener("click", async () => {
+      const boxes = Array.from(
+        authorsPickerList.querySelectorAll('input[type="checkbox"]:checked')
+      )
+      let changed = false
+      for (const b of boxes) {
+        const id = String(b.dataset.id || "")
+        const name = String(b.dataset.name || id)
+        if (!id) continue
+        const exists = (blockedAuthors || []).find((x) => String(x.id) === id)
+        if (exists) {
+          exists.name = exists.name || name
+          exists.enabled = true
+        } else {
+          blockedAuthors.push({ id, name, enabled: true })
+          changed = true
+        }
+      }
+      if (changed) {
+        await saveFilterSettings({ blockedAuthors })
+        renderAuthorsTable()
+        applyAndUpdateStatus()
+        updateAuthorsMasterChk()
+      }
+      authorsPicker.style.display = "none"
+    })
+    function renderAuthorsTable() {
+      tb.textContent = ""
+      for (const a of blockedAuthors) {
+        const tr = document.createElement("tr")
+        const td0 = document.createElement("td")
+        td0.className = cn(
+          "border-t border-gray-200 px-2 py-1 text-left align-middle"
+        )
+        const td1 = document.createElement("td")
+        td1.className = cn(
+          "w-20 border-t border-gray-200 px-2 py-1 align-middle"
+        )
+        const td2 = document.createElement("td")
+        td2.className = cn(
+          "w-24 border-t border-gray-200 px-2 py-1 align-middle"
+        )
+        const td3 = document.createElement("td")
+        td3.className = cn(
+          "border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
+        )
+        const chk = document.createElement("input")
+        chk.type = "checkbox"
+        chk.className = "utaf-checkbox h-4 w-4 align-middle"
+        chk.checked = Boolean(a.enabled)
+        chk.addEventListener("change", async () => {
+          a.enabled = chk.checked
+          await saveFilterSettings({ blockedAuthors })
+          applyAndUpdateStatus()
+        })
+        td0.append(chk)
+        const idLabel = document.createElement("span")
+        idLabel.className = cn(
+          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        )
+        idLabel.textContent = String(a.id)
+        idLabel.title = String(a.id)
+        const idInput = document.createElement("input")
+        idInput.type = "text"
+        idInput.className = cn(
+          "hidden h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        )
+        idInput.value = String(a.id)
+        const commitId = async () => {
+          const v = String(idInput.value || "").trim()
+          if (v) {
+            a.id = v
+            await saveFilterSettings({ blockedAuthors })
+            applyAndUpdateStatus()
+          } else {
+            idInput.value = String(a.id)
+          }
+          idInput.classList.add("hidden")
+          idLabel.textContent = String(a.id)
+          idLabel.title = String(a.id)
+          idLabel.style.display = "block"
+        }
+        idLabel.addEventListener("click", () => {
+          idLabel.style.display = "none"
+          idInput.classList.remove("hidden")
+          idInput.focus()
+          idInput.select()
+        })
+        idInput.addEventListener("blur", commitId)
+        idInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            void commitId()
+          }
+        })
+        td1.append(idLabel)
+        td1.append(idInput)
+        const nameLabel = document.createElement("span")
+        nameLabel.className = cn(
+          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        )
+        nameLabel.textContent = String(a.name || "")
+        nameLabel.title = String(a.name || "")
+        const nameInput = document.createElement("input")
+        nameInput.type = "text"
+        nameInput.className = cn(
+          "hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        )
+        nameInput.value = String(a.name || "")
+        const commitName = async () => {
+          a.name = String(nameInput.value || "").trim() || a.id
+          await saveFilterSettings({ blockedAuthors })
+          nameInput.classList.add("hidden")
+          nameLabel.textContent = String(a.name)
+          nameLabel.title = String(a.name)
+          nameLabel.style.display = "block"
+        }
+        nameLabel.addEventListener("click", () => {
+          nameLabel.style.display = "none"
+          nameInput.classList.remove("hidden")
+          nameInput.focus()
+          nameInput.select()
+        })
+        nameInput.addEventListener("blur", commitName)
+        nameInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            void commitName()
+          }
+        })
+        td2.append(nameLabel)
+        td2.append(nameInput)
+        const btnDel = document.createElement("button")
+        btnDel.className = cn(
+          "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+        )
+        btnDel.textContent = "\u5220\u9664"
+        btnDel.addEventListener("click", async () => {
+          blockedAuthors = blockedAuthors.filter(
+            (x) => String(x.id) !== String(a.id)
+          )
+          await saveFilterSettings({ blockedAuthors })
+          renderAuthorsTable()
+          applyAndUpdateStatus()
+        })
+        td3.append(btnDel)
+        tr.append(td0)
+        tr.append(td1)
+        tr.append(td2)
+        tr.append(td3)
+        tb.append(tr)
+      }
+      const addTr = document.createElement("tr")
+      const addTd0 = document.createElement("td")
+      addTd0.className = cn("border-t border-gray-200 px-2 py-1 text-center")
+      const addPlusBtn = document.createElement("button")
+      addPlusBtn.type = "button"
+      addPlusBtn.textContent = "+"
+      addPlusBtn.className = cn(
+        "flex h-4 w-4 items-center justify-center rounded bg-gray-100 text-xs text-gray-700 hover:bg-gray-200"
+      )
+      addTd0.append(addPlusBtn)
+      const addTd1 = document.createElement("td")
+      addTd1.className = cn(
+        "w-20 border-t border-gray-200 px-2 py-1 align-middle"
+      )
+      const addIdInput = document.createElement("input")
+      addIdInput.type = "text"
+      addIdInput.placeholder = "\u4F5C\u8005ID"
+      addIdInput.className = cn(
+        "h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+      )
+      const addTd2 = document.createElement("td")
+      addTd2.className = cn(
+        "w-24 border-t border-gray-200 px-2 py-1 align-middle"
+      )
+      const addNameInput = document.createElement("input")
+      addNameInput.type = "text"
+      addNameInput.placeholder = "\u4F5C\u8005\u540D"
+      addNameInput.className = cn(
+        "h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+      )
+      const doAdd = async () => {
+        const id = String(addIdInput.value || "").trim()
+        const name = String(addNameInput.value || "").trim()
+        if (!id) return
+        const exists = blockedAuthors.find((x) => String(x.id) === id)
+        if (exists) {
+          exists.name = name || exists.name
+          exists.enabled = true
+        } else {
+          blockedAuthors.push({ id, name: name || id, enabled: true })
+        }
+        addIdInput.value = ""
+        addNameInput.value = ""
+        await saveFilterSettings({ blockedAuthors })
+        renderAuthorsTable()
+        applyAndUpdateStatus()
+      }
+      const addBtn = document.createElement("button")
+      addBtn.className =
+        "px-1 py-0.5 rounded-md bg-gray-100 text-gray-700 text-xs hover:bg-gray-200 whitespace-nowrap inline-flex items-center justify-center shrink-0"
+      addBtn.textContent = "\u6DFB\u52A0"
+      addBtn.addEventListener("click", doAdd)
+      addPlusBtn.addEventListener("click", doAdd)
+      addIdInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          void doAdd()
+        }
+      })
+      addNameInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          void doAdd()
+        }
+      })
+      addTd1.append(addIdInput)
+      addTd2.append(addNameInput)
+      const addTd3 = document.createElement("td")
+      addTd3.className =
+        "px-2 py-1 border-t border-gray-200 whitespace-nowrap align-middle"
+      addTd3.append(addBtn)
+      addTr.append(addTd0)
+      addTr.append(addTd1)
+      addTr.append(addTd2)
+      addTr.append(addTd3)
+      tb.append(addTr)
+      updateAuthorsMasterChk()
+    }
+    renderAuthorsTable()
     function updateControlsDisabled() {
       inputTotal.disabled = !chkTotal.checked
       inputDaily.disabled = !chkDaily.checked
       inputTotal.className = inputTotal.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md"
+        ? "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
       inputDaily.className = inputDaily.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md"
+        ? "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
     }
     updateControlsDisabled()
     chkTotal.addEventListener("change", updateControlsDisabled)
@@ -2264,6 +2776,7 @@
       dailyInstallsEnabled = false
       totalInstallsLimit = DEFAULTS.totalInstallsLimit
       dailyInstallsLimit = DEFAULTS.dailyInstallsLimit
+      blockedAuthors = DEFAULTS.blockedAuthors
       updatedComp.setState({
         enabled: updatedEnabled,
         mode: currentMode,
@@ -2304,6 +2817,7 @@
         totalInstallsLimit,
         dailyInstallsEnabled,
         dailyInstallsLimit,
+        blockedAuthors,
       })
       applyAndUpdateStatus()
     }

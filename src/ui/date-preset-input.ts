@@ -24,17 +24,18 @@ export function createDatePresetInput(opts: {
   let state: DatePresetState = { ...opts.initial }
 
   const root = document.createElement('div')
-  root.className = 'flex items-center'
+  root.className = 'flex items-center text-sm'
   const chk = document.createElement('input')
   chk.type = 'checkbox'
   chk.className = 'utaf-checkbox'
   chk.checked = state.enabled
   const pre = document.createElement('span')
-  pre.className = 'utaf-label'
+  pre.className = 'utaf-label text-sm'
   pre.textContent = opts.preLabel
   const input = document.createElement('input')
-  input.className = 'w-24 px-2 py-1 border border-gray-300 rounded-md'
+  input.className = 'w-24 px-2 py-1 border border-gray-300 rounded-md text-xs'
   const suf = document.createElement('span')
+  suf.className = 'text-sm'
   const dropdown = document.createElement('div')
   dropdown.className =
     'bg-white border border-gray-300 rounded-md shadow px-2 py-1 text-sm'
@@ -62,8 +63,8 @@ export function createDatePresetInput(opts: {
 
     input.disabled = !state.enabled
     input.className = input.disabled
-      ? 'w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed'
-      : 'w-20 px-2 py-1 border border-gray-300 rounded-md'
+      ? 'w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed text-xs'
+      : 'w-20 px-2 py-1 border border-gray-300 rounded-md text-xs'
   }
 
   function setInputDisplay() {

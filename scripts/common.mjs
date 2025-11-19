@@ -6,6 +6,8 @@ import * as esbuild from 'esbuild'
 import postcss from 'postcss'
 import * as sass from 'sass'
 
+import twPropsUnconditional from '../postcss/plugins/tw-properties-unconditional.js'
+
 const EMOJI_LIST = [
   //
   '⚽️',
@@ -58,7 +60,7 @@ const schemeImportPlugin = ({ compressCss }) => ({
           cssText = await fs.promises.readFile(args.path, 'utf8')
         }
 
-        const plugins = [tailwind(), autoprefixer()]
+        const plugins = [tailwind(), twPropsUnconditional(), autoprefixer()]
         if (compressCss) {
           plugins.push(cssnano())
         }

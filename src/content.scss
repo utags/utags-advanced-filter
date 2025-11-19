@@ -10,8 +10,12 @@
 .utaf-checkbox {
   width: 16px;
   height: 16px;
+  vertical-align: middle;
   cursor: pointer;
   flex: 0 0 auto;
+}
+
+.shadow-xl > .flex .utaf-checkbox {
   margin-right: calc(var(--spacing) * 2);
 }
 

@@ -4,7 +4,7 @@
 
 当前已适配 Greasy Fork 的脚本列表，后续将通过“规则”适配更多站点。
 
-![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-18-00-21-06.png)
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-19-13-21-06.png)
 
 ## 已实现功能 (Implemented Features)
 
@@ -12,11 +12,12 @@
 
 - **样式隔离**: 使用 `ShadowRoot` 承载 UI，完全避免目标网站的 CSS 样式污染。
 - **悬浮面板**: 筛选器 UI 以一个可拖拽的悬浮面板形式呈现，固定在页面右侧。
-- **可折叠设计**: 面板可折叠为一个半透明的 `SlidersHorizontal` Lucide 图标，鼠标悬停时不透明。折叠状态会被持久化。
+- **可折叠设计**: 面板可折叠为一个半透明的 UTags 品牌图标，鼠标悬停时不透明；折叠状态会被持久化。
 - **优化的布局**:
   - **双行结构**: 顶部为标题和操作区（重置、折叠），下方为统计和总开关。
   - **安全重置**: “重置”按钮默认隐藏，鼠标悬停 3 秒后才显示，且点击后有二次确认弹窗，防止误操作。
   - **主控开关**: 在统计信息左侧提供一个主复选框，可一键启用/禁用所有筛选器，并在部分启用时显示为“半选”状态。
+  - **快捷控制**: 将“更新/创建”日期筛选以统一的行形式呈现，支持复选框启用、模式切换（天/月）、预设与自定义天数；右侧统计会实时显示“显示 X | 隐藏 X”。
 - **统一的组件**:
   - **日期预设组件**: 将日期筛选（更新日期、创建日期）封装为可复用的 `createDatePresetInput` 组件，支持“半年/一年/两年”等预设及自定义天数。
   - **下拉菜单**: 支持按 `Esc` 键关闭，拥有独立的边框和阴影样式。
@@ -31,6 +32,11 @@
 - **安装量**:
   - 隐藏总安装量小于 N 的脚本。
   - 隐藏日安装量小于 N 的脚本。
+- **作者**:
+  - **作者表格管理**: 以表格形式管理作者（ID、用户名），支持逐项启用/禁用、删除，支持内联编辑 ID/用户名，以及“添加”行快速录入。
+  - **主复选框**: 表头提供主复选框，支持全启用/全禁用，并显示“半选”状态。
+  - **作者采集器**: 可从当前页面采集作者列表，支持“全选/全不选”“刷新”“添加选中”“关闭”等操作，避免手动输入。
+  - **即时持久化**: 所有作者相关变更即时保存，并与其他筛选器共同实时更新统计。
 - **即时生效**: 所有筛选条件的变更都会立即应用，并实时更新“显示/隐藏”统计。
 
 ### 数据与状态 (Data & State)
@@ -42,7 +48,7 @@
 ## 安装与使用
 
 - 类 Chrome 浏览器: [Chrome 应用商店](https://chromewebstore.google.com/detail/utags-add-usertags-to-lin/kofjcnaphffjoookgahgjidofbdplgig)
-- Edge 浏览器: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-add-usertags-to-l/bhlbflbehfoccjjenpekilgabbjjnphe)
+- Edge 浏览器: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-advanced-filter/ndhiahnkcnongmecnaamaampfelobblg)
 - Firefox 浏览器: [Firefox Addon 商店](https://addons.mozilla.org/zh-CN/firefox/addon/utags-advanced-filter/)
 - 用户脚本 / 油猴脚本: [Greasy Fork](https://greasyfork.org/zh-CN/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/zh-CN/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)
 - [手动安装浏览器扩展](https://github.com/utags/utags-advanced-filter/blob/main/manual-installation.zh-CN.md)
