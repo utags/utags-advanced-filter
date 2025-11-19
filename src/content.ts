@@ -184,7 +184,7 @@ async function saveGlobalState(settings) {
 
 function isGreasyForkSearchPage() {
   const host = location.hostname.replace(/^www\./, '')
-  if (host !== 'greasyfork.org') return false
+  if (host !== 'greasyfork.org' && host !== 'sleazyfork.org') return false
   const path = location.pathname || ''
   return path.endsWith('/scripts') || path.includes('/scripts/by-site/')
 }
