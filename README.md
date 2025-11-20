@@ -17,6 +17,7 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 - Install counts: hide by total installs and daily installs thresholds.
 - Style isolation via ShadowRoot; unified components (date preset, dropdown).
 - Dark-mode compatibility: the panel and form controls are forced to light scheme for consistent visuals.
+- Debug toggle: a switch next to stats that swaps shown/hidden items to inspect filtered results.
 
 ## Implemented Features
 

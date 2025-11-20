@@ -390,7 +390,8 @@ function applyCombinedFilters(
     isRegex?: boolean
     regex?: RegExp
   }>,
-  keywordsCaseSensitive: boolean
+  keywordsCaseSensitive: boolean,
+  swapShownHidden: boolean
 ) {
   const items = collectScriptItems()
   if (items.length === 0) return { visible: 0, hidden: 0, total: 0 }
@@ -470,7 +471,8 @@ function applyCombinedFilters(
       }
     }
 
-    if (hide) {
+    const finalHide = swapShownHidden ? !hide : hide
+    if (finalHide) {
       item.classList.add('fsfts-hidden')
       hidden += 1
     } else {
@@ -554,6 +556,7 @@ async function injectGreasyForkFilters() {
         enabled: boolean
       }>)
     : DEFAULTS.keywords
+  let swapShownHidden = Boolean(saved.swapShownHidden as boolean | undefined)
   let totalInstallsLimit = Number(
     saved.totalInstallsLimit ?? DEFAULTS.totalInstallsLimit
   )
@@ -615,11 +618,25 @@ async function injectGreasyForkFilters() {
   const masterChk = document.createElement('input')
   masterChk.type = 'checkbox'
   masterChk.className = 'utaf-checkbox'
+  masterChk.id = 'utaf-master'
   masterChk.setAttribute('title', '反选')
   masterChk.setAttribute('aria-label', '反选')
   const stats = document.createElement('div')
   stats.className = cn('text-xs text-gray-500')
   headerRow2.append(stats)
+  const chkSwap = document.createElement('input')
+  chkSwap.type = 'checkbox'
+  chkSwap.className = 'utaf-checkbox'
+  chkSwap.id = 'utaf-swap'
+  chkSwap.checked = swapShownHidden
+  chkSwap.setAttribute('title', '反向显示')
+  chkSwap.setAttribute('aria-label', '反向显示')
+  const lblSwap = document.createElement('label')
+  lblSwap.className = cn('utaf-label text-xs')
+  lblSwap.htmlFor = 'utaf-swap'
+  lblSwap.textContent = '反向显示'
+  headerRow2.append(chkSwap)
+  headerRow2.append(lblSwap)
   const headerRight = document.createElement('div')
   headerRight.className = cn('ml-auto flex items-center gap-2')
   const btnCollapse = document.createElement('button')
@@ -807,7 +824,8 @@ async function injectGreasyForkFilters() {
       kwThreshold,
       kwScope,
       kwList,
-      caseSensitive
+      caseSensitive,
+      swapShownHidden
     )
     stats.textContent = `显示 ${counts.visible} | 隐藏 ${counts.hidden}`
     const states = [
@@ -858,6 +876,12 @@ async function injectGreasyForkFilters() {
     })
     updateControlsDisabled()
     updateKeywordsControlsDisabled()
+    applyAndUpdateStatus()
+  })
+
+  chkSwap.addEventListener('change', async () => {
+    swapShownHidden = chkSwap.checked
+    await saveFilterSettings({ swapShownHidden })
     applyAndUpdateStatus()
   })
 
@@ -966,7 +990,11 @@ async function injectGreasyForkFilters() {
   qth1.className = cn(
     'border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700'
   )
-  qth1.textContent = '全选/全关'
+  const lblMaster = document.createElement('label')
+  lblMaster.className = cn('utaf-label')
+  lblMaster.htmlFor = 'utaf-master'
+  lblMaster.textContent = '全选/全关'
+  qth1.append(lblMaster)
   qthr.append(qth0)
   qthr.append(qth1)
   qthd.append(qthr)
@@ -1022,9 +1050,11 @@ async function injectGreasyForkFilters() {
   const chkTotal = document.createElement('input')
   chkTotal.type = 'checkbox'
   chkTotal.className = 'utaf-checkbox'
+  chkTotal.id = 'utaf-total'
   chkTotal.checked = totalInstallsEnabled
-  const lblTotalPre = document.createElement('span')
+  const lblTotalPre = document.createElement('label')
   lblTotalPre.className = 'utaf-label'
+  lblTotalPre.htmlFor = 'utaf-total'
   lblTotalPre.textContent = '隐藏总安装量 <'
   const inputTotal = document.createElement('input')
   inputTotal.type = 'number'
@@ -1040,9 +1070,6 @@ async function injectGreasyForkFilters() {
     await saveFilterSettings({ totalInstallsEnabled })
     applyAndUpdateStatus()
   })
-  lblTotalPre.addEventListener('click', () => {
-    chkTotal.click()
-  })
   inputTotal.addEventListener('change', async () => {
     let v = Number(inputTotal.value)
     if (!Number.isFinite(v) || v < 0) v = 100
@@ -1055,9 +1082,11 @@ async function injectGreasyForkFilters() {
   const chkDaily = document.createElement('input')
   chkDaily.type = 'checkbox'
   chkDaily.className = 'utaf-checkbox'
+  chkDaily.id = 'utaf-daily'
   chkDaily.checked = dailyInstallsEnabled
-  const lblDailyPre = document.createElement('span')
+  const lblDailyPre = document.createElement('label')
   lblDailyPre.className = 'utaf-label'
+  lblDailyPre.htmlFor = 'utaf-daily'
   lblDailyPre.textContent = '隐藏日安装量 <'
   const inputDaily = document.createElement('input')
   inputDaily.type = 'number'
@@ -1072,9 +1101,6 @@ async function injectGreasyForkFilters() {
     dailyInstallsEnabled = chkDaily.checked
     await saveFilterSettings({ dailyInstallsEnabled })
     applyAndUpdateStatus()
-  })
-  lblDailyPre.addEventListener('click', () => {
-    chkDaily.click()
   })
   inputDaily.addEventListener('change', async () => {
     let v = Number(inputDaily.value)
@@ -1109,8 +1135,10 @@ async function injectGreasyForkFilters() {
   const chkSelectAll = document.createElement('input')
   chkSelectAll.type = 'checkbox'
   chkSelectAll.className = 'utaf-checkbox'
-  const lblSelectAll = document.createElement('span')
+  chkSelectAll.id = 'utaf-authors-selectall'
+  const lblSelectAll = document.createElement('label')
   lblSelectAll.className = cn('utaf-label text-xs font-semibold')
+  lblSelectAll.htmlFor = 'utaf-authors-selectall'
   lblSelectAll.textContent = '全选/全不选'
   const btnRefreshPicker = document.createElement('button')
   btnRefreshPicker.className =
@@ -1535,6 +1563,7 @@ async function injectGreasyForkFilters() {
   chkKeywords.type = 'checkbox'
   chkKeywords.className = 'utaf-checkbox'
   chkKeywords.checked = keywordsEnabled
+  chkKeywords.id = 'utaf-keywords-enable'
   const lblThresholdPre = document.createElement('span')
   lblThresholdPre.className = cn('utaf-label text-xs leading-5')
   lblThresholdPre.textContent = '当分数 ≥'
@@ -1566,8 +1595,9 @@ async function injectGreasyForkFilters() {
   selectScope.value = keywordsScope
   const rowEnable = document.createElement('div')
   rowEnable.className = cn('flex items-center gap-2')
-  const lblEnable = document.createElement('span')
+  const lblEnable = document.createElement('label')
   lblEnable.className = cn('utaf-label text-xs leading-5')
+  lblEnable.htmlFor = 'utaf-keywords-enable'
   lblEnable.textContent = '启用'
   rowEnable.append(lblEnable)
   rowEnable.append(chkKeywords)
@@ -1585,8 +1615,10 @@ async function injectGreasyForkFilters() {
   chkCaseSensitive.type = 'checkbox'
   chkCaseSensitive.className = 'utaf-checkbox'
   chkCaseSensitive.checked = keywordsCaseSensitive
-  const lblCaseSensitive = document.createElement('span')
+  chkCaseSensitive.id = 'utaf-keywords-case'
+  const lblCaseSensitive = document.createElement('label')
   lblCaseSensitive.className = cn('utaf-label text-xs leading-5')
+  lblCaseSensitive.htmlFor = 'utaf-keywords-case'
   lblCaseSensitive.textContent = '大小写敏感'
   const rowCase = document.createElement('div')
   rowCase.className = cn('flex items-center gap-2')
@@ -1944,6 +1976,7 @@ async function injectGreasyForkFilters() {
     keywordsScope = DEFAULTS.keywordsScope
     keywordsCaseSensitive = DEFAULTS.keywordsCaseSensitive
     keywords = DEFAULTS.keywords
+    swapShownHidden = false
     updatedComp.setState({
       enabled: updatedEnabled,
       mode: currentMode,
@@ -1965,6 +1998,7 @@ async function injectGreasyForkFilters() {
     chkTotal.checked = totalInstallsEnabled
     chkDaily.checked = dailyInstallsEnabled
     chkKeywords.checked = keywordsEnabled
+    chkSwap.checked = swapShownHidden
 
     inputTotal.value = String(totalInstallsLimit)
     inputDaily.value = String(dailyInstallsLimit)
@@ -1996,6 +2030,7 @@ async function injectGreasyForkFilters() {
       keywordsScope,
       keywordsCaseSensitive,
       keywords,
+      swapShownHidden,
     })
     applyAndUpdateStatus()
   }

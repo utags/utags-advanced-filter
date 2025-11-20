@@ -5,6 +5,8 @@ export type DatePresetState = {
   days: number
 }
 
+const cn = (s: string) => s
+
 function monthsToDays(m: number): number {
   if (m === 6) return 182
   if (m === 12) return 365
@@ -24,21 +26,27 @@ export function createDatePresetInput(opts: {
   let state: DatePresetState = { ...opts.initial }
 
   const root = document.createElement('div')
-  root.className = 'flex items-center text-sm'
+  root.className = cn('flex items-center text-sm')
   const chk = document.createElement('input')
   chk.type = 'checkbox'
   chk.className = 'utaf-checkbox'
   chk.checked = state.enabled
-  const pre = document.createElement('span')
-  pre.className = 'utaf-label text-sm'
+  const chkId = `utaf-datepreset-${Math.random().toString(36).slice(2, 8)}`
+  chk.id = chkId
+  const pre = document.createElement('label')
+  pre.className = cn('utaf-label text-sm')
+  pre.htmlFor = chkId
   pre.textContent = opts.preLabel
   const input = document.createElement('input')
-  input.className = 'w-24 px-2 py-1 border border-gray-300 rounded-md text-xs'
+  input.className = cn(
+    'w-24 rounded-md border border-gray-300 px-2 py-1 text-xs'
+  )
   const suf = document.createElement('span')
-  suf.className = 'text-sm'
+  suf.className = cn('text-sm')
   const dropdown = document.createElement('div')
-  dropdown.className =
-    'bg-white border border-gray-300 rounded-md shadow px-2 py-1 text-sm'
+  dropdown.className = cn(
+    'rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow'
+  )
   dropdown.style.position = 'fixed'
   dropdown.style.zIndex = '2147483647'
   dropdown.style.display = 'none'
@@ -60,8 +68,10 @@ export function createDatePresetInput(opts: {
 
     input.disabled = !state.enabled
     input.className = input.disabled
-      ? 'w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed text-xs'
-      : 'w-20 px-2 py-1 border border-gray-300 rounded-md text-xs'
+      ? cn(
+          'w-20 cursor-not-allowed rounded-md border border-gray-300 px-2 py-1 text-xs opacity-50'
+        )
+      : cn('w-20 rounded-md border border-gray-300 px-2 py-1 text-xs')
   }
 
   function setInputDisplay() {
@@ -111,7 +121,7 @@ export function createDatePresetInput(opts: {
 
   for (const o of optsList) {
     const item = document.createElement('div')
-    item.className = 'px-2 py-1 hover:bg-gray-200 rounded-md cursor-pointer'
+    item.className = cn('cursor-pointer rounded-md px-2 py-1 hover:bg-gray-200')
     item.textContent = o.label
     item.addEventListener('click', async () => {
       if (o.months > 0) {
@@ -172,9 +182,6 @@ export function createDatePresetInput(opts: {
     setInputMode()
     await opts.onSave({ ...state })
     opts.onChange({ ...state })
-  })
-  pre.addEventListener('click', () => {
-    chk.click()
   })
 
   function setState(next: Partial<DatePresetState>) {
