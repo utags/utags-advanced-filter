@@ -4,13 +4,14 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.0.5
+// @version              0.0.6
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
 // @author               Pipecraft
 // @license              MIT
 // @match                https://greasyfork.org/*
+// @match                https://sleazyfork.org/*
 // @run-at               document-end
 // @grant                GM.getValue
 // @grant                GM.setValue
@@ -1260,9 +1261,9 @@
     handleShowSettingsUrl()
   }
   var content_default =
-    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}.utaf-checkbox{cursor:pointer;flex:0 0 auto;height:16px;vertical-align:middle;width:16px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}"
+    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}:host{color:#000}.utaf-checkbox{accent-color:#3b82f6;color-scheme:light;cursor:pointer;flex:0 0 auto;height:20px;vertical-align:middle;width:20px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}input,select,textarea{color-scheme:light}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}"
   var tailwind_default =
-    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-semibold:600;--radius-md:0.375rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.collapse{visibility:collapse}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.z-10{z-index:10}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.my-5{margin-block:calc(var(--spacing)*5)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-\\[0\\.5px\\]{height:.5px}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-full{width:100%}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.truncate{text-overflow:ellipsis;white-space:nowrap}.overflow-hidden,.truncate{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-3{padding:calc(var(--spacing)*3)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-gray-500{color:var(--color-gray-500)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
+    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-semibold:600;--radius-md:0.375rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.collapse{visibility:collapse}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.z-10{z-index:10}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.my-5{margin-block:calc(var(--spacing)*5)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-\\[0\\.5px\\]{height:.5px}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-14{width:calc(var(--spacing)*14)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-full{width:100%}.max-w-\\[4rem\\]{max-width:4rem}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-0{min-width:calc(var(--spacing)*0)}.min-w-\\[3rem\\]{min-width:3rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-3{padding:calc(var(--spacing)*3)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.leading-5{--tw-leading:calc(var(--spacing)*5);line-height:calc(var(--spacing)*5)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-gray-500{color:var(--color-gray-500)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
   var icon_no_bg_default =
     '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">\n  <path d="M10 5H3" stroke="#4285F4"></path>\n  <path d="M21 5h-7" stroke="#4285F4"></path>\n  <path d="M14 3v4" stroke="#FBBC05"></path>\n\n  <path d="M8 12H3" stroke="#EA4335"></path>\n  <path d="M21 12h-9" stroke="#EA4335"></path>\n  <path d="M8 10v4" stroke="#FBBC05"></path>\n\n  <path d="M12 19H3" stroke="#34A853"></path>\n  <path d="M21 19h-5" stroke="#34A853"></path>\n  <path d="M16 17v4" stroke="#FBBC05"></path>\n</svg>'
   var defaultAttributes = {
@@ -1405,9 +1406,6 @@
     dropdown.style.position = "fixed"
     dropdown.style.zIndex = "2147483647"
     dropdown.style.display = "none"
-    dropdown.style.background = "#fff"
-    dropdown.style.border = "1px solid #d1d5db"
-    dropdown.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)"
     function setInputMode() {
       if (state.mode === "months") {
         input.type = "text"
@@ -1615,6 +1613,11 @@
       totalInstallsLimit: 100,
       dailyInstallsLimit: 10,
       blockedAuthors: [],
+      keywordsEnabled: false,
+      keywordsThreshold: 15,
+      keywordsScope: "both",
+      keywordsCaseSensitive: false,
+      keywords: [],
     }
     return base
   })()
@@ -1648,7 +1651,7 @@
   }
   function isGreasyForkSearchPage() {
     const host2 = location.hostname.replace(/^www\./, "")
-    if (host2 !== "greasyfork.org") return false
+    if (host2 !== "greasyfork.org" && host2 !== "sleazyfork.org") return false
     const path = location.pathname || ""
     return path.endsWith("/scripts") || path.includes("/scripts/by-site/")
   }
@@ -1766,6 +1769,20 @@
     }
     return null
   }
+  function getTitleTextInItem(item) {
+    const a =
+      item.querySelector("a.script-link") ||
+      item.querySelector('a[href^="/scripts/"]')
+    const t = ((a == null ? void 0 : a.textContent) || "").trim()
+    return t ? t : void 0
+  }
+  function getDescriptionTextInItem(item) {
+    const el =
+      item.querySelector("dd.script-list-description") ||
+      item.querySelector(".script-description")
+    const t = ((el == null ? void 0 : el.textContent) || "").trim()
+    return t ? t : void 0
+  }
   function collectScriptItems() {
     const candidates = Array.from(
       document.querySelectorAll("li[data-script-id]")
@@ -1794,6 +1811,8 @@
         totalInstalls: getTotalInstallsInItem(item),
         dailyInstalls: getDailyInstallsInItem(item),
         authorIds: getAuthorIdsInItem(item),
+        titleText: getTitleTextInItem(item),
+        descriptionText: getDescriptionTextInItem(item),
       }
       itemMetricsCache.set(item, m)
     }
@@ -1805,7 +1824,11 @@
     createdRecentDays,
     totalLessThan,
     dailyLessThan,
-    blockedIds
+    blockedIds,
+    keywordsThreshold,
+    keywordsScope,
+    keywordsList,
+    keywordsCaseSensitive
   ) {
     const items = collectScriptItems()
     if (items.length === 0) return { visible: 0, hidden: 0, total: 0 }
@@ -1848,6 +1871,39 @@
           }
         }
       }
+      if (!hide && keywordsThreshold && keywordsThreshold > 0) {
+        const title = String(metrics.titleText || "")
+        const desc = String(metrics.descriptionText || "")
+        const src =
+          keywordsScope === "title"
+            ? title
+            : keywordsScope === "description"
+              ? desc
+              : "".concat(title, "\n").concat(desc)
+        const baseText = src
+        const text = keywordsCaseSensitive ? baseText : baseText.toLowerCase()
+        let sum = 0
+        for (const k of keywordsList || []) {
+          if (!k) continue
+          const kw = k.keyword
+          if (!kw) continue
+          if (k.isRegex && k.regex) {
+            if (k.regex.test(baseText)) {
+              sum += k.score
+              if (sum >= keywordsThreshold) {
+                hide = true
+                break
+              }
+            }
+          } else if (text.includes(kw)) {
+            sum += k.score
+            if (sum >= keywordsThreshold) {
+              hide = true
+              break
+            }
+          }
+        }
+      }
       if (hide) {
         item.classList.add("fsfts-hidden")
         hidden += 1
@@ -1858,8 +1914,13 @@
     }
     return { visible, hidden, total: items.length }
   }
+  function createDivider() {
+    const divider = document.createElement("div")
+    divider.className = cn("my-5 h-[0.5px] bg-gray-200 opacity-70")
+    return divider
+  }
   async function injectGreasyForkFilters() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n
     if (!isGreasyForkSearchPage()) return
     addGreasyForkFilterStyles()
     const saved = await loadFilterSettings()
@@ -1907,11 +1968,25 @@
     let blockedAuthors = Array.isArray(saved.blockedAuthors)
       ? saved.blockedAuthors
       : DEFAULTS.blockedAuthors
+    let keywordsEnabled = Boolean(saved.keywordsEnabled)
+    let keywordsThreshold = Number(
+      (_j = saved.keywordsThreshold) != null ? _j : DEFAULTS.keywordsThreshold
+    )
+    let keywordsScope =
+      (_k = saved.keywordsScope) != null ? _k : DEFAULTS.keywordsScope
+    let keywordsCaseSensitive = Boolean(
+      (_l = saved.keywordsCaseSensitive) != null
+        ? _l
+        : DEFAULTS.keywordsCaseSensitive
+    )
+    let keywords = Array.isArray(saved.keywords)
+      ? saved.keywords
+      : DEFAULTS.keywords
     let totalInstallsLimit = Number(
-      (_j = saved.totalInstallsLimit) != null ? _j : DEFAULTS.totalInstallsLimit
+      (_m = saved.totalInstallsLimit) != null ? _m : DEFAULTS.totalInstallsLimit
     )
     let dailyInstallsLimit = Number(
-      (_k = saved.dailyInstallsLimit) != null ? _k : DEFAULTS.dailyInstallsLimit
+      (_n = saved.dailyInstallsLimit) != null ? _n : DEFAULTS.dailyInstallsLimit
     )
     const globalState = await loadGlobalState()
     const isFirstUse =
@@ -1938,8 +2013,10 @@
     shadow.append(globalCss)
     const panel = document.createElement("div")
     panel.className =
-      "bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans"
+      "bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans text-sm"
     panel.style.maxHeight = "calc(100vh - 24px)"
+    panel.style.setProperty("filter", "revert", "important")
+    panel.style.setProperty("color-scheme", "light")
     const header = document.createElement("div")
     header.className =
       "sticky top-0 bg-white z-10 mb-2 space-y-4 transition-shadow -ml-3 -mr-5 pl-3 pr-5 py-2"
@@ -2085,13 +2162,57 @@
           .filter((x) => Boolean(x.enabled))
           .map((x) => String(x.id))
       )
+      const kwThreshold = keywordsEnabled ? Math.max(keywordsThreshold, 0) : 0
+      const kwScope = keywordsScope
+      const caseSensitive = keywordsCaseSensitive
+      const enabledKeywords = (keywords || []).filter((x) => Boolean(x.enabled))
+      const map = /* @__PURE__ */ new Map()
+      for (const x of enabledKeywords) {
+        const raw = String(x.keyword || "").trim()
+        const score = Number.isFinite(Number(x.score)) ? Number(x.score) : 5
+        if (!raw) continue
+        if (raw.startsWith("/") && raw.lastIndexOf("/") > 1) {
+          const last = raw.lastIndexOf("/")
+          const pattern = raw.slice(1, last)
+          let flags = raw.slice(last + 1)
+          try {
+            const hasI = flags.includes("i")
+            if (!hasI && !caseSensitive) flags += "i"
+            const re = new RegExp(pattern, flags)
+            const key = "/".concat(pattern, "/").concat(flags)
+            console.log("pattern", re, key)
+            const prev = map.get(key)
+            if (!prev || score > prev.score) {
+              map.set(key, {
+                keyword: key,
+                score,
+                enabled: true,
+                isRegex: true,
+                regex: re,
+              })
+            }
+          } catch (e) {}
+        } else {
+          const norm = caseSensitive ? raw : raw.toLowerCase()
+          if (!norm) continue
+          const prev = map.get(norm)
+          if (!prev || score > prev.score) {
+            map.set(norm, { keyword: norm, score, enabled: true })
+          }
+        }
+      }
+      const kwList = Array.from(map.values())
       const counts = applyCombinedFilters(
         updatedDays,
         olderDays,
         recentDays,
         totalLess,
         dailyLess,
-        blockedIds
+        blockedIds,
+        kwThreshold,
+        kwScope,
+        kwList,
+        caseSensitive
       )
       stats.textContent = "\u663E\u793A "
         .concat(counts.visible, " | \u9690\u85CF ")
@@ -2102,6 +2223,7 @@
         createdRecentEnabled,
         totalInstallsEnabled,
         dailyInstallsEnabled,
+        keywordsEnabled,
       ]
       const any = states.some(Boolean)
       const all = states.every(Boolean)
@@ -2116,6 +2238,7 @@
         createdRecentEnabled,
         totalInstallsEnabled,
         dailyInstallsEnabled,
+        keywordsEnabled,
       ]
       const any = states.some(Boolean)
       const next = !any
@@ -2124,19 +2247,23 @@
       createdRecentEnabled = next
       totalInstallsEnabled = next
       dailyInstallsEnabled = next
+      keywordsEnabled = next
       updatedComp.setEnabledSilently(next)
       olderComp.setEnabledSilently(next)
       recentComp.setEnabledSilently(next)
       chkTotal.checked = next
       chkDaily.checked = next
+      chkKeywords.checked = next
       await saveFilterSettings({
         updatedEnabled,
         createdOlderEnabled,
         createdRecentEnabled,
         totalInstallsEnabled,
         dailyInstallsEnabled,
+        keywordsEnabled,
       })
       updateControlsDisabled()
+      updateKeywordsControlsDisabled()
       applyAndUpdateStatus()
     })
     const updatedComp = createDatePresetInput({
@@ -2250,9 +2377,7 @@
     quickTable.append(qtb)
     quickSection.append(quickTable)
     panel.append(quickSection)
-    const divider = document.createElement("div")
-    divider.className = cn("my-5 h-[0.5px] bg-gray-200 opacity-70")
-    panel.append(divider)
+    panel.append(createDivider())
     function appendQuickRow(chkEl, labelEl, inputEl, suffixEl) {
       const tr = document.createElement("tr")
       const td0 = document.createElement("td")
@@ -2370,7 +2495,7 @@
     chkSelectAll.type = "checkbox"
     chkSelectAll.className = "utaf-checkbox"
     const lblSelectAll = document.createElement("span")
-    lblSelectAll.className = cn("utaf-label")
+    lblSelectAll.className = cn("utaf-label text-xs font-semibold")
     lblSelectAll.textContent = "\u5168\u9009/\u5168\u4E0D\u9009"
     const btnRefreshPicker = document.createElement("button")
     btnRefreshPicker.className =
@@ -2746,6 +2871,368 @@
       updateAuthorsMasterChk()
     }
     renderAuthorsTable()
+    panel.append(createDivider())
+    const keywordsSection = document.createElement("div")
+    keywordsSection.className = cn("space-y-2")
+    const keywordsTitle = document.createElement("div")
+    keywordsTitle.className = cn("text-sm font-semibold text-gray-900")
+    keywordsTitle.textContent = "\u5173\u952E\u5B57\u8FC7\u6EE4"
+    keywordsSection.append(keywordsTitle)
+    const keywordsControls = document.createElement("div")
+    keywordsControls.className = cn("space-y-2")
+    const chkKeywords = document.createElement("input")
+    chkKeywords.type = "checkbox"
+    chkKeywords.className = "utaf-checkbox"
+    chkKeywords.checked = keywordsEnabled
+    const lblThresholdPre = document.createElement("span")
+    lblThresholdPre.className = cn("utaf-label text-xs leading-5")
+    lblThresholdPre.textContent = "\u5F53\u5206\u6570 \u2265"
+    const inputKwThreshold = document.createElement("input")
+    inputKwThreshold.type = "number"
+    inputKwThreshold.min = "0"
+    inputKwThreshold.step = "1"
+    inputKwThreshold.value = String(keywordsThreshold)
+    inputKwThreshold.className =
+      "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+    const lblScopePre = document.createElement("span")
+    lblScopePre.className = cn("utaf-label text-xs leading-5")
+    lblScopePre.textContent = "\u8303\u56F4"
+    const selectScope = document.createElement("select")
+    selectScope.className =
+      "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+    const optTitle = document.createElement("option")
+    optTitle.value = "title"
+    optTitle.textContent = "\u6807\u9898"
+    const optDesc = document.createElement("option")
+    optDesc.value = "description"
+    optDesc.textContent = "\u63CF\u8FF0"
+    const optBoth = document.createElement("option")
+    optBoth.value = "both"
+    optBoth.textContent = "\u6807\u9898+\u63CF\u8FF0"
+    selectScope.append(optTitle)
+    selectScope.append(optDesc)
+    selectScope.append(optBoth)
+    selectScope.value = keywordsScope
+    const rowEnable = document.createElement("div")
+    rowEnable.className = cn("flex items-center gap-2")
+    const lblEnable = document.createElement("span")
+    lblEnable.className = cn("utaf-label text-xs leading-5")
+    lblEnable.textContent = "\u542F\u7528"
+    rowEnable.append(lblEnable)
+    rowEnable.append(chkKeywords)
+    const rowThreshold = document.createElement("div")
+    rowThreshold.className = cn("flex items-center gap-2")
+    rowThreshold.append(lblThresholdPre)
+    rowThreshold.append(inputKwThreshold)
+    const rowScope = document.createElement("div")
+    rowScope.className = cn("flex items-center gap-2")
+    rowScope.append(lblScopePre)
+    rowScope.append(selectScope)
+    const chkCaseSensitive = document.createElement("input")
+    chkCaseSensitive.type = "checkbox"
+    chkCaseSensitive.className = "utaf-checkbox"
+    chkCaseSensitive.checked = keywordsCaseSensitive
+    const lblCaseSensitive = document.createElement("span")
+    lblCaseSensitive.className = cn("utaf-label text-xs leading-5")
+    lblCaseSensitive.textContent = "\u5927\u5C0F\u5199\u654F\u611F"
+    const rowCase = document.createElement("div")
+    rowCase.className = cn("flex items-center gap-2")
+    rowCase.append(lblCaseSensitive)
+    rowCase.append(chkCaseSensitive)
+    keywordsControls.append(rowEnable)
+    keywordsControls.append(rowThreshold)
+    keywordsControls.append(rowScope)
+    keywordsControls.append(rowCase)
+    keywordsSection.append(keywordsControls)
+    const keywordsTable = document.createElement("table")
+    keywordsTable.className = cn(
+      "w-full table-fixed rounded-md border border-gray-200"
+    )
+    const keywordsMasterChk = document.createElement("input")
+    keywordsMasterChk.type = "checkbox"
+    keywordsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle"
+    function updateKeywordsMasterChk() {
+      const list = Array.isArray(keywords) ? keywords : []
+      const total = list.length
+      const enabledCount = list.reduce((n, k) => n + (k.enabled ? 1 : 0), 0)
+      keywordsMasterChk.indeterminate = enabledCount > 0 && enabledCount < total
+      keywordsMasterChk.checked = total > 0 && enabledCount === total
+      keywordsMasterChk.disabled = total === 0
+    }
+    keywordsMasterChk.addEventListener("change", async () => {
+      const next = keywordsMasterChk.checked
+      keywords = (keywords || []).map((k) =>
+        __spreadProps(__spreadValues({}, k), { enabled: next })
+      )
+      await saveFilterSettings({ keywords })
+      renderKeywordsTable()
+      applyAndUpdateStatus()
+      updateKeywordsMasterChk()
+    })
+    const kwThd = document.createElement("thead")
+    const kwThr = document.createElement("tr")
+    const kwTh0 = document.createElement("th")
+    kwTh0.className = cn(
+      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    kwTh0.append(keywordsMasterChk)
+    const kwTh1 = document.createElement("th")
+    kwTh1.className = cn(
+      "min-w-0 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    kwTh1.textContent = "\u5173\u952E\u5B57"
+    const kwTh2 = document.createElement("th")
+    kwTh2.className = cn(
+      "w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    kwTh2.textContent = "\u5206\u6570"
+    const kwTh3 = document.createElement("th")
+    kwTh3.className = cn(
+      "w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    )
+    kwTh3.textContent = "\u64CD\u4F5C"
+    kwThr.append(kwTh0)
+    kwThr.append(kwTh1)
+    kwThr.append(kwTh2)
+    kwThr.append(kwTh3)
+    kwThd.append(kwThr)
+    const kwTb = document.createElement("tbody")
+    keywordsTable.append(kwThd)
+    keywordsTable.append(kwTb)
+    keywordsSection.append(keywordsTable)
+    panel.append(keywordsSection)
+    function renderKeywordsTable() {
+      kwTb.textContent = ""
+      for (const k of keywords) {
+        const tr = document.createElement("tr")
+        const td0 = document.createElement("td")
+        td0.className = cn(
+          "border-t border-gray-200 px-2 py-1 text-left align-middle"
+        )
+        const td1 = document.createElement("td")
+        td1.className = cn(
+          "min-w-0 border-t border-gray-200 px-2 py-1 align-middle"
+        )
+        const td2 = document.createElement("td")
+        td2.className = cn(
+          "w-14 border-t border-gray-200 px-2 py-1 align-middle"
+        )
+        const td3 = document.createElement("td")
+        td3.className = cn(
+          "w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
+        )
+        const rowWrap = document.createElement("div")
+        rowWrap.className = cn("flex min-w-0 items-center gap-2")
+        const chk = document.createElement("input")
+        chk.type = "checkbox"
+        chk.className = "utaf-checkbox h-4 w-4 align-middle"
+        chk.checked = Boolean(k.enabled)
+        chk.addEventListener("change", async () => {
+          k.enabled = chk.checked
+          await saveFilterSettings({ keywords })
+          applyAndUpdateStatus()
+          updateKeywordsMasterChk()
+        })
+        td0.append(chk)
+        const kwLabel = document.createElement("span")
+        kwLabel.className = cn(
+          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        )
+        kwLabel.textContent = String(k.keyword || "")
+        kwLabel.title = String(k.keyword || "")
+        const kwInput = document.createElement("input")
+        kwInput.type = "text"
+        kwInput.className = cn(
+          "hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        )
+        kwInput.value = String(k.keyword || "")
+        const commitKw = async () => {
+          const v = String(kwInput.value || "").trim()
+          if (v) {
+            k.keyword = v
+            await saveFilterSettings({ keywords })
+            applyAndUpdateStatus()
+          } else {
+            kwInput.value = String(k.keyword || "")
+          }
+          kwInput.classList.add("hidden")
+          kwLabel.textContent = String(k.keyword || "")
+          kwLabel.title = String(k.keyword || "")
+          kwLabel.style.display = "block"
+        }
+        kwLabel.addEventListener("click", () => {
+          kwLabel.style.display = "none"
+          kwInput.classList.remove("hidden")
+          kwInput.focus()
+          kwInput.select()
+        })
+        kwInput.addEventListener("blur", commitKw)
+        kwInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            void commitKw()
+          }
+        })
+        rowWrap.append(kwLabel)
+        rowWrap.append(kwInput)
+        td1.append(rowWrap)
+        const scoreInput = document.createElement("input")
+        scoreInput.type = "number"
+        scoreInput.step = "1"
+        scoreInput.value = String(
+          Number.isFinite(Number(k.score)) ? Number(k.score) : 5
+        )
+        scoreInput.className = cn(
+          "h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        )
+        scoreInput.addEventListener("change", async () => {
+          let v = Number(scoreInput.value)
+          if (!Number.isFinite(v)) v = 5
+          k.score = v
+          await saveFilterSettings({ keywords })
+          applyAndUpdateStatus()
+        })
+        td2.append(scoreInput)
+        const btnDel = document.createElement("button")
+        btnDel.className = cn(
+          "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+        )
+        btnDel.textContent = "\u5220\u9664"
+        btnDel.addEventListener("click", async () => {
+          keywords = keywords.filter(
+            (x) => String(x.keyword) !== String(k.keyword)
+          )
+          await saveFilterSettings({ keywords })
+          renderKeywordsTable()
+          applyAndUpdateStatus()
+        })
+        td3.append(btnDel)
+        tr.append(td0)
+        tr.append(td1)
+        tr.append(td2)
+        tr.append(td3)
+        kwTb.append(tr)
+      }
+      const addTr = document.createElement("tr")
+      const addTd0 = document.createElement("td")
+      addTd0.className = cn(
+        "border-t border-gray-200 px-2 py-1 text-left align-middle"
+      )
+      const addTd1 = document.createElement("td")
+      addTd1.className = cn(
+        "min-w-0 border-t border-gray-200 px-2 py-1 align-middle"
+      )
+      const addKwInput = document.createElement("input")
+      addKwInput.type = "text"
+      addKwInput.placeholder = "\u5173\u952E\u5B57"
+      addKwInput.className = cn(
+        "h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+      )
+      addTd1.append(addKwInput)
+      const addTd2 = document.createElement("td")
+      addTd2.className = cn(
+        "w-14 border-t border-gray-200 px-2 py-1 align-middle"
+      )
+      const addScoreInput = document.createElement("input")
+      addScoreInput.type = "number"
+      addScoreInput.step = "1"
+      addScoreInput.placeholder = "\u5206\u6570"
+      addScoreInput.value = "5"
+      addScoreInput.className = cn(
+        "h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+      )
+      addTd2.append(addScoreInput)
+      const addTd3 = document.createElement("td")
+      addTd3.className = cn(
+        "w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
+      )
+      const addBtn = document.createElement("button")
+      addBtn.className = cn(
+        "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+      )
+      addBtn.textContent = "\u6DFB\u52A0"
+      const doAdd = async () => {
+        const kw = String(addKwInput.value || "").trim()
+        let sc = Number(addScoreInput.value)
+        if (!Number.isFinite(sc)) sc = 5
+        if (!kw) return
+        const exists = keywords.find(
+          (x) => String(x.keyword).toLowerCase() === kw.toLowerCase()
+        )
+        if (exists) {
+          exists.score = sc
+          exists.enabled = true
+        } else {
+          keywords.push({ keyword: kw, score: sc, enabled: true })
+        }
+        addKwInput.value = ""
+        addScoreInput.value = "5"
+        await saveFilterSettings({ keywords })
+        renderKeywordsTable()
+        applyAndUpdateStatus()
+        const lastRow = kwTb.querySelector("tr:last-child")
+        if (lastRow) {
+          lastRow.scrollIntoView({ behavior: "smooth", block: "center" })
+        }
+      }
+      addBtn.addEventListener("click", doAdd)
+      addKwInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          void doAdd()
+        }
+      })
+      addScoreInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          void doAdd()
+        }
+      })
+      addTd3.append(addBtn)
+      addTr.append(addTd0)
+      addTr.append(addTd1)
+      addTr.append(addTd2)
+      addTr.append(addTd3)
+      kwTb.append(addTr)
+    }
+    renderKeywordsTable()
+    updateKeywordsMasterChk()
+    function updateKeywordsControlsDisabled() {
+      inputKwThreshold.disabled = !chkKeywords.checked
+      selectScope.disabled = !chkKeywords.checked
+      chkCaseSensitive.disabled = !chkKeywords.checked
+      inputKwThreshold.className = inputKwThreshold.disabled
+        ? "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+      selectScope.className = selectScope.disabled
+        ? "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+      lblCaseSensitive.className = chkCaseSensitive.disabled
+        ? "utaf-label text-xs leading-5 opacity-50 cursor-not-allowed"
+        : "utaf-label text-xs leading-5"
+    }
+    updateKeywordsControlsDisabled()
+    chkKeywords.addEventListener("change", async () => {
+      keywordsEnabled = chkKeywords.checked
+      await saveFilterSettings({ keywordsEnabled })
+      updateKeywordsControlsDisabled()
+      applyAndUpdateStatus()
+    })
+    chkCaseSensitive.addEventListener("change", async () => {
+      keywordsCaseSensitive = chkCaseSensitive.checked
+      await saveFilterSettings({ keywordsCaseSensitive })
+      applyAndUpdateStatus()
+    })
+    inputKwThreshold.addEventListener("change", async () => {
+      let v = Number(inputKwThreshold.value)
+      if (!Number.isFinite(v) || v < 0) v = 15
+      keywordsThreshold = v
+      await saveFilterSettings({ keywordsThreshold })
+      applyAndUpdateStatus()
+    })
+    selectScope.addEventListener("change", async () => {
+      const v = String(selectScope.value || "both")
+      keywordsScope = v
+      await saveFilterSettings({ keywordsScope })
+      applyAndUpdateStatus()
+    })
     function updateControlsDisabled() {
       inputTotal.disabled = !chkTotal.checked
       inputDaily.disabled = !chkDaily.checked
@@ -2777,6 +3264,11 @@
       totalInstallsLimit = DEFAULTS.totalInstallsLimit
       dailyInstallsLimit = DEFAULTS.dailyInstallsLimit
       blockedAuthors = DEFAULTS.blockedAuthors
+      keywordsEnabled = DEFAULTS.keywordsEnabled
+      keywordsThreshold = DEFAULTS.keywordsThreshold
+      keywordsScope = DEFAULTS.keywordsScope
+      keywordsCaseSensitive = DEFAULTS.keywordsCaseSensitive
+      keywords = DEFAULTS.keywords
       updatedComp.setState({
         enabled: updatedEnabled,
         mode: currentMode,
@@ -2797,9 +3289,14 @@
       })
       chkTotal.checked = totalInstallsEnabled
       chkDaily.checked = dailyInstallsEnabled
+      chkKeywords.checked = keywordsEnabled
       inputTotal.value = String(totalInstallsLimit)
       inputDaily.value = String(dailyInstallsLimit)
+      inputKwThreshold.value = String(keywordsThreshold)
+      selectScope.value = keywordsScope
+      chkCaseSensitive.checked = keywordsCaseSensitive
       updateControlsDisabled()
+      updateKeywordsControlsDisabled()
       await saveFilterSettings({
         updatedThresholdMode: currentMode,
         updatedThresholdMonths: currentMonths,
@@ -2818,6 +3315,11 @@
         dailyInstallsEnabled,
         dailyInstallsLimit,
         blockedAuthors,
+        keywordsEnabled,
+        keywordsThreshold,
+        keywordsScope,
+        keywordsCaseSensitive,
+        keywords,
       })
       applyAndUpdateStatus()
     }

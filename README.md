@@ -54,7 +54,7 @@ Currently adapted for Greasy Fork script lists. More sites will be supported via
 
 ## Installation & Usage
 
-- Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-advanced-filter/kofjcnaphffjoookgahgjidofbdplgig)
+- Chrome: [Chrome Web Store](https://chromewebstore.google.com/detail/utags-advanced-filter/ecchlopcngakjedfccnhmfhbphdpceaj)
 - Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-advanced-filter/ndhiahnkcnongmecnaamaampfelobblg)
 - Firefox: [Firefox Addon Store](https://addons.mozilla.org/firefox/addon/utags-advanced-filter/)
 - User Script: [Greasy Fork](https://greasyfork.org/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/en/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)

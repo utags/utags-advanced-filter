@@ -6,7 +6,7 @@ import * as esbuild from 'esbuild'
 import postcss from 'postcss'
 import * as sass from 'sass'
 
-import twPropsUnconditional from '../postcss/plugins/tw-properties-unconditional.js'
+import twPropsUnconditional from '../postcss/plugins/tw-properties-unconditional.mjs'
 
 const EMOJI_LIST = [
   //

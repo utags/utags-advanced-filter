@@ -54,7 +54,7 @@
 
 ## 安装与使用
 
-- 类 Chrome 浏览器: [Chrome 应用商店](https://chromewebstore.google.com/detail/utags-add-usertags-to-lin/kofjcnaphffjoookgahgjidofbdplgig)
+- 类 Chrome 浏览器: [Chrome 应用商店](https://chromewebstore.google.com/detail/utags-advanced-filter/ecchlopcngakjedfccnhmfhbphdpceaj)
 - Edge 浏览器: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/utags-advanced-filter/ndhiahnkcnongmecnaamaampfelobblg)
 - Firefox 浏览器: [Firefox Addon 商店](https://addons.mozilla.org/zh-CN/firefox/addon/utags-advanced-filter/)
 - 用户脚本 / 油猴脚本: [Greasy Fork](https://greasyfork.org/zh-CN/scripts/556095-utags-advanced-filter), [ScriptCat](https://scriptcat.org/zh-CN/script-show-page/4653), [GitHub](https://github.com/utags/utags-advanced-filter/raw/refs/heads/main/build/userscript-prod/utags-advanced-filter.user.js)
