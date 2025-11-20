@@ -4,7 +4,19 @@
 
 当前已适配 Greasy Fork 的脚本列表，后续将通过“规则”适配更多站点。
 
-![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-19-13-21-06.png)
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-20-09-44-00.png)
+
+## 核心特性 (Key Features)
+
+- 页面内实时过滤，支持条件叠加，统计即时反馈。
+- 主开关与安全重置（延迟显示、二次确认）。
+- 按站点持久化设置；性能缓存避免重复解析。
+- 关键字过滤：列表管理、逐项开关、分数可编辑、阈值；范围（标题/描述/标题+描述）；大小写敏感与正则（`/regex/flags`）；支持负分用于抵消隐藏。
+- 作者过滤：表格管理（ID/用户名），逐项启用/禁用、内联编辑、删除、添加行；表头主复选框；从页面采集作者并批量添加。
+- 日期过滤：更新日期与创建日期（更早/更近），支持模式（天/月）、预设与自定义天数。
+- 安装量过滤：总安装量与日安装量阈值。
+- 样式隔离：ShadowRoot 承载 UI；统一组件（日期预设、下拉菜单）。
+- 深色模式兼容：面板与表单控件强制浅色渲染，保持一致外观。
 
 ## 已实现功能 (Implemented Features)
 

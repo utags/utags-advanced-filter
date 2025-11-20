@@ -4,7 +4,19 @@ A tool that filters and hides list-style content in real time on any website. It
 
 Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
 
-![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-19-13-21-06.png)
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-20-09-44-00.png)
+
+## Key Features
+
+- Real-time in-page filtering with condition stacking and instant stats.
+- Master switch and safe reset with delayed reveal and second confirmation.
+- Per-site persistent settings; performance cache avoids repeated parsing.
+- Keyword filter: list management, per-item toggle, editable scores, threshold; title/description scope; case sensitivity and regex (`/regex/flags`); negative scores to offset hiding.
+- Author filter: table management (ID, name) with per-author enable/disable, inline edit, delete, and a dedicated “Add” row; header master checkbox; author picker from the current page.
+- Date filters: Updated and Created (older/recent) with mode (days/months), presets, and custom days.
+- Install counts: hide by total installs and daily installs thresholds.
+- Style isolation via ShadowRoot; unified components (date preset, dropdown).
+- Dark-mode compatibility: the panel and form controls are forced to light scheme for consistent visuals.
 
 ## Implemented Features
 

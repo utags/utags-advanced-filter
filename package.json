@@ -117,6 +117,7 @@
     ],
     "ignores": [
       "scripts/patch.js",
+      "scripts/patch.cjs",
       "build/**/*"
     ]
   }

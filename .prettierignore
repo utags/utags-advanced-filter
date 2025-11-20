@@ -10,3 +10,4 @@ pnpm-lock.yaml
 tsconfig.json
 tsconfig.tsbuildinfo
 scripts/patch.js
+scripts/patch.cjs
