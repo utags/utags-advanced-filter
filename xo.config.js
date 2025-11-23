@@ -16,6 +16,7 @@ const xoConfig = [
       'no-alert': 0,
       'import-x/extensions': 0,
       'n/file-extension-in-import': 0,
+      'n/prefer-global/process': 0,
       'import-x/order': 0,
       //   'import/no-mutable-exports': 0,
       //   'import-x/no-mutable-exports': 0,

@@ -48,15 +48,14 @@ import {
 } from './ui/form-helpers'
 import { buildAuthorForm, buildKeywordForm } from './ui/modal-forms'
 import { openPanelModal } from './ui/panel-modal'
+import { withPerf, withPerfSync, withPerfV2 } from './utils'
 
 const cn = (s: string) => s
 
 const host = location.host
 
 if (
-  // eslint-disable-next-line n/prefer-global/process
   process.env.PLASMO_TARGET === 'chrome-mv3' ||
-  // eslint-disable-next-line n/prefer-global/process
   process.env.PLASMO_TARGET === 'firefox-mv3'
 ) {
   // Receive popup trigger to show settings in the content context
@@ -849,7 +848,7 @@ async function injectGreasyForkFilters() {
     return m * 30
   }
 
-  function applyAndUpdateStatus() {
+  function applyAndUpdateStatusOrg() {
     const updatedDays =
       quickEnabled && updatedEnabled
         ? currentMode === 'days'
@@ -941,25 +940,27 @@ async function injectGreasyForkFilters() {
     }
 
     const kwList = Array.from(map.values())
-    const counts = applyCombinedFilters(
-      updatedDays,
-      olderDays,
-      recentDays,
-      totalLess,
-      dailyLess,
-      authorScores,
-      threshold,
-      kwScope,
-      kwList,
-      caseSensitive,
-      swapShownHidden,
-      {
-        updatedScore,
-        createdOlderScore,
-        createdRecentScore,
-        totalInstallsScore,
-        dailyInstallsScore,
-      }
+    const counts = withPerfSync('applyCombinedFilters', () =>
+      applyCombinedFilters(
+        updatedDays,
+        olderDays,
+        recentDays,
+        totalLess,
+        dailyLess,
+        authorScores,
+        threshold,
+        kwScope,
+        kwList,
+        caseSensitive,
+        swapShownHidden,
+        {
+          updatedScore,
+          createdOlderScore,
+          createdRecentScore,
+          totalInstallsScore,
+          dailyInstallsScore,
+        }
+      )
     )
     stats.textContent = `显示 ${counts.visible} | 隐藏 ${counts.hidden}`
     const states = [
@@ -978,6 +979,11 @@ async function injectGreasyForkFilters() {
     masterChk.checked = all
     updateAuthorsMasterChk()
   }
+
+  const applyAndUpdateStatus = withPerfV2(
+    'applyAndUpdateStatus',
+    applyAndUpdateStatusOrg
+  )
 
   masterChk.addEventListener('change', async () => {
     const states = [
@@ -1907,7 +1913,11 @@ async function injectGreasyForkFilters() {
       btnDel.setAttribute('aria-label', '删除')
       btnDel.textContent = ''
       btnDel.append(
-        createIconElement(Trash2, { width: 12, height: 12, 'stroke-width': 2 })
+        createIconElement(Trash2, {
+          width: 12,
+          height: 12,
+          'stroke-width': 2,
+        })
       )
       btnDel.disabled = !authorsEnabled
 
@@ -1956,7 +1966,12 @@ async function injectGreasyForkFilters() {
             exists.enabled = true
             ;(exists as unknown as { score: number }).score = score
           } else {
-            blockedAuthors.push({ id, name: name || id, enabled: true, score })
+            blockedAuthors.push({
+              id,
+              name: name || id,
+              enabled: true,
+              score,
+            })
           }
 
           await saveFilterSettings({ blockedAuthors })
@@ -2332,7 +2347,11 @@ async function injectGreasyForkFilters() {
       btnDel.setAttribute('aria-label', '删除')
       btnDel.textContent = ''
       btnDel.append(
-        createIconElement(Trash2, { width: 12, height: 12, 'stroke-width': 2 })
+        createIconElement(Trash2, {
+          width: 12,
+          height: 12,
+          'stroke-width': 2,
+        })
       )
       btnDel.disabled = !keywordsEnabled
 
@@ -2570,10 +2589,17 @@ async function injectGreasyForkFilters() {
 
 function initialize() {
   if (!isGreasyForkSearchPage()) return
+  const injectGreasyForkFiltersWithPerf = () => {
+    void withPerf('injectGreasyForkFilters', injectGreasyForkFilters)
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectGreasyForkFilters)
+    document.addEventListener(
+      'DOMContentLoaded',
+      injectGreasyForkFiltersWithPerf
+    )
   } else {
-    void injectGreasyForkFilters()
+    injectGreasyForkFiltersWithPerf()
   }
 }
 
