@@ -4,7 +4,7 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.1.0
+// @version              0.1.1
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
@@ -1400,7 +1400,51 @@
   function getAvailableLocales() {
     return availableLocales2
   }
+  var base = location.origin
+  var DEBUG = false
   var cn = (s) => s
+  var withPerf = async (label, fn) => {
+    if (!DEBUG) {
+      return fn()
+    }
+    const t0 = performance.now()
+    try {
+      return await fn()
+    } finally {
+      const t1 = performance.now()
+      console.log(
+        "[UTAF] ".concat(label, ": ").concat((t1 - t0).toFixed(1), " ms")
+      )
+    }
+  }
+  var withPerfSync = (label, fn) => {
+    if (!DEBUG) {
+      return fn()
+    }
+    const t0 = performance.now()
+    try {
+      return fn()
+    } finally {
+      const t1 = performance.now()
+      console.log(
+        "[UTAF] ".concat(label, ": ").concat((t1 - t0).toFixed(1), " ms")
+      )
+    }
+  }
+  var withPerfV2 = DEBUG
+    ? (label, fn) =>
+        (...args) => {
+          const t0 = performance.now()
+          try {
+            return fn(...args)
+          } finally {
+            const t1 = performance.now()
+            console.log(
+              "[UTAF] ".concat(label, ": ").concat((t1 - t0).toFixed(1), " ms")
+            )
+          }
+        }
+    : (_label, fn) => fn
   function monthsToDays(m) {
     if (m === 6) return 182
     if (m === 12) return 365
@@ -1598,35 +1642,34 @@
   function getNumberInputOrDefault(input, defaultValue) {
     return parseNumberOrDefault(input.value, defaultValue)
   }
-  var cn2 = (s) => s
   function buildAuthorForm(defaultScore) {
     const idLabel = document.createElement("div")
-    idLabel.className = cn2("utaf-label text-xs")
+    idLabel.className = cn("utaf-label text-xs")
     idLabel.textContent = "\u4F5C\u8005ID"
     const idInput = document.createElement("input")
     idInput.type = "text"
     idInput.placeholder = "\u4F5C\u8005ID"
-    idInput.className = cn2(
+    idInput.className = cn(
       "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
     )
     const nameLabel = document.createElement("div")
-    nameLabel.className = cn2("utaf-label text-xs")
+    nameLabel.className = cn("utaf-label text-xs")
     nameLabel.textContent = "\u4F5C\u8005\u540D"
     const nameInput = document.createElement("input")
     nameInput.type = "text"
     nameInput.placeholder = "\u4F5C\u8005\u540D"
-    nameInput.className = cn2(
+    nameInput.className = cn(
       "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
     )
     const scoreLabel = document.createElement("div")
-    scoreLabel.className = cn2("utaf-label text-xs")
+    scoreLabel.className = cn("utaf-label text-xs")
     scoreLabel.textContent = "\u5206\u6570"
     const scoreInput = document.createElement("input")
     scoreInput.type = "number"
     scoreInput.min = "0"
     scoreInput.step = "1"
     scoreInput.placeholder = "\u5206\u6570"
-    scoreInput.className = cn2(
+    scoreInput.className = cn(
       "h-6 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-2 text-right text-xs"
     )
     setDefaultNumber(scoreInput, defaultScore)
@@ -1654,27 +1697,27 @@
   }
   function buildKeywordForm(defaultScore) {
     const kwLabel = document.createElement("div")
-    kwLabel.className = cn2("utaf-label text-xs")
+    kwLabel.className = cn("utaf-label text-xs")
     kwLabel.textContent = "\u5173\u952E\u5B57"
     const kwInput = document.createElement("input")
     kwInput.type = "text"
     kwInput.placeholder = "\u5173\u952E\u5B57"
-    kwInput.className = cn2(
+    kwInput.className = cn(
       "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
     )
     const kwHint = document.createElement("div")
-    kwHint.className = cn2("text-xs text-gray-500")
+    kwHint.className = cn("text-xs text-gray-500")
     kwHint.textContent =
       "\u652F\u6301\u6B63\u5219\u8868\u8FBE\u5F0F\uFF08\u683C\u5F0F\uFF1A/pattern/flags\uFF09"
     const scLabel = document.createElement("div")
-    scLabel.className = cn2("utaf-label text-xs")
+    scLabel.className = cn("utaf-label text-xs")
     scLabel.textContent = "\u5206\u6570"
     const scInput = document.createElement("input")
     scInput.type = "number"
     scInput.min = "0"
     scInput.step = "1"
     scInput.placeholder = "\u5206\u6570"
-    scInput.className = cn2(
+    scInput.className = cn(
       "h-6 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-2 text-right text-xs"
     )
     setDefaultNumber(scInput, defaultScore)
@@ -1697,34 +1740,33 @@
       },
     }
   }
-  var cn3 = (s) => s
   function openPanelModal(opts) {
     var _a
     const overlay = document.createElement("div")
-    overlay.className = cn3(
+    overlay.className = cn(
       "fixed z-50 flex items-center justify-center bg-black/30"
     )
     overlay.tabIndex = -1
     const modal = document.createElement("div")
-    modal.className = cn3(
+    modal.className = cn(
       "w-[20rem] space-y-2 rounded-md bg-white p-3 shadow-xl"
     )
     modal.setAttribute("role", "dialog")
     modal.setAttribute("aria-modal", "true")
     const titleEl = document.createElement("div")
-    titleEl.className = cn3("text-sm font-semibold text-gray-900")
+    titleEl.className = cn("text-sm font-semibold text-gray-900")
     titleEl.textContent = opts.title
     const content = document.createElement("div")
-    content.className = cn3("space-y-2")
+    content.className = cn("space-y-2")
     const actions = document.createElement("div")
-    actions.className = cn3("flex justify-end gap-2 pt-1")
+    actions.className = cn("flex justify-end gap-2 pt-1")
     const btnCancel = document.createElement("button")
-    btnCancel.className = cn3(
+    btnCancel.className = cn(
       "rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
     )
     btnCancel.textContent = "\u53D6\u6D88"
     const btnOk = document.createElement("button")
-    btnOk.className = cn3(
+    btnOk.className = cn(
       "rounded-md bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600"
     )
     btnOk.textContent = "\u786E\u8BA4"
@@ -1817,7 +1859,6 @@
     }
     return { close }
   }
-  var cn4 = (s) => s
   var host = location.host
   if (false) {
     const runtime =
@@ -1833,7 +1874,7 @@
             (message == null ? void 0 : message.type) ===
             "utags-advanced-filter:show-settings"
           ) {
-            showSettings2()
+            void showSettings2()
           }
         })
   }
@@ -1862,7 +1903,7 @@
     GLOBAL_KEY: "utaf_global_state",
   }
   var DEFAULTS = /* @__PURE__ */ (() => {
-    const base = {
+    const base2 = {
       updatedMode: "months",
       updatedDays: 90,
       updatedMonths: 24,
@@ -1890,7 +1931,7 @@
       quickEnabled: true,
       authorsEnabled: true,
     }
-    return base
+    return base2
   })()
   async function loadFilterSettings() {
     try {
@@ -1969,7 +2010,9 @@
     if (el) return parseTimeElementToTs(el)
     const times = Array.from(item.querySelectorAll("time, relative-time"))
     if (times.length === 0) return null
-    const ts = times.map(parseTimeElementToTs).filter((v) => v !== null)
+    const ts = times
+      .map((el2) => parseTimeElementToTs(el2))
+      .filter((v) => v !== null)
     if (ts.length === 0) return null
     return Math.min.apply(null, ts)
   }
@@ -2045,14 +2088,14 @@
       item.querySelector("a.script-link") ||
       item.querySelector('a[href^="/scripts/"]')
     const t = ((a == null ? void 0 : a.textContent) || "").trim()
-    return t ? t : void 0
+    return t || void 0
   }
   function getDescriptionTextInItem(item) {
     const el =
       item.querySelector("dd.script-list-description") ||
       item.querySelector(".script-description")
     const t = ((el == null ? void 0 : el.textContent) || "").trim()
-    return t ? t : void 0
+    return t || void 0
   }
   function collectScriptItems() {
     const candidates = Array.from(
@@ -2186,7 +2229,7 @@
   }
   function createDivider() {
     const divider = document.createElement("div")
-    divider.className = cn4("my-5 h-[0.5px] bg-gray-200 opacity-70")
+    divider.className = cn("my-5 h-[0.5px] bg-gray-200 opacity-70")
     return divider
   }
   async function injectGreasyForkFilters() {
@@ -2350,7 +2393,7 @@
     header.className =
       "sticky top-0 bg-white z-10 mb-2 space-y-4 transition-shadow -ml-3 -mr-5 pl-3 pr-5 py-2"
     const title = document.createElement("div")
-    title.className = cn4("text-sm font-semibold text-gray-900")
+    title.className = cn("text-sm font-semibold text-gray-900")
     title.textContent = "UTags Advanced Filter"
     const titleIcon = new DOMParser().parseFromString(
       icon_no_bg_default,
@@ -2361,10 +2404,10 @@
     titleIcon.classList.add("inline-block", "mr-2")
     title.prepend(titleIcon)
     const headerRow1 = document.createElement("div")
-    headerRow1.className = cn4("flex items-center")
+    headerRow1.className = cn("flex items-center")
     headerRow1.append(title)
     const headerRow2 = document.createElement("div")
-    headerRow2.className = cn4("flex items-center gap-2")
+    headerRow2.className = cn("flex items-center gap-2")
     const masterChk = document.createElement("input")
     masterChk.type = "checkbox"
     masterChk.className = "utaf-checkbox hidden"
@@ -2372,7 +2415,7 @@
     masterChk.setAttribute("title", "\u53CD\u9009")
     masterChk.setAttribute("aria-label", "\u53CD\u9009")
     const stats = document.createElement("div")
-    stats.className = cn4("text-xs text-gray-500")
+    stats.className = cn("text-xs text-gray-500")
     headerRow2.append(stats)
     const chkSwap = document.createElement("input")
     chkSwap.type = "checkbox"
@@ -2382,18 +2425,18 @@
     chkSwap.setAttribute("title", "\u53CD\u5411\u663E\u793A")
     chkSwap.setAttribute("aria-label", "\u53CD\u5411\u663E\u793A")
     const lblSwap = document.createElement("label")
-    lblSwap.className = cn4("utaf-label text-xs")
+    lblSwap.className = cn("utaf-label text-xs")
     lblSwap.htmlFor = "utaf-swap"
     lblSwap.textContent = "\u53CD\u5411\u663E\u793A"
     const swapRight = document.createElement("div")
-    swapRight.className = cn4("ml-auto flex items-center gap-2")
+    swapRight.className = cn("ml-auto flex items-center gap-2")
     swapRight.append(lblSwap)
     swapRight.append(chkSwap)
     headerRow2.append(swapRight)
     const headerRight = document.createElement("div")
-    headerRight.className = cn4("ml-auto flex items-center gap-2")
+    headerRight.className = cn("ml-auto flex items-center gap-2")
     const btnCollapse = document.createElement("button")
-    btnCollapse.className = cn4(
+    btnCollapse.className = cn(
       "rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
     )
     btnCollapse.setAttribute("title", "\u6298\u53E0")
@@ -2405,7 +2448,7 @@
     })
     btnCollapse.append(iconCollapse)
     const btnReset = document.createElement("button")
-    btnReset.className = cn4(
+    btnReset.className = cn(
       "utaf-reset-btn rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
     )
     btnReset.setAttribute("title", "\u91CD\u7F6E")
@@ -2426,22 +2469,22 @@
     header.append(headerRow2)
     panel.append(header)
     const content = document.createElement("div")
-    content.className = cn4("space-y-2")
+    content.className = cn("space-y-2")
     const thresholdRow = document.createElement("div")
-    thresholdRow.className = cn4("flex items-center gap-2 text-xs")
+    thresholdRow.className = cn("flex items-center gap-2 text-xs")
     const lblGlobalThreshold = document.createElement("span")
-    lblGlobalThreshold.className = cn4("utaf-label text-xs")
+    lblGlobalThreshold.className = cn("utaf-label text-xs")
     lblGlobalThreshold.textContent = "\u5F53\u5206\u6570 >="
     const inputScoreThreshold = document.createElement("input")
     inputScoreThreshold.type = "number"
     inputScoreThreshold.min = "0"
     inputScoreThreshold.step = "1"
     inputScoreThreshold.value = String(scoreThreshold)
-    inputScoreThreshold.className = cn4(
+    inputScoreThreshold.className = cn(
       "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
     )
     const lblThresholdAction = document.createElement("span")
-    lblThresholdAction.className = cn4(
+    lblThresholdAction.className = cn(
       "utaf-label utaf-threshold-action text-xs"
     )
     lblThresholdAction.textContent = swapShownHidden
@@ -2510,7 +2553,7 @@
       if (m === 24) return 730
       return m * 30
     }
-    function applyAndUpdateStatus() {
+    function applyAndUpdateStatusOrg() {
       const updatedDays =
         quickEnabled && updatedEnabled
           ? currentMode === "days"
@@ -2592,25 +2635,27 @@
         }
       }
       const kwList = Array.from(map.values())
-      const counts = applyCombinedFilters(
-        updatedDays,
-        olderDays,
-        recentDays,
-        totalLess,
-        dailyLess,
-        authorScores,
-        threshold,
-        kwScope,
-        kwList,
-        caseSensitive,
-        swapShownHidden,
-        {
-          updatedScore,
-          createdOlderScore,
-          createdRecentScore,
-          totalInstallsScore,
-          dailyInstallsScore,
-        }
+      const counts = withPerfSync("applyCombinedFilters", () =>
+        applyCombinedFilters(
+          updatedDays,
+          olderDays,
+          recentDays,
+          totalLess,
+          dailyLess,
+          authorScores,
+          threshold,
+          kwScope,
+          kwList,
+          caseSensitive,
+          swapShownHidden,
+          {
+            updatedScore,
+            createdOlderScore,
+            createdRecentScore,
+            totalInstallsScore,
+            dailyInstallsScore,
+          }
+        )
       )
       stats.textContent = "\u663E\u793A "
         .concat(counts.visible, " | \u9690\u85CF ")
@@ -2631,6 +2676,10 @@
       masterChk.checked = all
       updateAuthorsMasterChk()
     }
+    const applyAndUpdateStatus = withPerfV2(
+      "applyAndUpdateStatus",
+      applyAndUpdateStatusOrg
+    )
     masterChk.addEventListener("change", async () => {
       const states = [
         updatedEnabled,
@@ -2775,17 +2824,17 @@
     })
     panel.append(createDivider())
     const quickSection = document.createElement("div")
-    quickSection.className = cn4("space-y-2")
+    quickSection.className = cn("space-y-2")
     const quickTitle = document.createElement("div")
-    quickTitle.className = cn4(
+    quickTitle.className = cn(
       "flex items-center justify-between text-sm font-semibold text-gray-900"
     )
     const quickTitleText = document.createElement("span")
     quickTitleText.textContent = "\u4FBF\u6377\u7B5B\u9009"
     const quickRight = document.createElement("div")
-    quickRight.className = cn4("flex items-center gap-2")
+    quickRight.className = cn("flex items-center gap-2")
     const lblQuickEnable = document.createElement("label")
-    lblQuickEnable.className = cn4("utaf-label text-xs leading-5")
+    lblQuickEnable.className = cn("utaf-label text-xs leading-5")
     lblQuickEnable.textContent = "\u542F\u7528"
     const chkQuick = document.createElement("input")
     chkQuick.type = "checkbox"
@@ -2798,23 +2847,23 @@
     quickTitle.append(quickRight)
     quickSection.append(quickTitle)
     const quickTable = document.createElement("table")
-    quickTable.className = cn4("w-full table-fixed text-sm")
+    quickTable.className = cn("w-full table-fixed text-sm")
     const qthd = document.createElement("thead")
     const qthr = document.createElement("tr")
     const qth0 = document.createElement("th")
-    qth0.className = cn4(
+    qth0.className = cn(
       "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     qth0.append(masterChk)
     const qth1 = document.createElement("th")
-    qth1.className = cn4(
+    qth1.className = cn(
       "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700"
     )
     const lblMaster = document.createElement("label")
     lblMaster.textContent = "\u6761\u4EF6"
     qth1.append(lblMaster)
     const qth2 = document.createElement("th")
-    qth2.className = cn4(
+    qth2.className = cn(
       "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     qth2.textContent = "\u5206\u6570"
@@ -2831,8 +2880,6 @@
     let inputUpdatedScore
     let inputOlderScore
     let inputRecentScore
-    let inputTotalScore
-    let inputDailyScore
     let updatedPresetChk
     let updatedPresetInput
     let olderPresetChk
@@ -2841,21 +2888,21 @@
     let recentPresetInput
     function appendQuickRow(chkEl, labelEl, inputEl, suffixEl, scoreInputEl) {
       const tr = document.createElement("tr")
-      tr.className = cn4("cursor-pointer hover:bg-gray-50")
+      tr.className = cn("cursor-pointer hover:bg-gray-50")
       const td0 = document.createElement("td")
-      td0.className = cn4(
+      td0.className = cn(
         "utaf-col-user min-w-0 border-b border-gray-100 px-2 py-1 pr-3 align-middle"
       )
       const td1 = document.createElement("td")
-      td1.className = cn4(
+      td1.className = cn(
         "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
       )
       const td2 = document.createElement("td")
-      td2.className = cn4(
+      td2.className = cn(
         "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle"
       )
       const wrap = document.createElement("div")
-      wrap.className = cn4("flex flex-wrap items-center gap-1")
+      wrap.className = cn("flex flex-wrap items-center gap-1")
       wrap.append(labelEl)
       wrap.append(inputEl)
       wrap.append(suffixEl)
@@ -2887,7 +2934,7 @@
       inputUpdatedScore.min = "0"
       inputUpdatedScore.step = "1"
       inputUpdatedScore.value = String(updatedScore)
-      inputUpdatedScore.className = cn4(
+      inputUpdatedScore.className = cn(
         "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
       )
       inputUpdatedScore.addEventListener("change", async () => {
@@ -2908,7 +2955,7 @@
       inputOlderScore.min = "0"
       inputOlderScore.step = "1"
       inputOlderScore.value = String(createdOlderScore)
-      inputOlderScore.className = cn4(
+      inputOlderScore.className = cn(
         "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
       )
       inputOlderScore.addEventListener("change", async () => {
@@ -2929,7 +2976,7 @@
       inputRecentScore.min = "0"
       inputRecentScore.step = "1"
       inputRecentScore.value = String(createdRecentScore)
-      inputRecentScore.className = cn4(
+      inputRecentScore.className = cn(
         "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
       )
       inputRecentScore.addEventListener("change", async () => {
@@ -2957,12 +3004,12 @@
       "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
     const lblTotalSuf = document.createElement("span")
     lblTotalSuf.textContent = ""
-    inputTotalScore = document.createElement("input")
+    const inputTotalScore = document.createElement("input")
     inputTotalScore.type = "number"
     inputTotalScore.min = "0"
     inputTotalScore.step = "1"
     inputTotalScore.value = String(totalInstallsScore)
-    inputTotalScore.className = cn4(
+    inputTotalScore.className = cn(
       "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
     )
     inputTotalScore.addEventListener("change", async () => {
@@ -3007,12 +3054,12 @@
       "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
     const lblDailySuf = document.createElement("span")
     lblDailySuf.textContent = ""
-    inputDailyScore = document.createElement("input")
+    const inputDailyScore = document.createElement("input")
     inputDailyScore.type = "number"
     inputDailyScore.min = "0"
     inputDailyScore.step = "1"
     inputDailyScore.value = String(dailyInstallsScore)
-    inputDailyScore.className = cn4(
+    inputDailyScore.className = cn(
       "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
     )
     inputDailyScore.addEventListener("change", async () => {
@@ -3042,22 +3089,22 @@
       inputDailyScore
     )
     const authorsSection = document.createElement("div")
-    authorsSection.className = cn4("space-y-2")
+    authorsSection.className = cn("space-y-2")
     const usersFilterTitle = document.createElement("div")
-    usersFilterTitle.className = cn4(
+    usersFilterTitle.className = cn(
       "flex items-center justify-between text-sm font-semibold text-gray-900"
     )
     const usersLeft = document.createElement("div")
-    usersLeft.className = cn4("flex items-center gap-2")
+    usersLeft.className = cn("flex items-center gap-2")
     const usersTitleText = document.createElement("span")
     usersTitleText.textContent = "\u5305\u542B\u4F5C\u8005"
     usersLeft.append(usersTitleText)
     usersFilterTitle.append(usersLeft)
     authorsSection.append(usersFilterTitle)
     const authorsEnableRow = document.createElement("div")
-    authorsEnableRow.className = cn4("flex items-center gap-2")
+    authorsEnableRow.className = cn("flex items-center gap-2")
     const lblAuthorsEnable = document.createElement("label")
-    lblAuthorsEnable.className = cn4("utaf-label text-xs leading-5")
+    lblAuthorsEnable.className = cn("utaf-label text-xs leading-5")
     lblAuthorsEnable.textContent = "\u542F\u7528"
     const chkAuthorsEnable = document.createElement("input")
     chkAuthorsEnable.type = "checkbox"
@@ -3067,23 +3114,23 @@
     authorsEnableRow.append(lblAuthorsEnable)
     authorsEnableRow.append(chkAuthorsEnable)
     const authorsActions = document.createElement("div")
-    authorsActions.className = cn4("flex items-center gap-2")
+    authorsActions.className = cn("flex items-center gap-2")
     const btnOpenPicker = document.createElement("button")
     btnOpenPicker.className =
       "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
     btnOpenPicker.textContent = "\u91C7\u96C6\u9875\u9762\u4F5C\u8005"
     authorsActions.append(btnOpenPicker)
     const authorsPicker = document.createElement("div")
-    authorsPicker.className = cn4("space-y-2")
+    authorsPicker.className = cn("space-y-2")
     authorsPicker.style.display = "none"
     const authorsPickerControls = document.createElement("div")
-    authorsPickerControls.className = cn4("flex items-center gap-2")
+    authorsPickerControls.className = cn("flex items-center gap-2")
     const chkSelectAll = document.createElement("input")
     chkSelectAll.type = "checkbox"
     chkSelectAll.className = "utaf-checkbox"
     chkSelectAll.id = "utaf-authors-selectall"
     const lblSelectAll = document.createElement("label")
-    lblSelectAll.className = cn4("utaf-label text-xs font-semibold")
+    lblSelectAll.className = cn("utaf-label text-xs font-semibold")
     lblSelectAll.htmlFor = "utaf-authors-selectall"
     lblSelectAll.textContent = "\u5168\u9009/\u5168\u4E0D\u9009"
     const btnRefreshPicker = document.createElement("button")
@@ -3104,7 +3151,7 @@
     authorsPickerControls.append(btnAddSelected)
     authorsPickerControls.append(btnClosePicker)
     const authorsPickerList = document.createElement("div")
-    authorsPickerList.className = cn4("space-y-1")
+    authorsPickerList.className = cn("space-y-1")
     authorsPicker.append(authorsPickerControls)
     authorsPicker.append(authorsPickerList)
     const authorsMasterChk = document.createElement("input")
@@ -3131,21 +3178,21 @@
       updateAuthorsMasterChk()
     })
     const authorsTable = document.createElement("table")
-    authorsTable.className = cn4("w-full table-fixed")
+    authorsTable.className = cn("w-full table-fixed")
     const thd = document.createElement("thead")
     const thr = document.createElement("tr")
     const th1 = document.createElement("th")
-    th1.className = cn4(
+    th1.className = cn(
       "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
     )
     th1.textContent = "\u7528\u6237"
     const th3 = document.createElement("th")
-    th3.className = cn4(
+    th3.className = cn(
       "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     th3.textContent = "\u5206\u6570"
     const th4 = document.createElement("th")
-    th4.className = cn4(
+    th4.className = cn(
       "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     th4.append(authorsMasterChk)
@@ -3312,7 +3359,7 @@
       const map = collectPageAuthorsMap()
       for (const [id, name] of map) {
         const row = document.createElement("div")
-        row.className = cn4("flex items-center gap-2")
+        row.className = cn("flex items-center gap-2")
         const chk = document.createElement("input")
         chk.type = "checkbox"
         chk.className = "utaf-checkbox"
@@ -3323,7 +3370,7 @@
           chk.disabled = true
         }
         const lbl = document.createElement("span")
-        lbl.className = cn4("utaf-label text-sm text-gray-800")
+        lbl.className = cn("utaf-label text-sm text-gray-800")
         lbl.textContent = "".concat(name, " (").concat(id, ")")
         row.append(chk)
         row.append(lbl)
@@ -3390,7 +3437,7 @@
     })
     let authorsEditing = false
     const btnAuthorsEdit = document.createElement("button")
-    btnAuthorsEdit.className = cn4(
+    btnAuthorsEdit.className = cn(
       "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
     )
     btnAuthorsEdit.textContent = ""
@@ -3415,18 +3462,18 @@
       tb.textContent = ""
       for (const [i3, a] of blockedAuthors.entries()) {
         const tr = document.createElement("tr")
-        tr.className = cn4("utaf-au-row cursor-pointer hover:bg-gray-50")
+        tr.className = cn("utaf-au-row cursor-pointer hover:bg-gray-50")
         tr.dataset.auIndex = String(i3)
         const tdUser = document.createElement("td")
-        tdUser.className = cn4(
+        tdUser.className = cn(
           "utaf-col-user border-b border-gray-100 px-2 py-1 pr-3 align-middle"
         )
         const tdScore = document.createElement("td")
-        tdScore.className = cn4(
+        tdScore.className = cn(
           "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
         )
         const tdPick = document.createElement("td")
-        tdPick.className = cn4(
+        tdPick.className = cn(
           "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle whitespace-nowrap"
         )
         const chk = document.createElement("input")
@@ -3435,31 +3482,31 @@
         chk.checked = Boolean(a.enabled)
         chk.disabled = !authorsEnabled
         const idLabel = document.createElement("span")
-        idLabel.className = cn4(
+        idLabel.className = cn(
           "utaf-au-id-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         idLabel.textContent = String(a.id)
         idLabel.title = String(a.id)
         const idInput = document.createElement("input")
         idInput.type = "text"
-        idInput.className = cn4(
+        idInput.className = cn(
           "utaf-au-id-input hidden h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         idInput.value = String(a.id)
         idInput.disabled = !authorsEnabled
         const userWrap = document.createElement("div")
-        userWrap.className = cn4("flex min-w-0 flex-col")
+        userWrap.className = cn("flex min-w-0 flex-col")
         userWrap.append(idLabel)
         userWrap.append(idInput)
         const nameLabel = document.createElement("span")
-        nameLabel.className = cn4(
+        nameLabel.className = cn(
           "utaf-au-name-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         nameLabel.textContent = String(a.name || "")
         nameLabel.title = String(a.name || "")
         const nameInput = document.createElement("input")
         nameInput.type = "text"
-        nameInput.className = cn4(
+        nameInput.className = cn(
           "utaf-au-name-input hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         nameInput.value = String(a.name || "")
@@ -3473,18 +3520,22 @@
         scoreInput.value = String(
           parseNumberOrDefault(a.score, DEFAULTS.authorsDefaultScore)
         )
-        scoreInput.className = cn4(
+        scoreInput.className = cn(
           "utaf-au-score h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
         )
         scoreInput.disabled = !authorsEnabled
         tdScore.append(scoreInput)
         const btnDel = document.createElement("button")
-        btnDel.className = cn4("utaf-au-delete utaf-btn-circle utaf-btn-danger")
+        btnDel.className = cn("utaf-au-delete utaf-btn-circle utaf-btn-danger")
         btnDel.title = "\u5220\u9664"
         btnDel.setAttribute("aria-label", "\u5220\u9664")
         btnDel.textContent = ""
         btnDel.append(
-          createElement2(Trash2, { width: 12, height: 12, "stroke-width": 2 })
+          createElement2(Trash2, {
+            width: 12,
+            height: 12,
+            "stroke-width": 2,
+          })
         )
         btnDel.disabled = !authorsEnabled
         chk.classList.toggle("hidden", authorsEditing)
@@ -3562,41 +3613,41 @@
       btnClosePicker.disabled = disabled
       btnAuthorsEdit.disabled = disabled
       btnAuthorsEdit.className = disabled
-        ? cn4(
+        ? cn(
             "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
           )
-        : cn4(
+        : cn(
             "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
           )
       auAddBtn.className = disabled
-        ? cn4(
+        ? cn(
             "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
           )
-        : cn4(
+        : cn(
             "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
           )
       authorsTable.className = disabled
-        ? cn4("pointer-events-none w-full table-fixed opacity-50")
-        : cn4("w-full table-fixed")
+        ? cn("pointer-events-none w-full table-fixed opacity-50")
+        : cn("w-full table-fixed")
       auAddBtn.disabled = disabled
       btnOpenPicker.className = disabled
-        ? cn4(
+        ? cn(
             "inline-flex shrink-0 cursor-not-allowed items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 opacity-50"
           )
-        : cn4(
+        : cn(
             "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
           )
     }
     updateAuthorsControlsDisabled()
     panel.append(createDivider())
     const keywordsSection = document.createElement("div")
-    keywordsSection.className = cn4("space-y-2")
+    keywordsSection.className = cn("space-y-2")
     const keywordsTitle = document.createElement("div")
-    keywordsTitle.className = cn4(
+    keywordsTitle.className = cn(
       "flex items-center justify-between text-sm font-semibold text-gray-900"
     )
     const keywordsLeft = document.createElement("div")
-    keywordsLeft.className = cn4("flex items-center gap-2")
+    keywordsLeft.className = cn("flex items-center gap-2")
     const keywordsTitleText = document.createElement("span")
     keywordsTitleText.textContent = "\u5305\u542B\u5173\u952E\u5B57"
     keywordsLeft.append(keywordsTitleText)
@@ -3604,7 +3655,7 @@
     keywordsSection.append(keywordsTitle)
     let keywordsEditing = false
     const btnKeywordsEdit = document.createElement("button")
-    btnKeywordsEdit.className = cn4(
+    btnKeywordsEdit.className = cn(
       "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
     )
     btnKeywordsEdit.textContent = ""
@@ -3625,14 +3676,14 @@
       renderKeywordsTable()
     })
     const keywordsControls = document.createElement("div")
-    keywordsControls.className = cn4("space-y-2")
+    keywordsControls.className = cn("space-y-2")
     const chkKeywords = document.createElement("input")
     chkKeywords.type = "checkbox"
     chkKeywords.className = "utaf-checkbox utaf-toggle"
     chkKeywords.checked = keywordsEnabled
     chkKeywords.id = "utaf-keywords-enable"
     const lblScopePre = document.createElement("span")
-    lblScopePre.className = cn4("utaf-label text-xs leading-5")
+    lblScopePre.className = cn("utaf-label text-xs leading-5")
     lblScopePre.textContent = "\u8303\u56F4"
     const selectScope = document.createElement("select")
     selectScope.className =
@@ -3651,15 +3702,15 @@
     selectScope.append(optBoth)
     selectScope.value = keywordsScope
     const rowEnable = document.createElement("div")
-    rowEnable.className = cn4("flex items-center gap-2")
+    rowEnable.className = cn("flex items-center gap-2")
     const lblEnable = document.createElement("label")
-    lblEnable.className = cn4("utaf-label text-xs leading-5")
+    lblEnable.className = cn("utaf-label text-xs leading-5")
     lblEnable.htmlFor = "utaf-keywords-enable"
     lblEnable.textContent = "\u542F\u7528"
     rowEnable.append(lblEnable)
     rowEnable.append(chkKeywords)
     const rowScope = document.createElement("div")
-    rowScope.className = cn4("flex items-center justify-end gap-2")
+    rowScope.className = cn("flex items-center justify-end gap-2")
     rowScope.append(lblScopePre)
     rowScope.append(selectScope)
     const chkCaseSensitive = document.createElement("input")
@@ -3668,11 +3719,11 @@
     chkCaseSensitive.checked = keywordsCaseSensitive
     chkCaseSensitive.id = "utaf-keywords-case"
     const lblCaseSensitive = document.createElement("label")
-    lblCaseSensitive.className = cn4("utaf-label text-xs leading-5")
+    lblCaseSensitive.className = cn("utaf-label text-xs leading-5")
     lblCaseSensitive.htmlFor = "utaf-keywords-case"
     lblCaseSensitive.textContent = "\u5927\u5C0F\u5199\u654F\u611F"
     const rowCase = document.createElement("div")
-    rowCase.className = cn4("flex items-center justify-end gap-2")
+    rowCase.className = cn("flex items-center justify-end gap-2")
     rowCase.append(lblCaseSensitive)
     rowCase.append(chkCaseSensitive)
     keywordsTitle.append(rowEnable)
@@ -3680,7 +3731,7 @@
     keywordsControls.append(rowCase)
     keywordsSection.append(keywordsControls)
     const keywordsTable = document.createElement("table")
-    keywordsTable.className = cn4("w-full table-fixed")
+    keywordsTable.className = cn("w-full table-fixed")
     const keywordsMasterChk = document.createElement("input")
     keywordsMasterChk.type = "checkbox"
     keywordsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle hidden"
@@ -3705,17 +3756,17 @@
     const kwThd = document.createElement("thead")
     const kwThr = document.createElement("tr")
     const kwTh1 = document.createElement("th")
-    kwTh1.className = cn4(
+    kwTh1.className = cn(
       "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
     )
     kwTh1.textContent = "\u5173\u952E\u5B57"
     const kwTh2 = document.createElement("th")
-    kwTh2.className = cn4(
+    kwTh2.className = cn(
       "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     kwTh2.textContent = "\u5206\u6570"
     const kwTh3 = document.createElement("th")
-    kwTh3.className = cn4(
+    kwTh3.className = cn(
       "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     kwTh3.append(keywordsMasterChk)
@@ -3837,36 +3888,36 @@
       kwTb.textContent = ""
       for (const [i3, k] of keywords.entries()) {
         const tr = document.createElement("tr")
-        tr.className = cn4("utaf-kw-row cursor-pointer hover:bg-gray-50")
+        tr.className = cn("utaf-kw-row cursor-pointer hover:bg-gray-50")
         tr.dataset.kwIndex = String(i3)
         const td1 = document.createElement("td")
-        td1.className = cn4(
+        td1.className = cn(
           "utaf-col-user min-w-0 border-b border-gray-100 px-2 py-1 pr-3 align-middle"
         )
         const td2 = document.createElement("td")
-        td2.className = cn4(
+        td2.className = cn(
           "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
         )
         const td3 = document.createElement("td")
-        td3.className = cn4(
+        td3.className = cn(
           "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle whitespace-nowrap"
         )
         const rowWrap = document.createElement("div")
-        rowWrap.className = cn4("flex min-w-0 items-center gap-2")
+        rowWrap.className = cn("flex min-w-0 items-center gap-2")
         const chk = document.createElement("input")
         chk.type = "checkbox"
         chk.className = "utaf-kw-toggle utaf-checkbox utaf-toggle"
         chk.checked = Boolean(k.enabled)
         chk.disabled = !keywordsEnabled
         const kwLabel = document.createElement("span")
-        kwLabel.className = cn4(
+        kwLabel.className = cn(
           "utaf-kw-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         kwLabel.textContent = String(k.keyword || "")
         kwLabel.title = String(k.keyword || "")
         const kwInput = document.createElement("input")
         kwInput.type = "text"
-        kwInput.className = cn4(
+        kwInput.className = cn(
           "utaf-kw-input hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         kwInput.value = String(k.keyword || "")
@@ -3880,18 +3931,22 @@
         scoreInput.value = String(
           parseNumberOrDefault(k.score, DEFAULTS.keywordsDefaultScore)
         )
-        scoreInput.className = cn4(
+        scoreInput.className = cn(
           "utaf-kw-score h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
         )
         scoreInput.disabled = !keywordsEnabled
         td2.append(scoreInput)
         const btnDel = document.createElement("button")
-        btnDel.className = cn4("utaf-kw-delete utaf-btn-circle utaf-btn-danger")
+        btnDel.className = cn("utaf-kw-delete utaf-btn-circle utaf-btn-danger")
         btnDel.title = "\u5220\u9664"
         btnDel.setAttribute("aria-label", "\u5220\u9664")
         btnDel.textContent = ""
         btnDel.append(
-          createElement2(Trash2, { width: 12, height: 12, "stroke-width": 2 })
+          createElement2(Trash2, {
+            width: 12,
+            height: 12,
+            "stroke-width": 2,
+          })
         )
         btnDel.disabled = !keywordsEnabled
         chk.classList.toggle("hidden", keywordsEditing)
@@ -3911,7 +3966,7 @@
       }
     }
     const kwAddBtn = document.createElement("button")
-    kwAddBtn.className = cn4(
+    kwAddBtn.className = cn(
       "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
     )
     kwAddBtn.textContent = ""
@@ -3963,25 +4018,25 @@
       kwAddBtn.disabled = !chkKeywords.checked
       btnKeywordsEdit.disabled = !chkKeywords.checked
       btnKeywordsEdit.className = btnKeywordsEdit.disabled
-        ? cn4(
+        ? cn(
             "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
           )
-        : cn4(
+        : cn(
             "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
           )
       kwAddBtn.className = kwAddBtn.disabled
-        ? cn4(
+        ? cn(
             "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
           )
-        : cn4(
+        : cn(
             "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
           )
       keywordsTable.className = chkKeywords.checked
-        ? cn4("w-full table-fixed")
-        : cn4("pointer-events-none w-full table-fixed opacity-50")
+        ? cn("w-full table-fixed")
+        : cn("pointer-events-none w-full table-fixed opacity-50")
       lblScopePre.className = selectScope.disabled
-        ? cn4("utaf-label cursor-not-allowed text-xs leading-5 opacity-50")
-        : cn4("utaf-label text-xs leading-5")
+        ? cn("utaf-label cursor-not-allowed text-xs leading-5 opacity-50")
+        : cn("utaf-label text-xs leading-5")
       selectScope.className = selectScope.disabled
         ? "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
         : "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
@@ -4073,8 +4128,8 @@
           : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
       }
       quickTable.className = quickOff
-        ? cn4("pointer-events-none w-full table-fixed text-sm opacity-50")
-        : cn4("w-full table-fixed text-sm")
+        ? cn("pointer-events-none w-full table-fixed text-sm opacity-50")
+        : cn("w-full table-fixed text-sm")
     }
     updateControlsDisabled()
     chkTotal.addEventListener("change", updateControlsDisabled)
@@ -4099,10 +4154,16 @@
   }
   function initialize() {
     if (!isGreasyForkSearchPage()) return
+    const injectGreasyForkFiltersWithPerf = () => {
+      void withPerf("injectGreasyForkFilters", injectGreasyForkFilters)
+    }
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", injectGreasyForkFilters)
+      document.addEventListener(
+        "DOMContentLoaded",
+        injectGreasyForkFiltersWithPerf
+      )
     } else {
-      void injectGreasyForkFilters()
+      injectGreasyForkFiltersWithPerf()
     }
   }
   function onSettingsChange() {
