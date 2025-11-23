@@ -18,6 +18,7 @@
   "scripts": {
     "postinstall": "node scripts/patch.cjs",
     "p": "prettier --write .",
+    "xo": "xo --verbose",
     "lint": "run-s lint:*",
     "lint:code": "prettier --write . && xo --fix",
     "lint:type": "tsc --noemit",
@@ -50,11 +51,11 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.6.2",
     "@tailwindcss/postcss": "^4.1.17",
-    "@types/chrome": "^0.1.30",
+    "@types/chrome": "^0.1.31",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
-    "addons-linter": "^9.1.0",
+    "addons-linter": "^9.2.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^10.1.0",
     "cssnano": "^7.1.2",
@@ -64,10 +65,10 @@
     "postcss": "^8.4.49",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "sass": "^1.94.1",
+    "sass": "^1.94.2",
     "typescript": "^5.2.2",
-    "vitest": "^4.0.10",
-    "xo": "^0.60.0"
+    "vitest": "^4.0.13",
+    "xo": "^1.2.3"
   },
   "manifest": {
     "host_permissions": [],
@@ -84,41 +85,5 @@
         }
       }
     }
-  },
-  "xo": {
-    "space": 2,
-    "prettier": true,
-    "globals": [
-      "document"
-    ],
-    "rules": {
-      "import/extensions": 0,
-      "n/file-extension-in-import": 0,
-      "import/order": 0,
-      "@typescript-eslint/prefer-nullish-coalescing": 0,
-      "@typescript-eslint/prefer-optional-chain": 0,
-      "logical-assignment-operators": 0,
-      "unicorn/prevent-abbreviations": 0,
-      "capitalized-comments": 0
-    },
-    "overrides": [
-      {
-        "files": "postcss.config.js",
-        "rules": {
-          "unicorn/prefer-module": 0
-        }
-      },
-      {
-        "files": "src/messages/*.ts",
-        "rules": {
-          "@typescript-eslint/naming-convention": 0
-        }
-      }
-    ],
-    "ignores": [
-      "scripts/patch.js",
-      "scripts/patch.cjs",
-      "build/**/*"
-    ]
   }
 }

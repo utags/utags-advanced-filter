@@ -64,16 +64,14 @@ if (
     (globalThis as any).chrome?.runtime ?? (globalThis as any).browser?.runtime
   runtime?.onMessage?.addListener((message: any) => {
     if (message?.type === 'utags-advanced-filter:show-settings') {
-      showSettings()
+      void showSettings()
     }
   })
 }
 
 export const config: PlasmoCSConfig = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   run_at: 'document_end',
   // matches: ['https://greasyfork.org/*'],
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   all_frames: false,
 }
 
@@ -265,7 +263,9 @@ function getCreatedTimestampInItem(item) {
   if (el) return parseTimeElementToTs(el)
   const times = Array.from(item.querySelectorAll('time, relative-time'))
   if (times.length === 0) return null
-  const ts = times.map(parseTimeElementToTs).filter((v) => v !== null)
+  const ts = times
+    .map((el) => parseTimeElementToTs(el))
+    .filter((v) => v !== null)
   if (ts.length === 0) return null
   return Math.min.apply(null, ts)
 }
@@ -351,7 +351,7 @@ function getTitleTextInItem(item: Element): string | undefined {
     item.querySelector('a.script-link') ||
     item.querySelector('a[href^="/scripts/"]')
   const t = (a?.textContent || '').trim()
-  return t ? t : undefined
+  return t || undefined
 }
 
 function getDescriptionTextInItem(item: Element): string | undefined {
@@ -359,7 +359,7 @@ function getDescriptionTextInItem(item: Element): string | undefined {
     item.querySelector('dd.script-list-description') ||
     item.querySelector('.script-description')
   const t = (el?.textContent || '').trim()
-  return t ? t : undefined
+  return t || undefined
 }
 
 function collectScriptItems() {
@@ -1196,8 +1196,8 @@ async function injectGreasyForkFilters() {
   let inputUpdatedScore: HTMLInputElement
   let inputOlderScore: HTMLInputElement
   let inputRecentScore: HTMLInputElement
-  let inputTotalScore: HTMLInputElement
-  let inputDailyScore: HTMLInputElement
+  // let inputTotalScore: HTMLInputElement
+  // let inputDailyScore: HTMLInputElement
   let updatedPresetChk: HTMLInputElement | undefined
   let updatedPresetInput: HTMLInputElement | undefined
   let olderPresetChk: HTMLInputElement | undefined
@@ -1337,7 +1337,7 @@ async function injectGreasyForkFilters() {
     'h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs'
   const lblTotalSuf = document.createElement('span')
   lblTotalSuf.textContent = ''
-  inputTotalScore = document.createElement('input')
+  const inputTotalScore = document.createElement('input')
   inputTotalScore.type = 'number'
   inputTotalScore.min = '0'
   inputTotalScore.step = '1'
@@ -1390,7 +1390,7 @@ async function injectGreasyForkFilters() {
     'h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs'
   const lblDailySuf = document.createElement('span')
   lblDailySuf.textContent = ''
-  inputDailyScore = document.createElement('input')
+  const inputDailyScore = document.createElement('input')
   inputDailyScore.type = 'number'
   inputDailyScore.min = '0'
   inputDailyScore.step = '1'
