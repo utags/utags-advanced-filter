@@ -1,4 +1,4 @@
-const cn = (s: string) => s
+import { cn } from '../utils'
 
 export type PanelModalBuildResult = {
   focusables: HTMLElement[]

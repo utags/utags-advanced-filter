@@ -1,10 +1,9 @@
+import { cn } from '../utils'
 import {
   getNumberInputOrDefault,
   normalizeText,
   setDefaultNumber,
 } from './form-helpers'
-
-const cn = (s: string) => s
 
 export type AuthorForm = {
   idInput: HTMLInputElement

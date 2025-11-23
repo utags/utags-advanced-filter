@@ -62,6 +62,8 @@ export const isSameBaseDomain = (a: string, b: string) => {
   return getBaseDomain(a) === getBaseDomain(b)
 }
 
+export const cn = (s: string) => s
+
 export const withPerf = async <T>(
   label: string,
   fn: () => Promise<T> | T

@@ -48,9 +48,7 @@ import {
 } from './ui/form-helpers'
 import { buildAuthorForm, buildKeywordForm } from './ui/modal-forms'
 import { openPanelModal } from './ui/panel-modal'
-import { withPerf, withPerfSync, withPerfV2 } from './utils'
-
-const cn = (s: string) => s
+import { cn, withPerf, withPerfSync, withPerfV2 } from './utils'
 
 const host = location.host
 

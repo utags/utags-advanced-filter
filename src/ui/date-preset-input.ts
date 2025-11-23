@@ -1,11 +1,11 @@
+import { cn } from '../utils'
+
 export type DatePresetState = {
   enabled: boolean
   mode: 'months' | 'days'
   months: number
   days: number
 }
-
-const cn = (s: string) => s
 
 function monthsToDays(m: number): number {
   if (m === 6) return 182
