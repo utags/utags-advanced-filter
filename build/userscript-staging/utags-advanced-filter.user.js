@@ -4,7 +4,7 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.0.6
+// @version              0.1.0
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
@@ -1261,9 +1261,9 @@
     handleShowSettingsUrl()
   }
   var content_default =
-    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}:host{color:#000}.utaf-checkbox{accent-color:#3b82f6;color-scheme:light;cursor:pointer;flex:0 0 auto;height:20px;vertical-align:middle;width:20px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}input,select,textarea{color-scheme:light}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}"
+    '.bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}:host{color:#000;--utaf-col-user:auto;--utaf-col-score:56px;--utaf-col-select:48px}.utaf-checkbox{accent-color:#3b82f6;color-scheme:light;cursor:pointer;flex:0 0 auto;height:20px;vertical-align:middle;width:20px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}input,select,textarea{color-scheme:light}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}.utaf-btn-circle{align-items:center;border-radius:9999px;display:inline-flex;height:20px;justify-content:center;width:20px}.utaf-btn-danger{background:#fee2e2;border:1px solid #fecaca;color:#b91c1c}.utaf-btn-danger:hover{background:#fecaca}.utaf-col-user{width:var(--utaf-col-user)}.utaf-col-score{width:var(--utaf-col-score)}.utaf-col-select{width:var(--utaf-col-select)}.utaf-toggle{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#e5e7eb;border:1px solid #d1d5db;border-radius:9999px;cursor:pointer;display:inline-block;height:16px;outline:none;position:relative;transition:background-color .2s ease,border-color .2s ease;vertical-align:middle;width:28px}.utaf-toggle:before{background:#fff;border-radius:9999px;box-shadow:0 1px 2px rgba(0,0,0,.2);content:"";height:12px;left:1px;position:absolute;top:1px;transition:transform .2s ease;width:12px}.utaf-toggle:checked{background-color:#3b82f6;border-color:#3b82f6}.utaf-toggle:checked:before{transform:translateX(12px)}.utaf-toggle:disabled{cursor:not-allowed;opacity:.5}.utaf-toggle.hidden{display:none}.shadow-xl input[type=number]::-webkit-inner-spin-button,.shadow-xl input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.shadow-xl input[type=number]{-moz-appearance:textfield}'
   var tailwind_default =
-    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-semibold:600;--radius-md:0.375rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.collapse{visibility:collapse}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.z-10{z-index:10}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.my-5{margin-block:calc(var(--spacing)*5)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-\\[0\\.5px\\]{height:.5px}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-14{width:calc(var(--spacing)*14)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-full{width:100%}.max-w-\\[4rem\\]{max-width:4rem}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-0{min-width:calc(var(--spacing)*0)}.min-w-\\[3rem\\]{min-width:3rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-3{padding:calc(var(--spacing)*3)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.leading-5{--tw-leading:calc(var(--spacing)*5);line-height:calc(var(--spacing)*5)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-gray-500{color:var(--color-gray-500)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
+    '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-red-100:oklch(93.6% 0.032 17.717);--color-red-200:oklch(88.5% 0.062 18.334);--color-red-700:oklch(50.5% 0.213 27.518);--color-blue-500:oklch(62.3% 0.214 259.815);--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-600:oklch(44.6% 0.03 256.802);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-black:#000;--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.visible{visibility:visible}.sr-only{border-width:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}.absolute,.sr-only{position:absolute}.fixed{position:fixed}.relative{position:relative}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.top-1{top:calc(var(--spacing)*1)}.left-1{left:calc(var(--spacing)*1)}.z-10{z-index:10}.z-50{z-index:50}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.mx-auto{margin-inline:auto}.my-4{margin-block:calc(var(--spacing)*4)}.my-5{margin-block:calc(var(--spacing)*5)}.mt-1{margin-top:calc(var(--spacing)*1)}.mt-3{margin-top:calc(var(--spacing)*3)}.mt-4{margin-top:calc(var(--spacing)*4)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-1{margin-bottom:calc(var(--spacing)*1)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.mb-3{margin-bottom:calc(var(--spacing)*3)}.mb-4{margin-bottom:calc(var(--spacing)*4)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-3{height:calc(var(--spacing)*3)}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-6{height:calc(var(--spacing)*6)}.h-\\[0\\.5px\\]{height:.5px}.w-1\\/3{width:33.33333%}.w-3{width:calc(var(--spacing)*3)}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-10{width:calc(var(--spacing)*10)}.w-12{width:calc(var(--spacing)*12)}.w-14{width:calc(var(--spacing)*14)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-\\[20rem\\]{width:20rem}.w-\\[320px\\]{width:320px}.w-full{width:100%}.max-w-\\[3rem\\]{max-width:3rem}.max-w-\\[4rem\\]{max-width:4rem}.max-w-\\[8rem\\]{max-width:8rem}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-0{min-width:calc(var(--spacing)*0)}.min-w-\\[2\\.5rem\\]{min-width:2.5rem}.min-w-\\[3rem\\]{min-width:3rem}.min-w-\\[4rem\\]{min-width:4rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.flex-1{flex:1}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-\\[auto_1fr_auto\\]{grid-template-columns:auto 1fr auto}.grid-cols-\\[auto_minmax\\(0\\,1fr\\)\\]{grid-template-columns:auto minmax(0,1fr)}.grid-cols-\\[minmax\\(0\\,1fr\\)_auto\\]{grid-template-columns:minmax(0,1fr) auto}.grid-cols-\\[minmax\\(0\\,1fr\\)_minmax\\(0\\,1fr\\)_auto\\]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}.grid-rows-1{grid-template-rows:repeat(1,minmax(0,1fr))}.grid-rows-2{grid-template-rows:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.gap-1{gap:calc(var(--spacing)*1)}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-3{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*3*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*3*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.gap-x-1{-moz-column-gap:calc(var(--spacing)*1);column-gap:calc(var(--spacing)*1)}.gap-x-2{-moz-column-gap:calc(var(--spacing)*2);column-gap:calc(var(--spacing)*2)}.gap-y-1{row-gap:calc(var(--spacing)*1)}.justify-self-end{justify-self:flex-end}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-full{border-radius:calc(infinity*1px)}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-100{border-color:var(--color-gray-100)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-black\\/30{background-color:color-mix(in srgb,#000 30%,transparent);@supports (color:color-mix(in lab,red,red)){background-color:color-mix(in oklab,var(--color-black) 30%,transparent)}}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-red-100{background-color:var(--color-red-100)}.bg-white{background-color:var(--color-white)}.p-2{padding:calc(var(--spacing)*2)}.p-3{padding:calc(var(--spacing)*3)}.p-4{padding:calc(var(--spacing)*4)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pt-1{padding-top:calc(var(--spacing)*1)}.pr-1{padding-right:calc(var(--spacing)*1)}.pr-3{padding-right:calc(var(--spacing)*3)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-1{padding-left:calc(var(--spacing)*1)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.leading-5{--tw-leading:calc(var(--spacing)*5);line-height:calc(var(--spacing)*5)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-blue-500{color:var(--color-blue-500)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-red-700{color:var(--color-red-700)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.last\\:border-0{&:last-child{border-style:var(--tw-border-style);border-width:0}}.hover\\:bg-blue-600{&:hover{@media (hover:hover){background-color:var(--color-blue-600)}}}.hover\\:bg-gray-50{&:hover{@media (hover:hover){background-color:var(--color-gray-50)}}}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}.hover\\:bg-red-200{&:hover{@media (hover:hover){background-color:var(--color-red-200)}}}.hover\\:underline{&:hover{@media (hover:hover){text-decoration-line:underline}}}.focus\\:border-blue-500{&:focus{border-color:var(--color-blue-500)}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
   var icon_no_bg_default =
     '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">\n  <path d="M10 5H3" stroke="#4285F4"></path>\n  <path d="M21 5h-7" stroke="#4285F4"></path>\n  <path d="M14 3v4" stroke="#FBBC05"></path>\n\n  <path d="M8 12H3" stroke="#EA4335"></path>\n  <path d="M21 12h-9" stroke="#EA4335"></path>\n  <path d="M8 10v4" stroke="#FBBC05"></path>\n\n  <path d="M12 19H3" stroke="#34A853"></path>\n  <path d="M21 19h-5" stroke="#34A853"></path>\n  <path d="M16 17v4" stroke="#FBBC05"></path>\n</svg>'
   var defaultAttributes = {
@@ -1298,10 +1298,31 @@
     )
     return createSVGElement([tag, attrs, iconNode])
   }
+  var Check = [["path", { d: "M20 6 9 17l-5-5" }]]
   var ChevronUp = [["path", { d: "m18 15-6-6-6 6" }]]
+  var Pencil = [
+    [
+      "path",
+      {
+        d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
+      },
+    ],
+    ["path", { d: "m15 5 4 4" }],
+  ]
+  var Plus = [
+    ["path", { d: "M5 12h14" }],
+    ["path", { d: "M12 5v14" }],
+  ]
   var RotateCcw = [
     ["path", { d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" }],
     ["path", { d: "M3 3v5h5" }],
+  ]
+  var Trash2 = [
+    ["path", { d: "M10 11v6" }],
+    ["path", { d: "M14 11v6" }],
+    ["path", { d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" }],
+    ["path", { d: "M3 6h18" }],
+    ["path", { d: "M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" }],
   ]
   var messages14 = {
     "settings.enable": "Enable for all sites",
@@ -1379,6 +1400,7 @@
   function getAvailableLocales() {
     return availableLocales2
   }
+  var cn = (s) => s
   function monthsToDays(m) {
     if (m === 6) return 182
     if (m === 12) return 365
@@ -1388,21 +1410,28 @@
   function createDatePresetInput(opts) {
     let state = __spreadValues({}, opts.initial)
     const root = document.createElement("div")
-    root.className = "flex items-center text-sm"
+    root.className = cn("flex items-center text-sm")
     const chk = document.createElement("input")
     chk.type = "checkbox"
-    chk.className = "utaf-checkbox"
+    chk.className = "utaf-checkbox utaf-toggle"
     chk.checked = state.enabled
-    const pre = document.createElement("span")
-    pre.className = "utaf-label text-sm"
+    const chkId = "utaf-datepreset-".concat(
+      Math.random().toString(36).slice(2, 8)
+    )
+    chk.id = chkId
+    const pre = document.createElement("label")
+    pre.className = cn("utaf-label text-sm")
     pre.textContent = opts.preLabel
     const input = document.createElement("input")
-    input.className = "w-24 px-2 py-1 border border-gray-300 rounded-md text-xs"
+    input.className = cn(
+      "w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+    )
     const suf = document.createElement("span")
-    suf.className = "text-sm"
+    suf.className = cn("text-sm")
     const dropdown = document.createElement("div")
-    dropdown.className =
-      "bg-white border border-gray-300 rounded-md shadow px-2 py-1 text-sm"
+    dropdown.className = cn(
+      "rounded-md border border-gray-300 bg-white px-2 py-1 text-sm shadow"
+    )
     dropdown.style.position = "fixed"
     dropdown.style.zIndex = "2147483647"
     dropdown.style.display = "none"
@@ -1422,8 +1451,10 @@
       }
       input.disabled = !state.enabled
       input.className = input.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md opacity-50 cursor-not-allowed text-xs"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
+        ? cn(
+            "w-16 cursor-not-allowed rounded-md border border-gray-300 px-1 py-0.5 text-xs opacity-50"
+          )
+        : cn("w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs")
     }
     function setInputDisplay() {
       if (state.mode === "months") {
@@ -1465,7 +1496,9 @@
     ]
     for (const o of optsList) {
       const item = document.createElement("div")
-      item.className = "px-2 py-1 hover:bg-gray-200 rounded-md cursor-pointer"
+      item.className = cn(
+        "cursor-pointer rounded-md px-2 py-1 hover:bg-gray-200"
+      )
       item.textContent = o.label
       item.addEventListener("click", async () => {
         if (o.months > 0) {
@@ -1525,9 +1558,6 @@
       await opts.onSave(__spreadValues({}, state))
       opts.onChange(__spreadValues({}, state))
     })
-    pre.addEventListener("click", () => {
-      chk.click()
-    })
     function setState(next) {
       state = __spreadValues(__spreadValues({}, state), next)
       chk.checked = state.enabled
@@ -1555,7 +1585,239 @@
       getState: () => __spreadValues({}, state),
     }
   }
-  var cn = (s) => s
+  function normalizeText(value) {
+    return String(value != null ? value : "").trim()
+  }
+  function setDefaultNumber(input, defaultValue) {
+    input.value = String(defaultValue)
+  }
+  function parseNumberOrDefault(raw, defaultValue) {
+    const n = Number(raw)
+    return Number.isFinite(n) ? n : defaultValue
+  }
+  function getNumberInputOrDefault(input, defaultValue) {
+    return parseNumberOrDefault(input.value, defaultValue)
+  }
+  var cn2 = (s) => s
+  function buildAuthorForm(defaultScore) {
+    const idLabel = document.createElement("div")
+    idLabel.className = cn2("utaf-label text-xs")
+    idLabel.textContent = "\u4F5C\u8005ID"
+    const idInput = document.createElement("input")
+    idInput.type = "text"
+    idInput.placeholder = "\u4F5C\u8005ID"
+    idInput.className = cn2(
+      "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
+    )
+    const nameLabel = document.createElement("div")
+    nameLabel.className = cn2("utaf-label text-xs")
+    nameLabel.textContent = "\u4F5C\u8005\u540D"
+    const nameInput = document.createElement("input")
+    nameInput.type = "text"
+    nameInput.placeholder = "\u4F5C\u8005\u540D"
+    nameInput.className = cn2(
+      "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
+    )
+    const scoreLabel = document.createElement("div")
+    scoreLabel.className = cn2("utaf-label text-xs")
+    scoreLabel.textContent = "\u5206\u6570"
+    const scoreInput = document.createElement("input")
+    scoreInput.type = "number"
+    scoreInput.min = "0"
+    scoreInput.step = "1"
+    scoreInput.placeholder = "\u5206\u6570"
+    scoreInput.className = cn2(
+      "h-6 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-2 text-right text-xs"
+    )
+    setDefaultNumber(scoreInput, defaultScore)
+    return {
+      idInput,
+      nameInput,
+      scoreInput,
+      focusables: [idInput, nameInput, scoreInput],
+      initialFocus: idInput,
+      appendTo(container) {
+        container.append(idLabel)
+        container.append(idInput)
+        container.append(nameLabel)
+        container.append(nameInput)
+        container.append(scoreLabel)
+        container.append(scoreInput)
+      },
+      getValues() {
+        const id = normalizeText(idInput.value)
+        const name = normalizeText(nameInput.value)
+        const score = getNumberInputOrDefault(scoreInput, defaultScore)
+        return { id, name, score }
+      },
+    }
+  }
+  function buildKeywordForm(defaultScore) {
+    const kwLabel = document.createElement("div")
+    kwLabel.className = cn2("utaf-label text-xs")
+    kwLabel.textContent = "\u5173\u952E\u5B57"
+    const kwInput = document.createElement("input")
+    kwInput.type = "text"
+    kwInput.placeholder = "\u5173\u952E\u5B57"
+    kwInput.className = cn2(
+      "h-6 w-full rounded-md border border-gray-300 px-2 text-xs"
+    )
+    const kwHint = document.createElement("div")
+    kwHint.className = cn2("text-xs text-gray-500")
+    kwHint.textContent =
+      "\u652F\u6301\u6B63\u5219\u8868\u8FBE\u5F0F\uFF08\u683C\u5F0F\uFF1A/pattern/flags\uFF09"
+    const scLabel = document.createElement("div")
+    scLabel.className = cn2("utaf-label text-xs")
+    scLabel.textContent = "\u5206\u6570"
+    const scInput = document.createElement("input")
+    scInput.type = "number"
+    scInput.min = "0"
+    scInput.step = "1"
+    scInput.placeholder = "\u5206\u6570"
+    scInput.className = cn2(
+      "h-6 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-2 text-right text-xs"
+    )
+    setDefaultNumber(scInput, defaultScore)
+    return {
+      kwInput,
+      scoreInput: scInput,
+      focusables: [kwInput, scInput],
+      initialFocus: kwInput,
+      appendTo(container) {
+        container.append(kwLabel)
+        container.append(kwInput)
+        container.append(kwHint)
+        container.append(scLabel)
+        container.append(scInput)
+      },
+      getValues() {
+        const kw = normalizeText(kwInput.value)
+        const score = getNumberInputOrDefault(scInput, defaultScore)
+        return { kw, score }
+      },
+    }
+  }
+  var cn3 = (s) => s
+  function openPanelModal(opts) {
+    var _a
+    const overlay = document.createElement("div")
+    overlay.className = cn3(
+      "fixed z-50 flex items-center justify-center bg-black/30"
+    )
+    overlay.tabIndex = -1
+    const modal = document.createElement("div")
+    modal.className = cn3(
+      "w-[20rem] space-y-2 rounded-md bg-white p-3 shadow-xl"
+    )
+    modal.setAttribute("role", "dialog")
+    modal.setAttribute("aria-modal", "true")
+    const titleEl = document.createElement("div")
+    titleEl.className = cn3("text-sm font-semibold text-gray-900")
+    titleEl.textContent = opts.title
+    const content = document.createElement("div")
+    content.className = cn3("space-y-2")
+    const actions = document.createElement("div")
+    actions.className = cn3("flex justify-end gap-2 pt-1")
+    const btnCancel = document.createElement("button")
+    btnCancel.className = cn3(
+      "rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
+    )
+    btnCancel.textContent = "\u53D6\u6D88"
+    const btnOk = document.createElement("button")
+    btnOk.className = cn3(
+      "rounded-md bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600"
+    )
+    btnOk.textContent = "\u786E\u8BA4"
+    actions.append(btnCancel)
+    actions.append(btnOk)
+    modal.append(titleEl)
+    modal.append(content)
+    modal.append(actions)
+    overlay.append(modal)
+    const rect = opts.panel.getBoundingClientRect()
+    overlay.style.left = "".concat(rect.left, "px")
+    overlay.style.top = "".concat(rect.top, "px")
+    overlay.style.width = "".concat(rect.width, "px")
+    overlay.style.height = "".concat(rect.height, "px")
+    opts.shadow.append(overlay)
+    const close = () => {
+      try {
+        cleanup()
+      } catch (e) {}
+      overlay.remove()
+    }
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) close()
+    })
+    btnCancel.addEventListener("click", close)
+    const result = opts.build({ modal, content, btnCancel, btnOk, close })
+    const focusables = result.focusables
+    const first = focusables[0] || null
+    const last = focusables.at(-1) || null
+    const initial = (_a = result.initialFocus) != null ? _a : first
+    if (initial) {
+      initial.focus()
+    }
+    const onConfirm = async () => {
+      const r = result.onConfirm()
+      if (r && typeof r.then === "function") {
+        await r
+      }
+      close()
+    }
+    btnOk.addEventListener("click", onConfirm)
+    const handleKeydown = (e) => {
+      if (e.key === "Escape") {
+        e.stopPropagation()
+        e.preventDefault()
+        close()
+        return
+      }
+      if (e.key === "Tab" && focusables.length > 0) {
+        const active = opts.shadow.activeElement || document.activeElement
+        if (!active) return
+        const idx = focusables.indexOf(active)
+        if (e.shiftKey) {
+          if (idx <= 0) {
+            e.preventDefault()
+            if (last) {
+              last.focus()
+            }
+          }
+        } else if (idx === focusables.length - 1) {
+          e.preventDefault()
+          if (first) {
+            first.focus()
+          }
+        }
+      }
+      if (e.key === "Enter") {
+        const target = e.target
+        if (
+          target &&
+          (target.tagName === "INPUT" ||
+            target.tagName === "SELECT" ||
+            target.tagName === "TEXTAREA")
+        ) {
+          e.preventDefault()
+          void onConfirm()
+        }
+      }
+    }
+    const docKeydown = (e) => {
+      handleKeydown(e)
+    }
+    overlay.addEventListener("keydown", handleKeydown, true)
+    opts.shadow.addEventListener("keydown", handleKeydown, true)
+    document.addEventListener("keydown", docKeydown, true)
+    const cleanup = () => {
+      overlay.removeEventListener("keydown", handleKeydown, true)
+      opts.shadow.removeEventListener("keydown", handleKeydown, true)
+      document.removeEventListener("keydown", docKeydown, true)
+    }
+    return { close }
+  }
+  var cn4 = (s) => s
   var host = location.host
   if (false) {
     const runtime =
@@ -1613,11 +1875,20 @@
       totalInstallsLimit: 100,
       dailyInstallsLimit: 10,
       blockedAuthors: [],
-      keywordsEnabled: false,
-      keywordsThreshold: 15,
+      keywordsEnabled: true,
+      scoreThreshold: 15,
       keywordsScope: "both",
       keywordsCaseSensitive: false,
       keywords: [],
+      updatedScore: 20,
+      createdOlderScore: 20,
+      createdRecentScore: 20,
+      totalInstallsScore: 20,
+      dailyInstallsScore: 20,
+      authorsDefaultScore: 20,
+      keywordsDefaultScore: 5,
+      quickEnabled: true,
+      authorsEnabled: true,
     }
     return base
   })()
@@ -1824,11 +2095,13 @@
     createdRecentDays,
     totalLessThan,
     dailyLessThan,
-    blockedIds,
-    keywordsThreshold,
+    authorScores,
+    scoreThreshold,
     keywordsScope,
     keywordsList,
-    keywordsCaseSensitive
+    keywordsCaseSensitive,
+    swapShownHidden,
+    weights
   ) {
     const items = collectScriptItems()
     if (items.length === 0) return { visible: 0, hidden: 0, total: 0 }
@@ -1848,30 +2121,32 @@
       const totalInstalls = metrics.totalInstalls
       const dailyInstalls = metrics.dailyInstalls
       const authorIds = metrics.authorIds || []
-      let hide = false
+      let sum = 0
       if (ud && updatedTs) {
         const ageU = now - updatedTs
-        if (ageU >= ud) hide = true
+        if (ageU >= ud) sum += Math.max(weights.updatedScore, 0)
       }
       if (od && createdTs) {
         const ageC = now - createdTs
-        if (ageC >= od) hide = true
+        if (ageC >= od) sum += Math.max(weights.createdOlderScore, 0)
       }
       if (rd && createdTs) {
         const ageC = now - createdTs
-        if (ageC <= rd) hide = true
+        if (ageC <= rd) sum += Math.max(weights.createdRecentScore, 0)
       }
-      if (ti && totalInstalls !== null && totalInstalls < ti) hide = true
-      if (di && dailyInstalls !== null && dailyInstalls < di) hide = true
-      if (!hide && blockedIds && blockedIds.size > 0) {
+      if (ti && totalInstalls !== null && totalInstalls < ti)
+        sum += Math.max(weights.totalInstallsScore, 0)
+      if (di && dailyInstalls !== null && dailyInstalls < di)
+        sum += Math.max(weights.dailyInstallsScore, 0)
+      if (authorScores && authorScores.size > 0) {
         for (const aid of authorIds) {
-          if (blockedIds.has(String(aid))) {
-            hide = true
-            break
+          const sc = authorScores.get(String(aid))
+          if (Number.isFinite(sc)) {
+            sum += Number(sc)
           }
         }
       }
-      if (!hide && keywordsThreshold && keywordsThreshold > 0) {
+      if (keywordsList && keywordsList.length > 0) {
         const title = String(metrics.titleText || "")
         const desc = String(metrics.descriptionText || "")
         const src =
@@ -1882,29 +2157,24 @@
               : "".concat(title, "\n").concat(desc)
         const baseText = src
         const text = keywordsCaseSensitive ? baseText : baseText.toLowerCase()
-        let sum = 0
+        let kwSum = 0
         for (const k of keywordsList || []) {
           if (!k) continue
           const kw = k.keyword
           if (!kw) continue
           if (k.isRegex && k.regex) {
             if (k.regex.test(baseText)) {
-              sum += k.score
-              if (sum >= keywordsThreshold) {
-                hide = true
-                break
-              }
+              kwSum += k.score
             }
           } else if (text.includes(kw)) {
-            sum += k.score
-            if (sum >= keywordsThreshold) {
-              hide = true
-              break
-            }
+            kwSum += k.score
           }
         }
+        sum += kwSum
       }
-      if (hide) {
+      const hide = sum >= Math.max(scoreThreshold, 0)
+      const finalHide = swapShownHidden ? !hide : hide
+      if (finalHide) {
         item.classList.add("fsfts-hidden")
         hidden += 1
       } else {
@@ -1916,11 +2186,29 @@
   }
   function createDivider() {
     const divider = document.createElement("div")
-    divider.className = cn("my-5 h-[0.5px] bg-gray-200 opacity-70")
+    divider.className = cn4("my-5 h-[0.5px] bg-gray-200 opacity-70")
     return divider
   }
   async function injectGreasyForkFilters() {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n
+    var _a,
+      _b,
+      _c,
+      _d,
+      _e,
+      _f,
+      _g,
+      _h,
+      _i,
+      _j,
+      _k,
+      _l,
+      _m,
+      _n,
+      _o,
+      _p,
+      _q,
+      _r,
+      _s
     if (!isGreasyForkSearchPage()) return
     addGreasyForkFilterStyles()
     const saved = await loadFilterSettings()
@@ -1965,12 +2253,25 @@
     let createdRecentEnabled = Boolean(saved.createdRecentEnabled)
     let totalInstallsEnabled = Boolean(saved.totalInstallsEnabled)
     let dailyInstallsEnabled = Boolean(saved.dailyInstallsEnabled)
-    let blockedAuthors = Array.isArray(saved.blockedAuthors)
-      ? saved.blockedAuthors
-      : DEFAULTS.blockedAuthors
-    let keywordsEnabled = Boolean(saved.keywordsEnabled)
-    let keywordsThreshold = Number(
-      (_j = saved.keywordsThreshold) != null ? _j : DEFAULTS.keywordsThreshold
+    let blockedAuthors = (
+      Array.isArray(saved.blockedAuthors)
+        ? saved.blockedAuthors
+        : DEFAULTS.blockedAuthors
+    ).map((x) => {
+      var _a2
+      return {
+        id: String(x.id),
+        name: String((_a2 = x.name) != null ? _a2 : x.id),
+        enabled: Boolean(x.enabled),
+        score: Number(x.score),
+      }
+    })
+    let keywordsEnabled =
+      saved.keywordsEnabled === void 0
+        ? DEFAULTS.keywordsEnabled
+        : Boolean(saved.keywordsEnabled)
+    let scoreThreshold = Number(
+      (_j = saved.scoreThreshold) != null ? _j : DEFAULTS.scoreThreshold
     )
     let keywordsScope =
       (_k = saved.keywordsScope) != null ? _k : DEFAULTS.keywordsScope
@@ -1979,14 +2280,42 @@
         ? _l
         : DEFAULTS.keywordsCaseSensitive
     )
-    let keywords = Array.isArray(saved.keywords)
-      ? saved.keywords
-      : DEFAULTS.keywords
+    let keywords = (
+      Array.isArray(saved.keywords) ? saved.keywords : DEFAULTS.keywords
+    ).map((k) => ({
+      keyword: String(k.keyword),
+      score: Number(k.score),
+      enabled: Boolean(k.enabled),
+    }))
+    let swapShownHidden = Boolean(saved.swapShownHidden)
+    let quickEnabled =
+      saved.quickEnabled === void 0
+        ? DEFAULTS.quickEnabled
+        : Boolean(saved.quickEnabled)
+    let authorsEnabled =
+      saved.authorsEnabled === void 0
+        ? DEFAULTS.authorsEnabled
+        : Boolean(saved.authorsEnabled)
     let totalInstallsLimit = Number(
       (_m = saved.totalInstallsLimit) != null ? _m : DEFAULTS.totalInstallsLimit
     )
     let dailyInstallsLimit = Number(
       (_n = saved.dailyInstallsLimit) != null ? _n : DEFAULTS.dailyInstallsLimit
+    )
+    let updatedScore = Number(
+      (_o = saved.updatedScore) != null ? _o : DEFAULTS.updatedScore
+    )
+    let createdOlderScore = Number(
+      (_p = saved.createdOlderScore) != null ? _p : DEFAULTS.createdOlderScore
+    )
+    let createdRecentScore = Number(
+      (_q = saved.createdRecentScore) != null ? _q : DEFAULTS.createdRecentScore
+    )
+    let totalInstallsScore = Number(
+      (_r = saved.totalInstallsScore) != null ? _r : DEFAULTS.totalInstallsScore
+    )
+    let dailyInstallsScore = Number(
+      (_s = saved.dailyInstallsScore) != null ? _s : DEFAULTS.dailyInstallsScore
     )
     const globalState = await loadGlobalState()
     const isFirstUse =
@@ -2013,7 +2342,7 @@
     shadow.append(globalCss)
     const panel = document.createElement("div")
     panel.className =
-      "bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans text-sm"
+      "relative bg-white shadow-xl rounded-xl px-3 pb-3 pt-0 pr-5 w-80 overflow-y-auto font-sans text-sm"
     panel.style.maxHeight = "calc(100vh - 24px)"
     panel.style.setProperty("filter", "revert", "important")
     panel.style.setProperty("color-scheme", "light")
@@ -2021,7 +2350,7 @@
     header.className =
       "sticky top-0 bg-white z-10 mb-2 space-y-4 transition-shadow -ml-3 -mr-5 pl-3 pr-5 py-2"
     const title = document.createElement("div")
-    title.className = cn("text-sm font-semibold text-gray-900")
+    title.className = cn4("text-sm font-semibold text-gray-900")
     title.textContent = "UTags Advanced Filter"
     const titleIcon = new DOMParser().parseFromString(
       icon_no_bg_default,
@@ -2032,22 +2361,39 @@
     titleIcon.classList.add("inline-block", "mr-2")
     title.prepend(titleIcon)
     const headerRow1 = document.createElement("div")
-    headerRow1.className = cn("flex items-center")
+    headerRow1.className = cn4("flex items-center")
     headerRow1.append(title)
     const headerRow2 = document.createElement("div")
-    headerRow2.className = cn("flex items-center gap-2")
+    headerRow2.className = cn4("flex items-center gap-2")
     const masterChk = document.createElement("input")
     masterChk.type = "checkbox"
-    masterChk.className = "utaf-checkbox"
+    masterChk.className = "utaf-checkbox hidden"
+    masterChk.id = "utaf-master"
     masterChk.setAttribute("title", "\u53CD\u9009")
     masterChk.setAttribute("aria-label", "\u53CD\u9009")
     const stats = document.createElement("div")
-    stats.className = cn("text-xs text-gray-500")
+    stats.className = cn4("text-xs text-gray-500")
     headerRow2.append(stats)
+    const chkSwap = document.createElement("input")
+    chkSwap.type = "checkbox"
+    chkSwap.className = "utaf-checkbox utaf-toggle"
+    chkSwap.id = "utaf-swap"
+    chkSwap.checked = swapShownHidden
+    chkSwap.setAttribute("title", "\u53CD\u5411\u663E\u793A")
+    chkSwap.setAttribute("aria-label", "\u53CD\u5411\u663E\u793A")
+    const lblSwap = document.createElement("label")
+    lblSwap.className = cn4("utaf-label text-xs")
+    lblSwap.htmlFor = "utaf-swap"
+    lblSwap.textContent = "\u53CD\u5411\u663E\u793A"
+    const swapRight = document.createElement("div")
+    swapRight.className = cn4("ml-auto flex items-center gap-2")
+    swapRight.append(lblSwap)
+    swapRight.append(chkSwap)
+    headerRow2.append(swapRight)
     const headerRight = document.createElement("div")
-    headerRight.className = cn("ml-auto flex items-center gap-2")
+    headerRight.className = cn4("ml-auto flex items-center gap-2")
     const btnCollapse = document.createElement("button")
-    btnCollapse.className = cn(
+    btnCollapse.className = cn4(
       "rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
     )
     btnCollapse.setAttribute("title", "\u6298\u53E0")
@@ -2059,7 +2405,7 @@
     })
     btnCollapse.append(iconCollapse)
     const btnReset = document.createElement("button")
-    btnReset.className = cn(
+    btnReset.className = cn4(
       "utaf-reset-btn rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200"
     )
     btnReset.setAttribute("title", "\u91CD\u7F6E")
@@ -2080,8 +2426,39 @@
     header.append(headerRow2)
     panel.append(header)
     const content = document.createElement("div")
-    content.className = cn("space-y-2")
+    content.className = cn4("space-y-2")
+    const thresholdRow = document.createElement("div")
+    thresholdRow.className = cn4("flex items-center gap-2 text-xs")
+    const lblGlobalThreshold = document.createElement("span")
+    lblGlobalThreshold.className = cn4("utaf-label text-xs")
+    lblGlobalThreshold.textContent = "\u5F53\u5206\u6570 >="
+    const inputScoreThreshold = document.createElement("input")
+    inputScoreThreshold.type = "number"
+    inputScoreThreshold.min = "0"
+    inputScoreThreshold.step = "1"
+    inputScoreThreshold.value = String(scoreThreshold)
+    inputScoreThreshold.className = cn4(
+      "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+    )
+    const lblThresholdAction = document.createElement("span")
+    lblThresholdAction.className = cn4(
+      "utaf-label utaf-threshold-action text-xs"
+    )
+    lblThresholdAction.textContent = swapShownHidden
+      ? "\u65F6\u663E\u793A"
+      : "\u65F6\u9690\u85CF"
+    thresholdRow.append(lblGlobalThreshold)
+    thresholdRow.append(inputScoreThreshold)
+    thresholdRow.append(lblThresholdAction)
+    inputScoreThreshold.addEventListener("change", async () => {
+      let v = Number(inputScoreThreshold.value)
+      if (!Number.isFinite(v) || v < 0) v = 15
+      scoreThreshold = v
+      await saveFilterSettings({ scoreThreshold })
+      applyAndUpdateStatus()
+    })
     panel.append(content)
+    content.append(thresholdRow)
     panel.addEventListener("scroll", () => {
       const scrolled = panel.scrollTop > 0
       if (scrolled) {
@@ -2134,42 +2511,56 @@
       return m * 30
     }
     function applyAndUpdateStatus() {
-      const updatedDays = updatedEnabled
-        ? currentMode === "days"
-          ? currentDays
-          : currentMonths > 0
-            ? monthsToDays2(currentMonths)
-            : 0
-        : 0
-      const olderDays = createdOlderEnabled
-        ? createdOlderMode === "days"
-          ? createdOlderDays
-          : createdOlderMonths > 0
-            ? monthsToDays2(createdOlderMonths)
-            : 0
-        : 0
-      const recentDays = createdRecentEnabled
-        ? createdRecentMode === "days"
-          ? createdRecentDays
-          : createdRecentMonths > 0
-            ? monthsToDays2(createdRecentMonths)
-            : 0
-        : 0
-      const totalLess = totalInstallsEnabled ? totalInstallsLimit : 0
-      const dailyLess = dailyInstallsEnabled ? dailyInstallsLimit : 0
-      const blockedIds = new Set(
-        (blockedAuthors || [])
+      const updatedDays =
+        quickEnabled && updatedEnabled
+          ? currentMode === "days"
+            ? currentDays
+            : currentMonths > 0
+              ? monthsToDays2(currentMonths)
+              : 0
+          : 0
+      const olderDays =
+        quickEnabled && createdOlderEnabled
+          ? createdOlderMode === "days"
+            ? createdOlderDays
+            : createdOlderMonths > 0
+              ? monthsToDays2(createdOlderMonths)
+              : 0
+          : 0
+      const recentDays =
+        quickEnabled && createdRecentEnabled
+          ? createdRecentMode === "days"
+            ? createdRecentDays
+            : createdRecentMonths > 0
+              ? monthsToDays2(createdRecentMonths)
+              : 0
+          : 0
+      const totalLess =
+        quickEnabled && totalInstallsEnabled ? totalInstallsLimit : 0
+      const dailyLess =
+        quickEnabled && dailyInstallsEnabled ? dailyInstallsLimit : 0
+      const authorScores = new Map(
+        (authorsEnabled ? blockedAuthors || [] : [])
           .filter((x) => Boolean(x.enabled))
-          .map((x) => String(x.id))
+          .map((x) => [
+            String(x.id),
+            Number.isFinite(Number(x.score))
+              ? Number(x.score)
+              : DEFAULTS.authorsDefaultScore,
+          ])
       )
-      const kwThreshold = keywordsEnabled ? Math.max(keywordsThreshold, 0) : 0
+      const threshold = Math.max(scoreThreshold, 0)
       const kwScope = keywordsScope
       const caseSensitive = keywordsCaseSensitive
-      const enabledKeywords = (keywords || []).filter((x) => Boolean(x.enabled))
+      const enabledKeywords = keywordsEnabled
+        ? (keywords || []).filter((x) => Boolean(x.enabled))
+        : []
       const map = /* @__PURE__ */ new Map()
       for (const x of enabledKeywords) {
         const raw = String(x.keyword || "").trim()
-        const score = Number.isFinite(Number(x.score)) ? Number(x.score) : 5
+        const score = Number.isFinite(Number(x.score))
+          ? Number(x.score)
+          : DEFAULTS.keywordsDefaultScore
         if (!raw) continue
         if (raw.startsWith("/") && raw.lastIndexOf("/") > 1) {
           const last = raw.lastIndexOf("/")
@@ -2180,7 +2571,6 @@
             if (!hasI && !caseSensitive) flags += "i"
             const re = new RegExp(pattern, flags)
             const key = "/".concat(pattern, "/").concat(flags)
-            console.log("pattern", re, key)
             const prev = map.get(key)
             if (!prev || score > prev.score) {
               map.set(key, {
@@ -2208,11 +2598,19 @@
         recentDays,
         totalLess,
         dailyLess,
-        blockedIds,
-        kwThreshold,
+        authorScores,
+        threshold,
         kwScope,
         kwList,
-        caseSensitive
+        caseSensitive,
+        swapShownHidden,
+        {
+          updatedScore,
+          createdOlderScore,
+          createdRecentScore,
+          totalInstallsScore,
+          dailyInstallsScore,
+        }
       )
       stats.textContent = "\u663E\u793A "
         .concat(counts.visible, " | \u9690\u85CF ")
@@ -2224,6 +2622,8 @@
         totalInstallsEnabled,
         dailyInstallsEnabled,
         keywordsEnabled,
+        quickEnabled,
+        authorsEnabled,
       ]
       const any = states.some(Boolean)
       const all = states.every(Boolean)
@@ -2239,6 +2639,8 @@
         totalInstallsEnabled,
         dailyInstallsEnabled,
         keywordsEnabled,
+        quickEnabled,
+        authorsEnabled,
       ]
       const any = states.some(Boolean)
       const next = !any
@@ -2248,12 +2650,20 @@
       totalInstallsEnabled = next
       dailyInstallsEnabled = next
       keywordsEnabled = next
+      quickEnabled = next
+      authorsEnabled = next
       updatedComp.setEnabledSilently(next)
       olderComp.setEnabledSilently(next)
       recentComp.setEnabledSilently(next)
       chkTotal.checked = next
       chkDaily.checked = next
       chkKeywords.checked = next
+      try {
+        const q = document.querySelector("#utaf-quick-enable")
+        if (q) q.checked = next
+        const a = document.querySelector("#utaf-authors-enable")
+        if (a) a.checked = next
+      } catch (e) {}
       await saveFilterSettings({
         updatedEnabled,
         createdOlderEnabled,
@@ -2261,16 +2671,29 @@
         totalInstallsEnabled,
         dailyInstallsEnabled,
         keywordsEnabled,
+        quickEnabled,
+        authorsEnabled,
       })
       updateControlsDisabled()
+      updateAuthorsControlsDisabled()
       updateKeywordsControlsDisabled()
+      applyAndUpdateStatus()
+    })
+    chkSwap.addEventListener("change", async () => {
+      swapShownHidden = chkSwap.checked
+      if (lblThresholdAction !== void 0) {
+        lblThresholdAction.textContent = swapShownHidden
+          ? "\u65F6\u663E\u793A"
+          : "\u65F6\u9690\u85CF"
+      }
+      await saveFilterSettings({ swapShownHidden })
       applyAndUpdateStatus()
     })
     const updatedComp = createDatePresetInput({
       shadow,
-      preLabel: "\u9690\u85CF",
-      monthsSuffix: "\u672A\u66F4\u65B0",
-      daysSuffix: "\u5929\u672A\u66F4\u65B0",
+      preLabel: "\u66F4\u65B0\u65F6\u95F4 >",
+      monthsSuffix: "",
+      daysSuffix: "",
       initial: {
         enabled: updatedEnabled,
         mode: currentMode,
@@ -2282,6 +2705,7 @@
         currentMode = s.mode
         currentMonths = s.months
         currentDays = s.days
+        updateControlsDisabled()
         applyAndUpdateStatus()
       },
       async onSave(s) {
@@ -2295,9 +2719,9 @@
     })
     const olderComp = createDatePresetInput({
       shadow,
-      preLabel: "\u9690\u85CF",
-      monthsSuffix: "\u4EE5\u524D\u521B\u5EFA",
-      daysSuffix: "\u5929\u4EE5\u524D\u521B\u5EFA",
+      preLabel: "\u521B\u5EFA\u65F6\u95F4 >",
+      monthsSuffix: "",
+      daysSuffix: "",
       initial: {
         enabled: createdOlderEnabled,
         mode: createdOlderMode,
@@ -2309,6 +2733,7 @@
         createdOlderMode = s.mode
         createdOlderMonths = s.months
         createdOlderDays = s.days
+        updateControlsDisabled()
         applyAndUpdateStatus()
       },
       async onSave(s) {
@@ -2322,9 +2747,9 @@
     })
     const recentComp = createDatePresetInput({
       shadow,
-      preLabel: "\u9690\u85CF",
-      monthsSuffix: "\u4EE5\u5185\u521B\u5EFA",
-      daysSuffix: "\u5929\u4EE5\u5185\u521B\u5EFA",
+      preLabel: "\u521B\u5EFA\u65F6\u95F4 <",
+      monthsSuffix: "",
+      daysSuffix: "",
       initial: {
         enabled: createdRecentEnabled,
         mode: createdRecentMode,
@@ -2336,6 +2761,7 @@
         createdRecentMode = s.mode
         createdRecentMonths = s.months
         createdRecentDays = s.days
+        updateControlsDisabled()
         applyAndUpdateStatus()
       },
       async onSave(s) {
@@ -2347,30 +2773,54 @@
         })
       },
     })
+    panel.append(createDivider())
     const quickSection = document.createElement("div")
-    quickSection.className = cn("space-y-2")
+    quickSection.className = cn4("space-y-2")
     const quickTitle = document.createElement("div")
-    quickTitle.className = cn("text-sm font-semibold text-gray-900")
-    quickTitle.textContent = "\u4FBF\u6377\u7B5B\u9009"
+    quickTitle.className = cn4(
+      "flex items-center justify-between text-sm font-semibold text-gray-900"
+    )
+    const quickTitleText = document.createElement("span")
+    quickTitleText.textContent = "\u4FBF\u6377\u7B5B\u9009"
+    const quickRight = document.createElement("div")
+    quickRight.className = cn4("flex items-center gap-2")
+    const lblQuickEnable = document.createElement("label")
+    lblQuickEnable.className = cn4("utaf-label text-xs leading-5")
+    lblQuickEnable.textContent = "\u542F\u7528"
+    const chkQuick = document.createElement("input")
+    chkQuick.type = "checkbox"
+    chkQuick.className = "utaf-checkbox utaf-toggle"
+    chkQuick.checked = quickEnabled
+    chkQuick.id = "utaf-quick-enable"
+    quickRight.append(lblQuickEnable)
+    quickRight.append(chkQuick)
+    quickTitle.append(quickTitleText)
+    quickTitle.append(quickRight)
     quickSection.append(quickTitle)
     const quickTable = document.createElement("table")
-    quickTable.className = cn(
-      "w-full table-fixed rounded-md border border-gray-200 text-sm"
-    )
+    quickTable.className = cn4("w-full table-fixed text-sm")
     const qthd = document.createElement("thead")
     const qthr = document.createElement("tr")
     const qth0 = document.createElement("th")
-    qth0.className = cn(
-      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    qth0.className = cn4(
+      "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     qth0.append(masterChk)
     const qth1 = document.createElement("th")
-    qth1.className = cn(
-      "border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700"
+    qth1.className = cn4(
+      "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700"
     )
-    qth1.textContent = "\u5168\u9009/\u5168\u5173"
-    qthr.append(qth0)
+    const lblMaster = document.createElement("label")
+    lblMaster.textContent = "\u6761\u4EF6"
+    qth1.append(lblMaster)
+    const qth2 = document.createElement("th")
+    qth2.className = cn4(
+      "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
+    )
+    qth2.textContent = "\u5206\u6570"
     qthr.append(qth1)
+    qthr.append(qth2)
+    qthr.append(qth0)
     qthd.append(qthr)
     const qtb = document.createElement("tbody")
     quickTable.append(qthd)
@@ -2378,124 +2828,263 @@
     quickSection.append(quickTable)
     panel.append(quickSection)
     panel.append(createDivider())
-    function appendQuickRow(chkEl, labelEl, inputEl, suffixEl) {
+    let inputUpdatedScore
+    let inputOlderScore
+    let inputRecentScore
+    let inputTotalScore
+    let inputDailyScore
+    let updatedPresetChk
+    let updatedPresetInput
+    let olderPresetChk
+    let olderPresetInput
+    let recentPresetChk
+    let recentPresetInput
+    function appendQuickRow(chkEl, labelEl, inputEl, suffixEl, scoreInputEl) {
       const tr = document.createElement("tr")
+      tr.className = cn4("cursor-pointer hover:bg-gray-50")
       const td0 = document.createElement("td")
-      td0.className = cn(
-        "w-8 border-t border-gray-200 px-2 py-1 text-left align-middle"
+      td0.className = cn4(
+        "utaf-col-user min-w-0 border-b border-gray-100 px-2 py-1 pr-3 align-middle"
       )
       const td1 = document.createElement("td")
-      td1.className = cn("border-t border-gray-200 px-2 py-1 align-middle")
+      td1.className = cn4(
+        "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
+      )
+      const td2 = document.createElement("td")
+      td2.className = cn4(
+        "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle"
+      )
       const wrap = document.createElement("div")
-      wrap.className = cn("flex items-center gap-2")
+      wrap.className = cn4("flex flex-wrap items-center gap-1")
       wrap.append(labelEl)
       wrap.append(inputEl)
       wrap.append(suffixEl)
-      td0.append(chkEl)
-      td1.append(wrap)
+      td0.append(wrap)
+      td1.append(scoreInputEl)
+      td2.append(chkEl)
       tr.append(td0)
       tr.append(td1)
+      tr.append(td2)
+      tr.addEventListener("click", (e) => {
+        const target = e.target
+        if (
+          target.closest("input,button,select,textarea") ||
+          target.closest("svg")
+        )
+          return
+        const box = chkEl
+        box.checked = !box.checked
+        box.dispatchEvent(new Event("change"))
+      })
       qtb.append(tr)
     }
     {
       const [c, p, iEl, s] = Array.from(updatedComp.root.children)
-      appendQuickRow(c, p, iEl, s)
+      updatedPresetChk = c
+      updatedPresetInput = iEl
+      inputUpdatedScore = document.createElement("input")
+      inputUpdatedScore.type = "number"
+      inputUpdatedScore.min = "0"
+      inputUpdatedScore.step = "1"
+      inputUpdatedScore.value = String(updatedScore)
+      inputUpdatedScore.className = cn4(
+        "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+      )
+      inputUpdatedScore.addEventListener("change", async () => {
+        let v = Number(inputUpdatedScore.value)
+        if (!Number.isFinite(v) || v < 0) v = DEFAULTS.updatedScore
+        updatedScore = v
+        await saveFilterSettings({ updatedScore })
+        applyAndUpdateStatus()
+      })
+      appendQuickRow(c, p, iEl, s, inputUpdatedScore)
     }
     {
       const [c, p, iEl, s] = Array.from(olderComp.root.children)
-      appendQuickRow(c, p, iEl, s)
+      olderPresetChk = c
+      olderPresetInput = iEl
+      inputOlderScore = document.createElement("input")
+      inputOlderScore.type = "number"
+      inputOlderScore.min = "0"
+      inputOlderScore.step = "1"
+      inputOlderScore.value = String(createdOlderScore)
+      inputOlderScore.className = cn4(
+        "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+      )
+      inputOlderScore.addEventListener("change", async () => {
+        let v = Number(inputOlderScore.value)
+        if (!Number.isFinite(v) || v < 0) v = DEFAULTS.createdOlderScore
+        createdOlderScore = v
+        await saveFilterSettings({ createdOlderScore })
+        applyAndUpdateStatus()
+      })
+      appendQuickRow(c, p, iEl, s, inputOlderScore)
     }
     {
       const [c, p, iEl, s] = Array.from(recentComp.root.children)
-      appendQuickRow(c, p, iEl, s)
+      recentPresetChk = c
+      recentPresetInput = iEl
+      inputRecentScore = document.createElement("input")
+      inputRecentScore.type = "number"
+      inputRecentScore.min = "0"
+      inputRecentScore.step = "1"
+      inputRecentScore.value = String(createdRecentScore)
+      inputRecentScore.className = cn4(
+        "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+      )
+      inputRecentScore.addEventListener("change", async () => {
+        let v = Number(inputRecentScore.value)
+        if (!Number.isFinite(v) || v < 0) v = DEFAULTS.createdRecentScore
+        createdRecentScore = v
+        await saveFilterSettings({ createdRecentScore })
+        applyAndUpdateStatus()
+      })
+      appendQuickRow(c, p, iEl, s, inputRecentScore)
     }
     const chkTotal = document.createElement("input")
     chkTotal.type = "checkbox"
-    chkTotal.className = "utaf-checkbox"
+    chkTotal.className = "utaf-checkbox utaf-toggle"
+    chkTotal.id = "utaf-total"
     chkTotal.checked = totalInstallsEnabled
-    const lblTotalPre = document.createElement("span")
-    lblTotalPre.className = "utaf-label"
-    lblTotalPre.textContent = "\u9690\u85CF\u603B\u5B89\u88C5\u91CF <"
+    const lblTotalPre = document.createElement("label")
+    lblTotalPre.textContent = "\u603B\u5B89\u88C5\u91CF <"
     const inputTotal = document.createElement("input")
     inputTotal.type = "number"
     inputTotal.min = "0"
     inputTotal.step = "1"
     inputTotal.value = String(totalInstallsLimit)
     inputTotal.className =
-      "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
+      "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
     const lblTotalSuf = document.createElement("span")
     lblTotalSuf.textContent = ""
+    inputTotalScore = document.createElement("input")
+    inputTotalScore.type = "number"
+    inputTotalScore.min = "0"
+    inputTotalScore.step = "1"
+    inputTotalScore.value = String(totalInstallsScore)
+    inputTotalScore.className = cn4(
+      "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+    )
+    inputTotalScore.addEventListener("change", async () => {
+      let v = Number(inputTotalScore.value)
+      if (!Number.isFinite(v) || v < 0) v = DEFAULTS.totalInstallsScore
+      totalInstallsScore = v
+      await saveFilterSettings({ totalInstallsScore })
+      applyAndUpdateStatus()
+    })
     chkTotal.addEventListener("change", async () => {
       totalInstallsEnabled = chkTotal.checked
       await saveFilterSettings({ totalInstallsEnabled })
       applyAndUpdateStatus()
     })
-    lblTotalPre.addEventListener("click", () => {
-      chkTotal.click()
-    })
     inputTotal.addEventListener("change", async () => {
       let v = Number(inputTotal.value)
-      if (!Number.isFinite(v) || v < 0) v = 100
+      if (!Number.isFinite(v) || v < 0) v = DEFAULTS.totalInstallsLimit
       totalInstallsLimit = v
       await saveFilterSettings({ totalInstallsLimit })
       applyAndUpdateStatus()
     })
-    appendQuickRow(chkTotal, lblTotalPre, inputTotal, lblTotalSuf)
+    appendQuickRow(
+      chkTotal,
+      lblTotalPre,
+      inputTotal,
+      lblTotalSuf,
+      inputTotalScore
+    )
     const chkDaily = document.createElement("input")
     chkDaily.type = "checkbox"
-    chkDaily.className = "utaf-checkbox"
+    chkDaily.className = "utaf-checkbox utaf-toggle"
+    chkDaily.id = "utaf-daily"
     chkDaily.checked = dailyInstallsEnabled
-    const lblDailyPre = document.createElement("span")
-    lblDailyPre.className = "utaf-label"
-    lblDailyPre.textContent = "\u9690\u85CF\u65E5\u5B89\u88C5\u91CF <"
+    const lblDailyPre = document.createElement("label")
+    lblDailyPre.textContent = "\u65E5\u5B89\u88C5\u91CF <"
     const inputDaily = document.createElement("input")
     inputDaily.type = "number"
     inputDaily.min = "0"
     inputDaily.step = "1"
     inputDaily.value = String(dailyInstallsLimit)
     inputDaily.className =
-      "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
+      "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
     const lblDailySuf = document.createElement("span")
     lblDailySuf.textContent = ""
+    inputDailyScore = document.createElement("input")
+    inputDailyScore.type = "number"
+    inputDailyScore.min = "0"
+    inputDailyScore.step = "1"
+    inputDailyScore.value = String(dailyInstallsScore)
+    inputDailyScore.className = cn4(
+      "h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+    )
+    inputDailyScore.addEventListener("change", async () => {
+      let v = Number(inputDailyScore.value)
+      if (!Number.isFinite(v) || v < 0) v = DEFAULTS.dailyInstallsScore
+      dailyInstallsScore = v
+      await saveFilterSettings({ dailyInstallsScore })
+      applyAndUpdateStatus()
+    })
     chkDaily.addEventListener("change", async () => {
       dailyInstallsEnabled = chkDaily.checked
       await saveFilterSettings({ dailyInstallsEnabled })
       applyAndUpdateStatus()
     })
-    lblDailyPre.addEventListener("click", () => {
-      chkDaily.click()
-    })
     inputDaily.addEventListener("change", async () => {
       let v = Number(inputDaily.value)
-      if (!Number.isFinite(v) || v < 0) v = 10
+      if (!Number.isFinite(v) || v < 0) v = DEFAULTS.dailyInstallsLimit
       dailyInstallsLimit = v
       await saveFilterSettings({ dailyInstallsLimit })
       applyAndUpdateStatus()
     })
-    appendQuickRow(chkDaily, lblDailyPre, inputDaily, lblDailySuf)
+    appendQuickRow(
+      chkDaily,
+      lblDailyPre,
+      inputDaily,
+      lblDailySuf,
+      inputDailyScore
+    )
     const authorsSection = document.createElement("div")
-    authorsSection.className = cn("space-y-2")
+    authorsSection.className = cn4("space-y-2")
     const usersFilterTitle = document.createElement("div")
-    usersFilterTitle.className = cn("text-sm font-semibold text-gray-900")
-    usersFilterTitle.textContent = "\u9690\u85CF\u6307\u5B9A\u4F5C\u8005"
+    usersFilterTitle.className = cn4(
+      "flex items-center justify-between text-sm font-semibold text-gray-900"
+    )
+    const usersLeft = document.createElement("div")
+    usersLeft.className = cn4("flex items-center gap-2")
+    const usersTitleText = document.createElement("span")
+    usersTitleText.textContent = "\u5305\u542B\u4F5C\u8005"
+    usersLeft.append(usersTitleText)
+    usersFilterTitle.append(usersLeft)
     authorsSection.append(usersFilterTitle)
+    const authorsEnableRow = document.createElement("div")
+    authorsEnableRow.className = cn4("flex items-center gap-2")
+    const lblAuthorsEnable = document.createElement("label")
+    lblAuthorsEnable.className = cn4("utaf-label text-xs leading-5")
+    lblAuthorsEnable.textContent = "\u542F\u7528"
+    const chkAuthorsEnable = document.createElement("input")
+    chkAuthorsEnable.type = "checkbox"
+    chkAuthorsEnable.className = "utaf-checkbox utaf-toggle"
+    chkAuthorsEnable.checked = authorsEnabled
+    chkAuthorsEnable.id = "utaf-authors-enable"
+    authorsEnableRow.append(lblAuthorsEnable)
+    authorsEnableRow.append(chkAuthorsEnable)
     const authorsActions = document.createElement("div")
-    authorsActions.className = cn("flex items-center gap-2")
+    authorsActions.className = cn4("flex items-center gap-2")
     const btnOpenPicker = document.createElement("button")
     btnOpenPicker.className =
       "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200"
     btnOpenPicker.textContent = "\u91C7\u96C6\u9875\u9762\u4F5C\u8005"
     authorsActions.append(btnOpenPicker)
     const authorsPicker = document.createElement("div")
-    authorsPicker.className = cn("space-y-2")
+    authorsPicker.className = cn4("space-y-2")
     authorsPicker.style.display = "none"
     const authorsPickerControls = document.createElement("div")
-    authorsPickerControls.className = cn("flex items-center gap-2")
+    authorsPickerControls.className = cn4("flex items-center gap-2")
     const chkSelectAll = document.createElement("input")
     chkSelectAll.type = "checkbox"
     chkSelectAll.className = "utaf-checkbox"
-    const lblSelectAll = document.createElement("span")
-    lblSelectAll.className = cn("utaf-label text-xs font-semibold")
+    chkSelectAll.id = "utaf-authors-selectall"
+    const lblSelectAll = document.createElement("label")
+    lblSelectAll.className = cn4("utaf-label text-xs font-semibold")
+    lblSelectAll.htmlFor = "utaf-authors-selectall"
     lblSelectAll.textContent = "\u5168\u9009/\u5168\u4E0D\u9009"
     const btnRefreshPicker = document.createElement("button")
     btnRefreshPicker.className =
@@ -2515,12 +3104,12 @@
     authorsPickerControls.append(btnAddSelected)
     authorsPickerControls.append(btnClosePicker)
     const authorsPickerList = document.createElement("div")
-    authorsPickerList.className = cn("space-y-1")
+    authorsPickerList.className = cn4("space-y-1")
     authorsPicker.append(authorsPickerControls)
     authorsPicker.append(authorsPickerList)
     const authorsMasterChk = document.createElement("input")
     authorsMasterChk.type = "checkbox"
-    authorsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle"
+    authorsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle hidden"
     function updateAuthorsMasterChk() {
       const list = Array.isArray(blockedAuthors) ? blockedAuthors : []
       const total = list.length
@@ -2542,35 +3131,27 @@
       updateAuthorsMasterChk()
     })
     const authorsTable = document.createElement("table")
-    authorsTable.className = cn(
-      "w-full table-fixed rounded-md border border-gray-200"
-    )
+    authorsTable.className = cn4("w-full table-fixed")
     const thd = document.createElement("thead")
     const thr = document.createElement("tr")
-    const th0 = document.createElement("th")
-    th0.className = cn(
-      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
-    )
-    th0.append(authorsMasterChk)
     const th1 = document.createElement("th")
-    th1.className = cn(
-      "w-20 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    th1.className = cn4(
+      "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
     )
-    th1.textContent = "\u7528\u6237ID"
-    const th2 = document.createElement("th")
-    th2.className = cn(
-      "w-24 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
-    )
-    th2.textContent = "\u7528\u6237\u540D"
+    th1.textContent = "\u7528\u6237"
     const th3 = document.createElement("th")
-    th3.className = cn(
-      "w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    th3.className = cn4(
+      "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
-    th3.textContent = "\u64CD\u4F5C"
-    thr.append(th0)
+    th3.textContent = "\u5206\u6570"
+    const th4 = document.createElement("th")
+    th4.className = cn4(
+      "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
+    )
+    th4.append(authorsMasterChk)
     thr.append(th1)
-    thr.append(th2)
     thr.append(th3)
+    thr.append(th4)
     thd.append(thr)
     const tb = document.createElement("tbody")
     authorsTable.append(thd)
@@ -2579,6 +3160,134 @@
     authorsSection.append(authorsActions)
     authorsSection.append(authorsPicker)
     panel.append(authorsSection)
+    let auEventsBound = false
+    function bindAuthorRowEvents() {
+      if (auEventsBound) return
+      auEventsBound = true
+      tb.addEventListener("click", async (e) => {
+        if (!authorsEnabled) return
+        const t = e.target
+        const del = t.closest(".utaf-au-delete")
+        if (del) {
+          const row2 = t.closest(".utaf-au-row")
+          if (!row2) return
+          const idx = Number(row2.dataset.auIndex || "-1")
+          if (idx < 0) return
+          blockedAuthors.splice(idx, 1)
+          await saveFilterSettings({ blockedAuthors })
+          renderAuthorsTable()
+          applyAndUpdateStatus()
+          updateAuthorsMasterChk()
+          return
+        }
+        const labelId = t.closest(".utaf-au-id-label")
+        if (labelId) {
+          const row2 = labelId.closest(".utaf-au-row")
+          const input = row2.querySelector(".utaf-au-id-input")
+          labelId.style.display = "none"
+          input.classList.remove("hidden")
+          input.focus()
+          input.select()
+          return
+        }
+        const labelName = t.closest(".utaf-au-name-label")
+        if (labelName) {
+          const row2 = labelName.closest(".utaf-au-row")
+          const input = row2.querySelector(".utaf-au-name-input")
+          labelName.style.display = "none"
+          input.classList.remove("hidden")
+          input.focus()
+          input.select()
+          return
+        }
+        const row = t.closest(".utaf-au-row")
+        if (
+          row &&
+          !authorsEditing &&
+          !t.closest("input,button,select,textarea,svg")
+        ) {
+          const chk = row.querySelector(".utaf-au-toggle")
+          chk.checked = !chk.checked
+          chk.dispatchEvent(new Event("change"))
+        }
+      })
+      tb.addEventListener("change", async (e) => {
+        if (!authorsEnabled) return
+        const t = e.target
+        const row = t.closest(".utaf-au-row")
+        if (!row) return
+        const idx = Number(row.dataset.auIndex || "-1")
+        if (idx < 0) return
+        const a = blockedAuthors[idx]
+        const input = t
+        if (input.classList.contains("utaf-au-toggle")) {
+          a.enabled = input.checked
+          await saveFilterSettings({ blockedAuthors })
+          applyAndUpdateStatus()
+          updateAuthorsMasterChk()
+          return
+        }
+        if (input.classList.contains("utaf-au-score")) {
+          a.score = getNumberInputOrDefault(input, DEFAULTS.authorsDefaultScore)
+          await saveFilterSettings({ blockedAuthors })
+          applyAndUpdateStatus()
+        }
+      })
+      tb.addEventListener(
+        "blur",
+        async (e) => {
+          if (!authorsEnabled) return
+          const t = e.target
+          const idInput = t.closest(".utaf-au-id-input")
+          const nameInput = t.closest(".utaf-au-name-input")
+          if (idInput) {
+            const row = idInput.closest(".utaf-au-row")
+            const idx = Number(row.dataset.auIndex || "-1")
+            if (idx < 0) return
+            const v = normalizeText(idInput.value)
+            if (v) {
+              blockedAuthors[idx].id = v
+              await saveFilterSettings({ blockedAuthors })
+              applyAndUpdateStatus()
+            } else {
+              idInput.value = String(blockedAuthors[idx].id)
+            }
+            idInput.classList.add("hidden")
+            const label = row.querySelector(".utaf-au-id-label")
+            label.textContent = String(blockedAuthors[idx].id)
+            label.title = String(blockedAuthors[idx].id)
+            label.style.display = "block"
+            return
+          }
+          if (nameInput) {
+            const row = nameInput.closest(".utaf-au-row")
+            const idx = Number(row.dataset.auIndex || "-1")
+            if (idx < 0) return
+            blockedAuthors[idx].name =
+              normalizeText(nameInput.value) || blockedAuthors[idx].id
+            await saveFilterSettings({ blockedAuthors })
+            nameInput.classList.add("hidden")
+            const label = row.querySelector(".utaf-au-name-label")
+            label.textContent = String(blockedAuthors[idx].name)
+            label.title = String(blockedAuthors[idx].name)
+            label.style.display = "block"
+          }
+        },
+        true
+      )
+      tb.addEventListener("keydown", (e) => {
+        if (!authorsEnabled) return
+        if (e.key === "Enter") {
+          const t = e.target
+          const input = t.closest(".utaf-au-id-input, .utaf-au-name-input")
+          if (input) {
+            e.preventDefault()
+            input.blur()
+          }
+        }
+      })
+    }
+    bindAuthorRowEvents()
     function collectPageAuthorsMap() {
       const map = /* @__PURE__ */ new Map()
       const items = collectScriptItems()
@@ -2603,7 +3312,7 @@
       const map = collectPageAuthorsMap()
       for (const [id, name] of map) {
         const row = document.createElement("div")
-        row.className = cn("flex items-center gap-2")
+        row.className = cn4("flex items-center gap-2")
         const chk = document.createElement("input")
         chk.type = "checkbox"
         chk.className = "utaf-checkbox"
@@ -2614,7 +3323,7 @@
           chk.disabled = true
         }
         const lbl = document.createElement("span")
-        lbl.className = cn("utaf-label text-sm text-gray-800")
+        lbl.className = cn4("utaf-label text-sm text-gray-800")
         lbl.textContent = "".concat(name, " (").concat(id, ")")
         row.append(chk)
         row.append(lbl)
@@ -2627,6 +3336,7 @@
       }
     }
     btnOpenPicker.addEventListener("click", () => {
+      chkSelectAll.checked = false
       populateAuthorsPicker()
       authorsPicker.style.display = "block"
     })
@@ -2657,8 +3367,16 @@
         if (exists) {
           exists.name = exists.name || name
           exists.enabled = true
+          exists.score = Number.isFinite(Number(exists.score))
+            ? Number(exists.score)
+            : DEFAULTS.authorsDefaultScore
         } else {
-          blockedAuthors.push({ id, name, enabled: true })
+          blockedAuthors.push({
+            id,
+            name,
+            enabled: true,
+            score: DEFAULTS.authorsDefaultScore,
+          })
           changed = true
         }
       }
@@ -2670,232 +3388,251 @@
       }
       authorsPicker.style.display = "none"
     })
+    let authorsEditing = false
+    const btnAuthorsEdit = document.createElement("button")
+    btnAuthorsEdit.className = cn4(
+      "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+    )
+    btnAuthorsEdit.textContent = ""
+    btnAuthorsEdit.append(
+      createElement2(Pencil, { width: 12, height: 12, "stroke-width": 2 })
+    )
+    usersLeft.append(btnAuthorsEdit)
+    usersFilterTitle.append(authorsEnableRow)
+    btnAuthorsEdit.addEventListener("click", () => {
+      authorsEditing = !authorsEditing
+      btnAuthorsEdit.textContent = ""
+      btnAuthorsEdit.replaceChildren(
+        createElement2(authorsEditing ? Check : Pencil, {
+          width: 12,
+          height: 12,
+          "stroke-width": 2,
+        })
+      )
+      renderAuthorsTable()
+    })
     function renderAuthorsTable() {
       tb.textContent = ""
-      for (const a of blockedAuthors) {
+      for (const [i3, a] of blockedAuthors.entries()) {
         const tr = document.createElement("tr")
-        const td0 = document.createElement("td")
-        td0.className = cn(
-          "border-t border-gray-200 px-2 py-1 text-left align-middle"
+        tr.className = cn4("utaf-au-row cursor-pointer hover:bg-gray-50")
+        tr.dataset.auIndex = String(i3)
+        const tdUser = document.createElement("td")
+        tdUser.className = cn4(
+          "utaf-col-user border-b border-gray-100 px-2 py-1 pr-3 align-middle"
         )
-        const td1 = document.createElement("td")
-        td1.className = cn(
-          "w-20 border-t border-gray-200 px-2 py-1 align-middle"
+        const tdScore = document.createElement("td")
+        tdScore.className = cn4(
+          "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
         )
-        const td2 = document.createElement("td")
-        td2.className = cn(
-          "w-24 border-t border-gray-200 px-2 py-1 align-middle"
-        )
-        const td3 = document.createElement("td")
-        td3.className = cn(
-          "border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
+        const tdPick = document.createElement("td")
+        tdPick.className = cn4(
+          "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle whitespace-nowrap"
         )
         const chk = document.createElement("input")
         chk.type = "checkbox"
-        chk.className = "utaf-checkbox h-4 w-4 align-middle"
+        chk.className = "utaf-au-toggle utaf-checkbox utaf-toggle"
         chk.checked = Boolean(a.enabled)
-        chk.addEventListener("change", async () => {
-          a.enabled = chk.checked
-          await saveFilterSettings({ blockedAuthors })
-          applyAndUpdateStatus()
-        })
-        td0.append(chk)
+        chk.disabled = !authorsEnabled
         const idLabel = document.createElement("span")
-        idLabel.className = cn(
-          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        idLabel.className = cn4(
+          "utaf-au-id-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         idLabel.textContent = String(a.id)
         idLabel.title = String(a.id)
         const idInput = document.createElement("input")
         idInput.type = "text"
-        idInput.className = cn(
-          "hidden h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        idInput.className = cn4(
+          "utaf-au-id-input hidden h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         idInput.value = String(a.id)
-        const commitId = async () => {
-          const v = String(idInput.value || "").trim()
-          if (v) {
-            a.id = v
-            await saveFilterSettings({ blockedAuthors })
-            applyAndUpdateStatus()
-          } else {
-            idInput.value = String(a.id)
-          }
-          idInput.classList.add("hidden")
-          idLabel.textContent = String(a.id)
-          idLabel.title = String(a.id)
-          idLabel.style.display = "block"
-        }
-        idLabel.addEventListener("click", () => {
-          idLabel.style.display = "none"
-          idInput.classList.remove("hidden")
-          idInput.focus()
-          idInput.select()
-        })
-        idInput.addEventListener("blur", commitId)
-        idInput.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            void commitId()
-          }
-        })
-        td1.append(idLabel)
-        td1.append(idInput)
+        idInput.disabled = !authorsEnabled
+        const userWrap = document.createElement("div")
+        userWrap.className = cn4("flex min-w-0 flex-col")
+        userWrap.append(idLabel)
+        userWrap.append(idInput)
         const nameLabel = document.createElement("span")
-        nameLabel.className = cn(
-          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        nameLabel.className = cn4(
+          "utaf-au-name-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         nameLabel.textContent = String(a.name || "")
         nameLabel.title = String(a.name || "")
         const nameInput = document.createElement("input")
         nameInput.type = "text"
-        nameInput.className = cn(
-          "hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        nameInput.className = cn4(
+          "utaf-au-name-input hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         nameInput.value = String(a.name || "")
-        const commitName = async () => {
-          a.name = String(nameInput.value || "").trim() || a.id
-          await saveFilterSettings({ blockedAuthors })
-          nameInput.classList.add("hidden")
-          nameLabel.textContent = String(a.name)
-          nameLabel.title = String(a.name)
-          nameLabel.style.display = "block"
-        }
-        nameLabel.addEventListener("click", () => {
-          nameLabel.style.display = "none"
-          nameInput.classList.remove("hidden")
-          nameInput.focus()
-          nameInput.select()
-        })
-        nameInput.addEventListener("blur", commitName)
-        nameInput.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            void commitName()
-          }
-        })
-        td2.append(nameLabel)
-        td2.append(nameInput)
-        const btnDel = document.createElement("button")
-        btnDel.className = cn(
-          "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+        nameInput.disabled = !authorsEnabled
+        userWrap.append(nameLabel)
+        userWrap.append(nameInput)
+        tdUser.append(userWrap)
+        const scoreInput = document.createElement("input")
+        scoreInput.type = "number"
+        scoreInput.step = "1"
+        scoreInput.value = String(
+          parseNumberOrDefault(a.score, DEFAULTS.authorsDefaultScore)
         )
-        btnDel.textContent = "\u5220\u9664"
-        btnDel.addEventListener("click", async () => {
-          blockedAuthors = blockedAuthors.filter(
-            (x) => String(x.id) !== String(a.id)
-          )
-          await saveFilterSettings({ blockedAuthors })
-          renderAuthorsTable()
-          applyAndUpdateStatus()
-        })
-        td3.append(btnDel)
-        tr.append(td0)
-        tr.append(td1)
-        tr.append(td2)
-        tr.append(td3)
+        scoreInput.className = cn4(
+          "utaf-au-score h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
+        )
+        scoreInput.disabled = !authorsEnabled
+        tdScore.append(scoreInput)
+        const btnDel = document.createElement("button")
+        btnDel.className = cn4("utaf-au-delete utaf-btn-circle utaf-btn-danger")
+        btnDel.title = "\u5220\u9664"
+        btnDel.setAttribute("aria-label", "\u5220\u9664")
+        btnDel.textContent = ""
+        btnDel.append(
+          createElement2(Trash2, { width: 12, height: 12, "stroke-width": 2 })
+        )
+        btnDel.disabled = !authorsEnabled
+        chk.classList.toggle("hidden", authorsEditing)
+        btnDel.classList.toggle("hidden", !authorsEditing)
+        btnDel.style.display = authorsEditing ? "inline-flex" : "none"
+        idLabel.classList.toggle("cursor-not-allowed", !authorsEnabled)
+        nameLabel.classList.toggle("cursor-not-allowed", !authorsEnabled)
+        scoreInput.classList.toggle("opacity-50", !authorsEnabled)
+        scoreInput.classList.toggle("cursor-not-allowed", !authorsEnabled)
+        btnDel.classList.toggle("opacity-50", !authorsEnabled)
+        btnDel.classList.toggle("cursor-not-allowed", !authorsEnabled)
+        tdPick.append(chk)
+        tdPick.append(btnDel)
+        tr.append(tdUser)
+        tr.append(tdScore)
+        tr.append(tdPick)
         tb.append(tr)
       }
-      const addTr = document.createElement("tr")
-      const addTd0 = document.createElement("td")
-      addTd0.className = cn("border-t border-gray-200 px-2 py-1 text-center")
-      const addPlusBtn = document.createElement("button")
-      addPlusBtn.type = "button"
-      addPlusBtn.textContent = "+"
-      addPlusBtn.className = cn(
-        "flex h-4 w-4 items-center justify-center rounded bg-gray-100 text-xs text-gray-700 hover:bg-gray-200"
-      )
-      addTd0.append(addPlusBtn)
-      const addTd1 = document.createElement("td")
-      addTd1.className = cn(
-        "w-20 border-t border-gray-200 px-2 py-1 align-middle"
-      )
-      const addIdInput = document.createElement("input")
-      addIdInput.type = "text"
-      addIdInput.placeholder = "\u4F5C\u8005ID"
-      addIdInput.className = cn(
-        "h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
-      )
-      const addTd2 = document.createElement("td")
-      addTd2.className = cn(
-        "w-24 border-t border-gray-200 px-2 py-1 align-middle"
-      )
-      const addNameInput = document.createElement("input")
-      addNameInput.type = "text"
-      addNameInput.placeholder = "\u4F5C\u8005\u540D"
-      addNameInput.className = cn(
-        "h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
-      )
-      const doAdd = async () => {
-        const id = String(addIdInput.value || "").trim()
-        const name = String(addNameInput.value || "").trim()
-        if (!id) return
-        const exists = blockedAuthors.find((x) => String(x.id) === id)
-        if (exists) {
-          exists.name = name || exists.name
-          exists.enabled = true
-        } else {
-          blockedAuthors.push({ id, name: name || id, enabled: true })
-        }
-        addIdInput.value = ""
-        addNameInput.value = ""
-        await saveFilterSettings({ blockedAuthors })
-        renderAuthorsTable()
-        applyAndUpdateStatus()
-      }
-      const addBtn = document.createElement("button")
-      addBtn.className =
-        "px-1 py-0.5 rounded-md bg-gray-100 text-gray-700 text-xs hover:bg-gray-200 whitespace-nowrap inline-flex items-center justify-center shrink-0"
-      addBtn.textContent = "\u6DFB\u52A0"
-      addBtn.addEventListener("click", doAdd)
-      addPlusBtn.addEventListener("click", doAdd)
-      addIdInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          void doAdd()
-        }
-      })
-      addNameInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          void doAdd()
-        }
-      })
-      addTd1.append(addIdInput)
-      addTd2.append(addNameInput)
-      const addTd3 = document.createElement("td")
-      addTd3.className =
-        "px-2 py-1 border-t border-gray-200 whitespace-nowrap align-middle"
-      addTd3.append(addBtn)
-      addTr.append(addTd0)
-      addTr.append(addTd1)
-      addTr.append(addTd2)
-      addTr.append(addTd3)
-      tb.append(addTr)
       updateAuthorsMasterChk()
     }
+    const auAddBtn = document.createElement("button")
+    auAddBtn.className =
+      "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+    auAddBtn.textContent = ""
+    auAddBtn.append(
+      createElement2(Plus, { width: 12, height: 12, "stroke-width": 2 })
+    )
+    function openAuthorsModal() {
+      openPanelModal({
+        shadow,
+        panel,
+        title: "\u65B0\u589E\u4F5C\u8005",
+        build({ content: content2, btnCancel, btnOk }) {
+          const form = buildAuthorForm(DEFAULTS.authorsDefaultScore)
+          form.appendTo(content2)
+          const onConfirm = async () => {
+            const { id, name, score } = form.getValues()
+            if (!id) return
+            const exists = blockedAuthors.find((x) => String(x.id) === id)
+            if (exists) {
+              exists.name = name || exists.name
+              exists.enabled = true
+              exists.score = score
+            } else {
+              blockedAuthors.push({
+                id,
+                name: name || id,
+                enabled: true,
+                score,
+              })
+            }
+            await saveFilterSettings({ blockedAuthors })
+            renderAuthorsTable()
+            const lastRow = tb.lastElementChild
+            if (lastRow)
+              lastRow.scrollIntoView({ behavior: "smooth", block: "nearest" })
+            applyAndUpdateStatus()
+          }
+          return {
+            focusables: [...form.focusables, btnCancel, btnOk],
+            initialFocus: form.initialFocus,
+            onConfirm,
+          }
+        },
+      })
+    }
+    auAddBtn.addEventListener("click", openAuthorsModal)
+    btnAuthorsEdit.before(auAddBtn)
     renderAuthorsTable()
+    function updateAuthorsControlsDisabled() {
+      const disabled = !authorsEnabled
+      btnOpenPicker.disabled = disabled
+      btnRefreshPicker.disabled = disabled
+      btnAddSelected.disabled = disabled
+      btnClosePicker.disabled = disabled
+      btnAuthorsEdit.disabled = disabled
+      btnAuthorsEdit.className = disabled
+        ? cn4(
+            "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
+          )
+        : cn4(
+            "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+          )
+      auAddBtn.className = disabled
+        ? cn4(
+            "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
+          )
+        : cn4(
+            "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+          )
+      authorsTable.className = disabled
+        ? cn4("pointer-events-none w-full table-fixed opacity-50")
+        : cn4("w-full table-fixed")
+      auAddBtn.disabled = disabled
+      btnOpenPicker.className = disabled
+        ? cn4(
+            "inline-flex shrink-0 cursor-not-allowed items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 opacity-50"
+          )
+        : cn4(
+            "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+          )
+    }
+    updateAuthorsControlsDisabled()
     panel.append(createDivider())
     const keywordsSection = document.createElement("div")
-    keywordsSection.className = cn("space-y-2")
+    keywordsSection.className = cn4("space-y-2")
     const keywordsTitle = document.createElement("div")
-    keywordsTitle.className = cn("text-sm font-semibold text-gray-900")
-    keywordsTitle.textContent = "\u5173\u952E\u5B57\u8FC7\u6EE4"
+    keywordsTitle.className = cn4(
+      "flex items-center justify-between text-sm font-semibold text-gray-900"
+    )
+    const keywordsLeft = document.createElement("div")
+    keywordsLeft.className = cn4("flex items-center gap-2")
+    const keywordsTitleText = document.createElement("span")
+    keywordsTitleText.textContent = "\u5305\u542B\u5173\u952E\u5B57"
+    keywordsLeft.append(keywordsTitleText)
+    keywordsTitle.append(keywordsLeft)
     keywordsSection.append(keywordsTitle)
+    let keywordsEditing = false
+    const btnKeywordsEdit = document.createElement("button")
+    btnKeywordsEdit.className = cn4(
+      "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+    )
+    btnKeywordsEdit.textContent = ""
+    btnKeywordsEdit.append(
+      createElement2(Pencil, { width: 12, height: 12, "stroke-width": 2 })
+    )
+    keywordsLeft.append(btnKeywordsEdit)
+    btnKeywordsEdit.addEventListener("click", () => {
+      keywordsEditing = !keywordsEditing
+      btnKeywordsEdit.textContent = ""
+      btnKeywordsEdit.replaceChildren(
+        createElement2(keywordsEditing ? Check : Pencil, {
+          width: 12,
+          height: 12,
+          "stroke-width": 2,
+        })
+      )
+      renderKeywordsTable()
+    })
     const keywordsControls = document.createElement("div")
-    keywordsControls.className = cn("space-y-2")
+    keywordsControls.className = cn4("space-y-2")
     const chkKeywords = document.createElement("input")
     chkKeywords.type = "checkbox"
-    chkKeywords.className = "utaf-checkbox"
+    chkKeywords.className = "utaf-checkbox utaf-toggle"
     chkKeywords.checked = keywordsEnabled
-    const lblThresholdPre = document.createElement("span")
-    lblThresholdPre.className = cn("utaf-label text-xs leading-5")
-    lblThresholdPre.textContent = "\u5F53\u5206\u6570 \u2265"
-    const inputKwThreshold = document.createElement("input")
-    inputKwThreshold.type = "number"
-    inputKwThreshold.min = "0"
-    inputKwThreshold.step = "1"
-    inputKwThreshold.value = String(keywordsThreshold)
-    inputKwThreshold.className =
-      "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+    chkKeywords.id = "utaf-keywords-enable"
     const lblScopePre = document.createElement("span")
-    lblScopePre.className = cn("utaf-label text-xs leading-5")
+    lblScopePre.className = cn4("utaf-label text-xs leading-5")
     lblScopePre.textContent = "\u8303\u56F4"
     const selectScope = document.createElement("select")
     selectScope.className =
@@ -2914,43 +3651,39 @@
     selectScope.append(optBoth)
     selectScope.value = keywordsScope
     const rowEnable = document.createElement("div")
-    rowEnable.className = cn("flex items-center gap-2")
-    const lblEnable = document.createElement("span")
-    lblEnable.className = cn("utaf-label text-xs leading-5")
+    rowEnable.className = cn4("flex items-center gap-2")
+    const lblEnable = document.createElement("label")
+    lblEnable.className = cn4("utaf-label text-xs leading-5")
+    lblEnable.htmlFor = "utaf-keywords-enable"
     lblEnable.textContent = "\u542F\u7528"
     rowEnable.append(lblEnable)
     rowEnable.append(chkKeywords)
-    const rowThreshold = document.createElement("div")
-    rowThreshold.className = cn("flex items-center gap-2")
-    rowThreshold.append(lblThresholdPre)
-    rowThreshold.append(inputKwThreshold)
     const rowScope = document.createElement("div")
-    rowScope.className = cn("flex items-center gap-2")
+    rowScope.className = cn4("flex items-center justify-end gap-2")
     rowScope.append(lblScopePre)
     rowScope.append(selectScope)
     const chkCaseSensitive = document.createElement("input")
     chkCaseSensitive.type = "checkbox"
-    chkCaseSensitive.className = "utaf-checkbox"
+    chkCaseSensitive.className = "utaf-checkbox utaf-toggle"
     chkCaseSensitive.checked = keywordsCaseSensitive
-    const lblCaseSensitive = document.createElement("span")
-    lblCaseSensitive.className = cn("utaf-label text-xs leading-5")
+    chkCaseSensitive.id = "utaf-keywords-case"
+    const lblCaseSensitive = document.createElement("label")
+    lblCaseSensitive.className = cn4("utaf-label text-xs leading-5")
+    lblCaseSensitive.htmlFor = "utaf-keywords-case"
     lblCaseSensitive.textContent = "\u5927\u5C0F\u5199\u654F\u611F"
     const rowCase = document.createElement("div")
-    rowCase.className = cn("flex items-center gap-2")
+    rowCase.className = cn4("flex items-center justify-end gap-2")
     rowCase.append(lblCaseSensitive)
     rowCase.append(chkCaseSensitive)
-    keywordsControls.append(rowEnable)
-    keywordsControls.append(rowThreshold)
+    keywordsTitle.append(rowEnable)
     keywordsControls.append(rowScope)
     keywordsControls.append(rowCase)
     keywordsSection.append(keywordsControls)
     const keywordsTable = document.createElement("table")
-    keywordsTable.className = cn(
-      "w-full table-fixed rounded-md border border-gray-200"
-    )
+    keywordsTable.className = cn4("w-full table-fixed")
     const keywordsMasterChk = document.createElement("input")
     keywordsMasterChk.type = "checkbox"
-    keywordsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle"
+    keywordsMasterChk.className = "utaf-checkbox h-4 w-4 align-middle hidden"
     function updateKeywordsMasterChk() {
       const list = Array.isArray(keywords) ? keywords : []
       const total = list.length
@@ -2971,27 +3704,21 @@
     })
     const kwThd = document.createElement("thead")
     const kwThr = document.createElement("tr")
-    const kwTh0 = document.createElement("th")
-    kwTh0.className = cn(
-      "w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
-    )
-    kwTh0.append(keywordsMasterChk)
     const kwTh1 = document.createElement("th")
-    kwTh1.className = cn(
-      "min-w-0 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    kwTh1.className = cn4(
+      "utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
     )
     kwTh1.textContent = "\u5173\u952E\u5B57"
     const kwTh2 = document.createElement("th")
-    kwTh2.className = cn(
-      "w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    kwTh2.className = cn4(
+      "utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
     kwTh2.textContent = "\u5206\u6570"
     const kwTh3 = document.createElement("th")
-    kwTh3.className = cn(
-      "w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700"
+    kwTh3.className = cn4(
+      "utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700"
     )
-    kwTh3.textContent = "\u64CD\u4F5C"
-    kwThr.append(kwTh0)
+    kwTh3.append(keywordsMasterChk)
     kwThr.append(kwTh1)
     kwThr.append(kwTh2)
     kwThr.append(kwTh3)
@@ -3001,77 +3728,149 @@
     keywordsTable.append(kwTb)
     keywordsSection.append(keywordsTable)
     panel.append(keywordsSection)
-    function renderKeywordsTable() {
-      kwTb.textContent = ""
-      for (const k of keywords) {
-        const tr = document.createElement("tr")
-        const td0 = document.createElement("td")
-        td0.className = cn(
-          "border-t border-gray-200 px-2 py-1 text-left align-middle"
-        )
-        const td1 = document.createElement("td")
-        td1.className = cn(
-          "min-w-0 border-t border-gray-200 px-2 py-1 align-middle"
-        )
-        const td2 = document.createElement("td")
-        td2.className = cn(
-          "w-14 border-t border-gray-200 px-2 py-1 align-middle"
-        )
-        const td3 = document.createElement("td")
-        td3.className = cn(
-          "w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
-        )
-        const rowWrap = document.createElement("div")
-        rowWrap.className = cn("flex min-w-0 items-center gap-2")
-        const chk = document.createElement("input")
-        chk.type = "checkbox"
-        chk.className = "utaf-checkbox h-4 w-4 align-middle"
-        chk.checked = Boolean(k.enabled)
-        chk.addEventListener("change", async () => {
-          k.enabled = chk.checked
+    let kwEventsBound = false
+    function bindKeywordRowEvents() {
+      if (kwEventsBound) return
+      kwEventsBound = true
+      kwTb.addEventListener("click", async (e) => {
+        if (!keywordsEnabled) return
+        const t = e.target
+        const del = t.closest(".utaf-kw-delete")
+        if (del) {
+          const row2 = t.closest(".utaf-kw-row")
+          if (!row2) return
+          const idx = Number(row2.dataset.kwIndex || "-1")
+          if (idx < 0) return
+          keywords.splice(idx, 1)
+          await saveFilterSettings({ keywords })
+          renderKeywordsTable()
+          applyAndUpdateStatus()
+          updateKeywordsMasterChk()
+          return
+        }
+        const label = t.closest(".utaf-kw-label")
+        if (label) {
+          const row2 = label.closest(".utaf-kw-row")
+          const input = row2.querySelector(".utaf-kw-input")
+          label.style.display = "none"
+          input.classList.remove("hidden")
+          input.focus()
+          input.select()
+          return
+        }
+        const row = t.closest(".utaf-kw-row")
+        if (
+          row &&
+          !keywordsEditing &&
+          !t.closest("input,button,select,textarea,svg")
+        ) {
+          const chk = row.querySelector(".utaf-kw-toggle")
+          chk.checked = !chk.checked
+          chk.dispatchEvent(new Event("change"))
+        }
+      })
+      kwTb.addEventListener("change", async (e) => {
+        if (!keywordsEnabled) return
+        const t = e.target
+        const row = t.closest(".utaf-kw-row")
+        if (!row) return
+        const idx = Number(row.dataset.kwIndex || "-1")
+        if (idx < 0) return
+        const k = keywords[idx]
+        const input = t
+        if (input.classList.contains("utaf-kw-toggle")) {
+          k.enabled = input.checked
           await saveFilterSettings({ keywords })
           applyAndUpdateStatus()
           updateKeywordsMasterChk()
-        })
-        td0.append(chk)
+          return
+        }
+        if (input.classList.contains("utaf-kw-score")) {
+          k.score = getNumberInputOrDefault(
+            input,
+            DEFAULTS.keywordsDefaultScore
+          )
+          await saveFilterSettings({ keywords })
+          applyAndUpdateStatus()
+        }
+      })
+      kwTb.addEventListener(
+        "blur",
+        async (e) => {
+          if (!keywordsEnabled) return
+          const t = e.target
+          const input = t.closest(".utaf-kw-input")
+          if (!input) return
+          const row = input.closest(".utaf-kw-row")
+          const idx = Number(row.dataset.kwIndex || "-1")
+          if (idx < 0) return
+          const v = normalizeText(input.value)
+          if (v) {
+            keywords[idx].keyword = v
+            await saveFilterSettings({ keywords })
+            applyAndUpdateStatus()
+          } else {
+            input.value = String(keywords[idx].keyword || "")
+          }
+          input.classList.add("hidden")
+          const label = row.querySelector(".utaf-kw-label")
+          label.textContent = String(keywords[idx].keyword || "")
+          label.title = String(keywords[idx].keyword || "")
+          label.style.display = "block"
+        },
+        true
+      )
+      kwTb.addEventListener("keydown", (e) => {
+        if (!keywordsEnabled) return
+        if (e.key === "Enter") {
+          const t = e.target
+          const input = t.closest(".utaf-kw-input")
+          if (input) {
+            e.preventDefault()
+            input.blur()
+          }
+        }
+      })
+    }
+    bindKeywordRowEvents()
+    function renderKeywordsTable() {
+      kwTb.textContent = ""
+      for (const [i3, k] of keywords.entries()) {
+        const tr = document.createElement("tr")
+        tr.className = cn4("utaf-kw-row cursor-pointer hover:bg-gray-50")
+        tr.dataset.kwIndex = String(i3)
+        const td1 = document.createElement("td")
+        td1.className = cn4(
+          "utaf-col-user min-w-0 border-b border-gray-100 px-2 py-1 pr-3 align-middle"
+        )
+        const td2 = document.createElement("td")
+        td2.className = cn4(
+          "utaf-col-score border-b border-gray-100 px-2 py-1 pr-1 text-right align-middle"
+        )
+        const td3 = document.createElement("td")
+        td3.className = cn4(
+          "utaf-col-select border-b border-gray-100 px-2 py-1 pl-1 text-right align-middle whitespace-nowrap"
+        )
+        const rowWrap = document.createElement("div")
+        rowWrap.className = cn4("flex min-w-0 items-center gap-2")
+        const chk = document.createElement("input")
+        chk.type = "checkbox"
+        chk.className = "utaf-kw-toggle utaf-checkbox utaf-toggle"
+        chk.checked = Boolean(k.enabled)
+        chk.disabled = !keywordsEnabled
         const kwLabel = document.createElement("span")
-        kwLabel.className = cn(
-          "utaf-label block cursor-pointer truncate text-sm text-gray-800"
+        kwLabel.className = cn4(
+          "utaf-kw-label utaf-label block cursor-pointer truncate text-sm text-gray-800"
         )
         kwLabel.textContent = String(k.keyword || "")
         kwLabel.title = String(k.keyword || "")
         const kwInput = document.createElement("input")
         kwInput.type = "text"
-        kwInput.className = cn(
-          "hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        kwInput.className = cn4(
+          "utaf-kw-input hidden h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
         )
         kwInput.value = String(k.keyword || "")
-        const commitKw = async () => {
-          const v = String(kwInput.value || "").trim()
-          if (v) {
-            k.keyword = v
-            await saveFilterSettings({ keywords })
-            applyAndUpdateStatus()
-          } else {
-            kwInput.value = String(k.keyword || "")
-          }
-          kwInput.classList.add("hidden")
-          kwLabel.textContent = String(k.keyword || "")
-          kwLabel.title = String(k.keyword || "")
-          kwLabel.style.display = "block"
-        }
-        kwLabel.addEventListener("click", () => {
-          kwLabel.style.display = "none"
-          kwInput.classList.remove("hidden")
-          kwInput.focus()
-          kwInput.select()
-        })
-        kwInput.addEventListener("blur", commitKw)
-        kwInput.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            void commitKw()
-          }
-        })
+        kwInput.disabled = !keywordsEnabled
         rowWrap.append(kwLabel)
         rowWrap.append(kwInput)
         td1.append(rowWrap)
@@ -3079,128 +3878,110 @@
         scoreInput.type = "number"
         scoreInput.step = "1"
         scoreInput.value = String(
-          Number.isFinite(Number(k.score)) ? Number(k.score) : 5
+          parseNumberOrDefault(k.score, DEFAULTS.keywordsDefaultScore)
         )
-        scoreInput.className = cn(
-          "h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
+        scoreInput.className = cn4(
+          "utaf-kw-score h-5 w-full max-w-[3rem] min-w-[2.5rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs"
         )
-        scoreInput.addEventListener("change", async () => {
-          let v = Number(scoreInput.value)
-          if (!Number.isFinite(v)) v = 5
-          k.score = v
-          await saveFilterSettings({ keywords })
-          applyAndUpdateStatus()
-        })
+        scoreInput.disabled = !keywordsEnabled
         td2.append(scoreInput)
         const btnDel = document.createElement("button")
-        btnDel.className = cn(
-          "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
+        btnDel.className = cn4("utaf-kw-delete utaf-btn-circle utaf-btn-danger")
+        btnDel.title = "\u5220\u9664"
+        btnDel.setAttribute("aria-label", "\u5220\u9664")
+        btnDel.textContent = ""
+        btnDel.append(
+          createElement2(Trash2, { width: 12, height: 12, "stroke-width": 2 })
         )
-        btnDel.textContent = "\u5220\u9664"
-        btnDel.addEventListener("click", async () => {
-          keywords = keywords.filter(
-            (x) => String(x.keyword) !== String(k.keyword)
-          )
-          await saveFilterSettings({ keywords })
-          renderKeywordsTable()
-          applyAndUpdateStatus()
-        })
+        btnDel.disabled = !keywordsEnabled
+        chk.classList.toggle("hidden", keywordsEditing)
+        btnDel.classList.toggle("hidden", !keywordsEditing)
+        btnDel.style.display = keywordsEditing ? "inline-flex" : "none"
+        kwLabel.classList.toggle("cursor-not-allowed", !keywordsEnabled)
+        scoreInput.classList.toggle("opacity-50", !keywordsEnabled)
+        scoreInput.classList.toggle("cursor-not-allowed", !keywordsEnabled)
+        btnDel.classList.toggle("opacity-50", !keywordsEnabled)
+        btnDel.classList.toggle("cursor-not-allowed", !keywordsEnabled)
+        td3.append(chk)
         td3.append(btnDel)
-        tr.append(td0)
         tr.append(td1)
         tr.append(td2)
         tr.append(td3)
         kwTb.append(tr)
       }
-      const addTr = document.createElement("tr")
-      const addTd0 = document.createElement("td")
-      addTd0.className = cn(
-        "border-t border-gray-200 px-2 py-1 text-left align-middle"
-      )
-      const addTd1 = document.createElement("td")
-      addTd1.className = cn(
-        "min-w-0 border-t border-gray-200 px-2 py-1 align-middle"
-      )
-      const addKwInput = document.createElement("input")
-      addKwInput.type = "text"
-      addKwInput.placeholder = "\u5173\u952E\u5B57"
-      addKwInput.className = cn(
-        "h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
-      )
-      addTd1.append(addKwInput)
-      const addTd2 = document.createElement("td")
-      addTd2.className = cn(
-        "w-14 border-t border-gray-200 px-2 py-1 align-middle"
-      )
-      const addScoreInput = document.createElement("input")
-      addScoreInput.type = "number"
-      addScoreInput.step = "1"
-      addScoreInput.placeholder = "\u5206\u6570"
-      addScoreInput.value = "5"
-      addScoreInput.className = cn(
-        "h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs"
-      )
-      addTd2.append(addScoreInput)
-      const addTd3 = document.createElement("td")
-      addTd3.className = cn(
-        "w-16 border-t border-gray-200 px-2 py-1 align-middle whitespace-nowrap"
-      )
-      const addBtn = document.createElement("button")
-      addBtn.className = cn(
-        "inline-flex shrink-0 items-center justify-center rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200"
-      )
-      addBtn.textContent = "\u6DFB\u52A0"
-      const doAdd = async () => {
-        const kw = String(addKwInput.value || "").trim()
-        let sc = Number(addScoreInput.value)
-        if (!Number.isFinite(sc)) sc = 5
-        if (!kw) return
-        const exists = keywords.find(
-          (x) => String(x.keyword).toLowerCase() === kw.toLowerCase()
-        )
-        if (exists) {
-          exists.score = sc
-          exists.enabled = true
-        } else {
-          keywords.push({ keyword: kw, score: sc, enabled: true })
-        }
-        addKwInput.value = ""
-        addScoreInput.value = "5"
-        await saveFilterSettings({ keywords })
-        renderKeywordsTable()
-        applyAndUpdateStatus()
-        const lastRow = kwTb.querySelector("tr:last-child")
-        if (lastRow) {
-          lastRow.scrollIntoView({ behavior: "smooth", block: "center" })
-        }
-      }
-      addBtn.addEventListener("click", doAdd)
-      addKwInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          void doAdd()
-        }
-      })
-      addScoreInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          void doAdd()
-        }
-      })
-      addTd3.append(addBtn)
-      addTr.append(addTd0)
-      addTr.append(addTd1)
-      addTr.append(addTd2)
-      addTr.append(addTd3)
-      kwTb.append(addTr)
     }
+    const kwAddBtn = document.createElement("button")
+    kwAddBtn.className = cn4(
+      "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+    )
+    kwAddBtn.textContent = ""
+    kwAddBtn.append(
+      createElement2(Plus, { width: 12, height: 12, "stroke-width": 2 })
+    )
+    function openKeywordsModal() {
+      openPanelModal({
+        shadow,
+        panel,
+        title: "\u65B0\u589E\u5173\u952E\u5B57",
+        build({ content: content2, btnCancel, btnOk }) {
+          const form = buildKeywordForm(DEFAULTS.keywordsDefaultScore)
+          form.appendTo(content2)
+          const onConfirm = async () => {
+            const { kw, score } = form.getValues()
+            if (!kw) return
+            const exists = keywords.find(
+              (x) => String(x.keyword).toLowerCase() === kw.toLowerCase()
+            )
+            if (exists) {
+              exists.score = score
+              exists.enabled = true
+            } else {
+              keywords.push({ keyword: kw, score, enabled: true })
+            }
+            await saveFilterSettings({ keywords })
+            renderKeywordsTable()
+            const lastRow = kwTb.lastElementChild
+            if (lastRow)
+              lastRow.scrollIntoView({ behavior: "smooth", block: "nearest" })
+            applyAndUpdateStatus()
+          }
+          return {
+            focusables: [...form.focusables, btnCancel, btnOk],
+            initialFocus: form.initialFocus,
+            onConfirm,
+          }
+        },
+      })
+    }
+    kwAddBtn.addEventListener("click", openKeywordsModal)
+    btnKeywordsEdit.before(kwAddBtn)
     renderKeywordsTable()
     updateKeywordsMasterChk()
     function updateKeywordsControlsDisabled() {
-      inputKwThreshold.disabled = !chkKeywords.checked
       selectScope.disabled = !chkKeywords.checked
       chkCaseSensitive.disabled = !chkKeywords.checked
-      inputKwThreshold.className = inputKwThreshold.disabled
-        ? "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
-        : "h-5 w-20 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
+      kwAddBtn.disabled = !chkKeywords.checked
+      btnKeywordsEdit.disabled = !chkKeywords.checked
+      btnKeywordsEdit.className = btnKeywordsEdit.disabled
+        ? cn4(
+            "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
+          )
+        : cn4(
+            "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+          )
+      kwAddBtn.className = kwAddBtn.disabled
+        ? cn4(
+            "utaf-btn-circle cursor-not-allowed border border-gray-300 bg-gray-100 text-gray-700 opacity-50"
+          )
+        : cn4(
+            "utaf-btn-circle border border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200"
+          )
+      keywordsTable.className = chkKeywords.checked
+        ? cn4("w-full table-fixed")
+        : cn4("pointer-events-none w-full table-fixed opacity-50")
+      lblScopePre.className = selectScope.disabled
+        ? cn4("utaf-label cursor-not-allowed text-xs leading-5 opacity-50")
+        : cn4("utaf-label text-xs leading-5")
       selectScope.className = selectScope.disabled
         ? "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
         : "h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs"
@@ -3209,22 +3990,17 @@
         : "utaf-label text-xs leading-5"
     }
     updateKeywordsControlsDisabled()
+    updateControlsDisabled()
     chkKeywords.addEventListener("change", async () => {
       keywordsEnabled = chkKeywords.checked
       await saveFilterSettings({ keywordsEnabled })
       updateKeywordsControlsDisabled()
+      renderKeywordsTable()
       applyAndUpdateStatus()
     })
     chkCaseSensitive.addEventListener("change", async () => {
       keywordsCaseSensitive = chkCaseSensitive.checked
       await saveFilterSettings({ keywordsCaseSensitive })
-      applyAndUpdateStatus()
-    })
-    inputKwThreshold.addEventListener("change", async () => {
-      let v = Number(inputKwThreshold.value)
-      if (!Number.isFinite(v) || v < 0) v = 15
-      keywordsThreshold = v
-      await saveFilterSettings({ keywordsThreshold })
       applyAndUpdateStatus()
     })
     selectScope.addEventListener("change", async () => {
@@ -3233,95 +4009,83 @@
       await saveFilterSettings({ keywordsScope })
       applyAndUpdateStatus()
     })
+    chkQuick.addEventListener("change", async () => {
+      quickEnabled = chkQuick.checked
+      await saveFilterSettings({ quickEnabled })
+      updateControlsDisabled()
+      applyAndUpdateStatus()
+    })
+    chkAuthorsEnable.addEventListener("change", async () => {
+      authorsEnabled = chkAuthorsEnable.checked
+      await saveFilterSettings({ authorsEnabled })
+      updateAuthorsControlsDisabled()
+      renderAuthorsTable()
+      applyAndUpdateStatus()
+    })
     function updateControlsDisabled() {
-      inputTotal.disabled = !chkTotal.checked
-      inputDaily.disabled = !chkDaily.checked
+      const quickOff = !quickEnabled
+      inputTotal.disabled = quickOff || !chkTotal.checked
+      inputDaily.disabled = quickOff || !chkDaily.checked
+      inputTotalScore.disabled = quickOff || !chkTotal.checked
+      inputDailyScore.disabled = quickOff || !chkDaily.checked
+      chkTotal.disabled = quickOff
+      chkDaily.disabled = quickOff
+      if (inputUpdatedScore) {
+        inputUpdatedScore.disabled = quickOff || !updatedEnabled
+      }
+      if (inputOlderScore) {
+        inputOlderScore.disabled = quickOff || !createdOlderEnabled
+      }
+      if (inputRecentScore) {
+        inputRecentScore.disabled = quickOff || !createdRecentEnabled
+      }
+      if (updatedPresetChk) updatedPresetChk.disabled = quickOff
+      if (updatedPresetInput) updatedPresetInput.disabled = quickOff
+      if (olderPresetChk) olderPresetChk.disabled = quickOff
+      if (olderPresetInput) olderPresetInput.disabled = quickOff
+      if (recentPresetChk) recentPresetChk.disabled = quickOff
+      if (recentPresetInput) recentPresetInput.disabled = quickOff
       inputTotal.className = inputTotal.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
+        ? "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
       inputDaily.className = inputDaily.disabled
-        ? "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
-        : "w-20 px-2 py-1 border border-gray-300 rounded-md text-xs"
+        ? "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs opacity-50 cursor-not-allowed"
+        : "h-5 w-16 px-1 py-0.5 border border-gray-300 rounded-md text-xs"
+      inputTotalScore.className = inputTotalScore.disabled
+        ? "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right opacity-50 cursor-not-allowed"
+        : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
+      inputDailyScore.className = inputDailyScore.disabled
+        ? "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right opacity-50 cursor-not-allowed"
+        : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
+      if (inputUpdatedScore) {
+        inputUpdatedScore.className = inputUpdatedScore.disabled
+          ? "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right opacity-50 cursor-not-allowed"
+          : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
+      }
+      if (inputOlderScore) {
+        inputOlderScore.className = inputOlderScore.disabled
+          ? "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right opacity-50 cursor-not-allowed"
+          : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
+      }
+      if (inputRecentScore) {
+        inputRecentScore.className = inputRecentScore.disabled
+          ? "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right opacity-50 cursor-not-allowed"
+          : "h-5 w-full max-w-[3rem] min-w-[2.5rem] px-1 py-0.5 border border-gray-300 rounded-md text-xs text-right"
+      }
+      quickTable.className = quickOff
+        ? cn4("pointer-events-none w-full table-fixed text-sm opacity-50")
+        : cn4("w-full table-fixed text-sm")
     }
     updateControlsDisabled()
     chkTotal.addEventListener("change", updateControlsDisabled)
     chkDaily.addEventListener("change", updateControlsDisabled)
     async function resetAll() {
-      currentMonths = DEFAULTS.updatedMonths
-      currentDays = DEFAULTS.updatedDays
-      currentMode = DEFAULTS.updatedMode
-      createdOlderDays = DEFAULTS.createdOlderDays
-      createdRecentDays = DEFAULTS.createdRecentDays
-      createdOlderMode = DEFAULTS.createdOlderMode
-      createdOlderMonths = DEFAULTS.createdOlderMonths
-      createdRecentMode = DEFAULTS.createdRecentMode
-      createdRecentMonths = DEFAULTS.createdRecentMonths
-      createdOlderEnabled = false
-      createdRecentEnabled = false
-      updatedEnabled = false
-      totalInstallsEnabled = false
-      dailyInstallsEnabled = false
-      totalInstallsLimit = DEFAULTS.totalInstallsLimit
-      dailyInstallsLimit = DEFAULTS.dailyInstallsLimit
-      blockedAuthors = DEFAULTS.blockedAuthors
-      keywordsEnabled = DEFAULTS.keywordsEnabled
-      keywordsThreshold = DEFAULTS.keywordsThreshold
-      keywordsScope = DEFAULTS.keywordsScope
-      keywordsCaseSensitive = DEFAULTS.keywordsCaseSensitive
-      keywords = DEFAULTS.keywords
-      updatedComp.setState({
-        enabled: updatedEnabled,
-        mode: currentMode,
-        months: currentMonths,
-        days: currentDays,
-      })
-      olderComp.setState({
-        enabled: createdOlderEnabled,
-        mode: createdOlderMode,
-        months: createdOlderMonths,
-        days: createdOlderDays,
-      })
-      recentComp.setState({
-        enabled: createdRecentEnabled,
-        mode: createdRecentMode,
-        months: createdRecentMonths,
-        days: createdRecentDays,
-      })
-      chkTotal.checked = totalInstallsEnabled
-      chkDaily.checked = dailyInstallsEnabled
-      chkKeywords.checked = keywordsEnabled
-      inputTotal.value = String(totalInstallsLimit)
-      inputDaily.value = String(dailyInstallsLimit)
-      inputKwThreshold.value = String(keywordsThreshold)
-      selectScope.value = keywordsScope
-      chkCaseSensitive.checked = keywordsCaseSensitive
-      updateControlsDisabled()
-      updateKeywordsControlsDisabled()
-      await saveFilterSettings({
-        updatedThresholdMode: currentMode,
-        updatedThresholdMonths: currentMonths,
-        updatedThresholdDays: currentDays,
-        updatedEnabled,
-        createdOlderEnabled,
-        createdOlderThresholdMode: createdOlderMode,
-        createdOlderThresholdMonths: createdOlderMonths,
-        createdOlderThresholdDays: createdOlderDays,
-        createdRecentEnabled,
-        createdRecentThresholdMode: createdRecentMode,
-        createdRecentThresholdMonths: createdRecentMonths,
-        createdRecentThresholdDays: createdRecentDays,
-        totalInstallsEnabled,
-        totalInstallsLimit,
-        dailyInstallsEnabled,
-        dailyInstallsLimit,
-        blockedAuthors,
-        keywordsEnabled,
-        keywordsThreshold,
-        keywordsScope,
-        keywordsCaseSensitive,
-        keywords,
-      })
-      applyAndUpdateStatus()
+      try {
+        await setValue(CONFIG.FILTERS_KEY, { uiCollapsed: false })
+      } catch (e) {}
+      const prevHost = document.querySelector("#utaf-host")
+      if (prevHost && prevHost.parentNode) prevHost.remove()
+      await injectGreasyForkFilters()
     }
     btnReset.addEventListener("click", async () => {
       const ok = globalThis.confirm(

@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UTAF 布局原型对比</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <div class="mx-auto my-4 w-[320px] font-sans text-sm">
+      <div class="mb-2 text-sm font-semibold text-gray-900">
+        便捷筛选布局原型对比
+      </div>
+
+      <div
+        class="space-y-4 rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+        <div class="text-xs text-gray-500">方案 A（三列 + 中列两行栅格）</div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                全选/全关
+              </th>
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700">
+                &nbsp;
+              </th>
+              <th
+                class="w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                分数
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 items-center gap-x-1 gap-y-1">
+                  <input
+                    type="text"
+                    value="两年"
+                    class="h-5 w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">未更新</span>
+                  <input
+                    type="number"
+                    value="90"
+                    class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">天未更新</span>
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="10"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 items-center gap-x-1 gap-y-1">
+                  <input
+                    type="number"
+                    value="90"
+                    class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">天以前创建</span>
+                  <span class="text-xs text-gray-500">自定义天数</span>
+                  <span></span>
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="4"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs"
+                    >超长关键字示例-用于测试布局稳定性-1234567890</span
+                  >
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="8"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="kw-action-chk" />
+                <button
+                  class="kw-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs">/foo.*bar/i</span>
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="6"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="kw-action-chk" />
+                <button
+                  class="kw-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 items-center gap-x-1 gap-y-1">
+                  <input
+                    type="number"
+                    value="90"
+                    class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">天以内创建</span>
+                  <span class="text-xs text-gray-500">自定义天数</span>
+                  <span></span>
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="4"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-1 items-center gap-x-1">
+                  <input
+                    type="number"
+                    value="100"
+                    class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">隐藏总安装量 &lt;</span>
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-1 items-center gap-x-1">
+                  <input
+                    type="number"
+                    value="10"
+                    class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">隐藏日安装量 &lt;</span>
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="mt-4 space-y-4 rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+        <div class="text-xs text-gray-500">
+          方案 B（两列：分数并入中列第二行）
+        </div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                全选/全关
+              </th>
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm text-gray-700">
+                &nbsp;
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 items-center gap-x-1 gap-y-1">
+                  <input
+                    type="text"
+                    value="两年"
+                    class="h-5 w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">未更新</span>
+                  <input
+                    type="number"
+                    value="10"
+                    class="h-5 w-full max-w-[4rem] min-w-[3rem] justify-self-end rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-500">分数</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 items-center gap-x-1 gap-y-1">
+                  <input
+                    type="number"
+                    value="90"
+                    class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">天以前创建</span>
+                  <input
+                    type="number"
+                    value="4"
+                    class="h-5 w-full max-w-[4rem] min-w-[3rem] justify-self-end rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-500">分数</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    value="12345678901234567890"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    value="很长的用户名-用于测试布局稳定性"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="-5"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="au-action-chk" />
+                <button
+                  class="au-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    value="42"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    value="alice"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="12"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="au-action-chk" checked />
+                <button
+                  class="au-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="mt-4 space-y-4 rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+        <div class="text-xs text-gray-500">方案 C（卡片式：每行堆叠两层）</div>
+        <div class="space-y-2">
+          <div class="rounded-md border border-gray-200 p-2">
+            <div class="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+              <input type="checkbox" class="align-middle" checked />
+              <div class="text-xs text-gray-700">未更新</div>
+              <input
+                type="number"
+                value="10"
+                class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+            </div>
+            <div
+              class="mt-1 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-1">
+              <input
+                type="text"
+                value="两年"
+                class="h-5 w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              <span class="text-xs text-gray-700">天未更新</span>
+            </div>
+          </div>
+          <div class="rounded-md border border-gray-200 p-2">
+            <div class="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+              <input type="checkbox" class="align-middle" />
+              <div class="text-xs text-gray-700">隐藏总安装量 &lt;</div>
+              <input
+                type="number"
+                value="20"
+                class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+            </div>
+            <div
+              class="mt-1 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-1">
+              <input
+                type="number"
+                value="100"
+                class="h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs" />
+              <span class="text-xs text-gray-700">数值</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto my-4 w-[320px] font-sans text-sm">
+      <div
+        class="space-y-4 rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+        <div class="mb-1 text-xs text-gray-500">
+          作者表格方案 A（三列 + 中列两行栅格）
+        </div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                选择
+              </th>
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                用户
+              </th>
+              <th
+                class="w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                分数
+              </th>
+              <th
+                class="w-16 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                操作
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    value="293086"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    value="ferstar"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+              <td class="w-16 border-t border-gray-200 px-2 py-1 align-middle">
+                <button
+                  class="rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200">
+                  删除
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    placeholder="作者ID"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    placeholder="作者名"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td class="w-14 border-t border-gray-200 px-2 py-1 align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              </td>
+              <td class="w-16 border-t border-gray-200 px-2 py-1 align-middle">
+                <button
+                  class="rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200">
+                  添加
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="mt-4 space-y-4 rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+        <div class="mb-1 text-xs text-gray-500">
+          作者表格方案 B（两列：分数与操作并入中列第二行）
+        </div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="w-8 border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                选择
+              </th>
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                用户
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" checked />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    value="293086"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <div class="flex items-center justify-between gap-2">
+                    <input
+                      type="text"
+                      value="ferstar"
+                      class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                    <input
+                      type="number"
+                      value="20"
+                      class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                    <button
+                      class="rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200">
+                      删除
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td class="w-8 border-t border-gray-200 px-2 py-1 align-middle">
+                <input type="checkbox" class="align-middle" />
+              </td>
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    placeholder="作者ID"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <div class="flex items-center justify-between gap-2">
+                    <input
+                      type="text"
+                      placeholder="作者名"
+                      class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                    <input
+                      type="number"
+                      value="20"
+                      class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                    <button
+                      class="rounded-md bg-gray-100 px-1 py-0.5 text-xs whitespace-nowrap text-gray-700 hover:bg-gray-200">
+                      添加
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mb-4 rounded-lg bg-white p-4 shadow-sm">
+      <div class="mb-3 flex items-center justify-between">
+        <h3 class="font-bold text-gray-800">包含作者</h3>
+        <div class="flex items-center gap-2">
+          <button class="text-xs text-blue-500 hover:underline">编辑</button>
+          <label class="flex cursor-pointer items-center">
+            <span class="mr-2 text-sm text-gray-600">启用</span>
+            <div class="relative">
+              <input type="checkbox" class="sr-only" checked />
+              <div class="block h-6 w-10 rounded-full bg-blue-500"></div>
+              <div
+                class="dot absolute top-1 left-1 h-4 w-4 rounded-full bg-white transition"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <div
+          class="flex items-center justify-between border-b border-gray-100 py-2 last:border-0">
+          <div class="flex flex-col">
+            <span class="text-sm font-medium">78927</span>
+            <span class="text-xs text-gray-500">knoa</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <input
+              type="number"
+              value="19"
+              class="w-12 rounded border border-gray-300 px-1 py-0.5 text-center text-sm outline-none focus:border-blue-500" />
+            <div class="h-6 w-10 ...">...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3 flex gap-2">
+        <input
+          placeholder="ID"
+          class="w-1/3 rounded border px-2 py-1 text-sm" />
+        <input
+          placeholder="作者名"
+          class="flex-1 rounded border px-2 py-1 text-sm" />
+        <button
+          class="rounded bg-gray-100 px-3 py-1 text-sm text-gray-700 hover:bg-gray-200">
+          添加
+        </button>
+      </div>
+    </div>
+
+    <div class="mx-auto my-4 w-[320px] font-sans text-sm">
+      <div
+        class="space-y-3 rounded-xl border border-gray-200 bg-white p-3 shadow-sm"
+        id="kw-section">
+        <div class="flex items-center justify-between">
+          <div class="text-sm font-semibold text-gray-900">关键字</div>
+          <button
+            id="toggleKeywordsEdit"
+            class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">
+            编辑
+          </button>
+        </div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                关键字
+              </th>
+              <th
+                class="w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">
+                分数
+              </th>
+              <th
+                class="w-10 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">
+                选择
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs">foo</span>
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="5"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="kw-action-chk" />
+                <button
+                  class="kw-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs">bar</span>
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="-2"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="kw-action-chk" />
+                <button
+                  class="kw-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rounded-md border border-gray-200 p-2">
+          <div class="mb-2 text-xs text-gray-500">新增关键字</div>
+          <div class="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="关键字"
+              class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+            <input
+              type="number"
+              placeholder="分数"
+              class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+            <button
+              class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">
+              添加
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-4 space-y-3 rounded-xl border border-gray-200 bg-white p-3 shadow-sm"
+        id="au-section">
+        <div class="flex items-center justify-between">
+          <div class="text-sm font-semibold text-gray-900">隐藏指定作者</div>
+          <button
+            id="toggleAuthorsEdit"
+            class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">
+            编辑
+          </button>
+        </div>
+        <table
+          class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+          <thead>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <th
+                class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">
+                用户
+              </th>
+              <th
+                class="w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">
+                分数
+              </th>
+              <th
+                class="w-10 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">
+                选择
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    value="293086"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    value="ferstar"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="au-action-chk" />
+                <button
+                  class="au-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            <tr class="cursor-pointer hover:bg-gray-50">
+              <td
+                class="min-w-0 border-t border-gray-200 px-2 py-1 align-middle">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] grid-rows-2 items-center gap-x-2 gap-y-1">
+                  <span class="text-xs text-gray-700">用户ID</span>
+                  <input
+                    type="text"
+                    placeholder="作者ID"
+                    class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                  <span class="text-xs text-gray-700">用户名</span>
+                  <input
+                    type="text"
+                    placeholder="作者名"
+                    class="h-5 w-full max-w-[12rem] min-w-[6rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+                </div>
+              </td>
+              <td
+                class="w-14 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input
+                  type="number"
+                  value="20"
+                  class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              </td>
+              <td
+                class="w-10 border-t border-gray-200 px-2 py-1 text-right align-middle">
+                <input type="checkbox" class="au-action-chk" />
+                <button
+                  class="au-action-del hidden rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200"
+                  title="删除"
+                  aria-label="删除">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3 w-3">
+                    <path d="M3 6h18" />
+                    <path d="M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rounded-md border border-gray-200 p-2">
+          <div class="mb-2 text-xs text-gray-500">新增作者</div>
+          <div
+            class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] items-center gap-2">
+            <input
+              type="text"
+              placeholder="作者ID"
+              class="h-5 w-full max-w-[8rem] min-w-[4rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+            <input
+              type="text"
+              placeholder="作者名"
+              class="h-5 w-full max-w-[10rem] min-w-[5rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+            <div class="flex items-center gap-2">
+              <input
+                type="number"
+                placeholder="分数"
+                class="h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-right text-xs" />
+              <button
+                class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">
+                添加
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const kwBtn = document.getElementById('toggleKeywordsEdit')
+      const kwSection = document.getElementById('kw-section')
+      const auBtn = document.getElementById('toggleAuthorsEdit')
+      const auSection = document.getElementById('au-section')
+
+      // 添加便捷筛选表格（采用与关键字/作者相同的编辑方案）
+      ;(function addQuickSection() {
+        const host = document.querySelector('body')
+        const container = document.createElement('div')
+        container.className = 'mx-auto my-4 w-[320px] font-sans text-sm'
+        container.innerHTML = `
+        <div class="rounded-xl border border-gray-200 bg-white p-3 shadow-sm space-y-3" id="quick-section">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold text-gray-900">便捷筛选</div>
+            <button id="toggleQuickEdit" class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">编辑</button>
+          </div>
+          <table class="w-full table-fixed rounded-md border border-gray-200 text-sm">
+            <thead>
+              <tr class="cursor-pointer hover:bg-gray-50">
+                <th class="border-b border-gray-200 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700">条件</th>
+                <th class="w-14 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">分数</th>
+                <th class="w-10 border-b border-gray-200 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700">选择</th>
+              </tr>
+            </thead>
+            <tbody id="quick-tbody">
+              ${[
+                {
+                  left: `
+                    <div class='grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 gap-x-1 gap-y-1 items-center'>
+                      <input type='text' value='两年' class='h-5 w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>未更新</span>
+                      <input type='number' value='90' class='h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>天未更新</span>
+                    </div>
+                  `,
+                  score: 10,
+                  checked: true,
+                },
+                {
+                  left: `
+                    <div class='grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 gap-x-1 gap-y-1 items-center'>
+                      <input type='number' value='90' class='h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>天以前创建</span>
+                      <span class='text-xs text-gray-500'>自定义天数</span>
+                      <span></span>
+                    </div>
+                  `,
+                  score: 4,
+                  checked: true,
+                },
+                {
+                  left: `
+                    <div class='grid grid-cols-[minmax(0,1fr)_auto] grid-rows-2 gap-x-1 gap-y-1 items-center'>
+                      <input type='number' value='90' class='h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>天以内创建</span>
+                      <span class='text-xs text-gray-500'>自定义天数</span>
+                      <span></span>
+                    </div>
+                  `,
+                  score: 4,
+                  checked: false,
+                },
+                {
+                  left: `
+                    <div class='grid grid-cols-[minmax(0,1fr)_auto] grid-rows-1 gap-x-1 items-center'>
+                      <input type='number' value='100' class='h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>隐藏总安装量 &lt;</span>
+                    </div>
+                  `,
+                  score: 20,
+                  checked: false,
+                },
+                {
+                  left: `
+                    <div class='grid grid-cols-[minmax(0,1fr)_auto] grid-rows-1 gap-x-1 items-center'>
+                      <input type='number' value='10' class='h-5 w-20 rounded-md border border-gray-300 px-2 py-0.5 text-xs' />
+                      <span class='text-xs text-gray-700'>隐藏日安装量 &lt;</span>
+                    </div>
+                  `,
+                  score: 20,
+                  checked: false,
+                },
+              ]
+                .map(
+                  (row) => `
+                  <tr class='hover:bg-gray-50 cursor-pointer'>
+                    <td class='min-w-0 border-t border-gray-200 px-2 py-1 align-middle'>${row.left}</td>
+                    <td class='w-14 border-t border-gray-200 px-2 py-1 align-middle text-right'>
+                      <input type='number' value='${row.score}' class='h-5 w-full max-w-[4rem] min-w-[3rem] rounded-md border border-gray-300 px-1 py-0.5 text-xs text-right' />
+                    </td>
+                    <td class='w-10 border-t border-gray-200 px-2 py-1 align-middle text-right'>
+                      <input type='checkbox' class='quick-action-chk' ${row.checked ? 'checked' : ''} />
+                      <button class='quick-action-del rounded-md bg-red-100 px-2 py-0.5 text-xs text-red-700 hover:bg-red-200 hidden' title='删除' aria-label='删除'>
+                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='w-3 h-3'>
+                          <path d='M3 6h18' />
+                          <path d='M8 6v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2' />
+                          <path d='M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6' />
+                          <path d='M10 11v6' />
+                          <path d='M14 11v6' />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                `
+                )
+                .join('')}
+            </tbody>
+          </table>
+          <div class="rounded-md border border-gray-200 p-2">
+            <div class="text-xs text-gray-500 mb-2">批量新增/调整</div>
+            <div class="flex items-center gap-2">
+              <input type="text" placeholder="示例：更新阈值、创建阈值..." class="h-5 w-full rounded-md border border-gray-300 px-1 py-0.5 text-xs" />
+              <button class="rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200">应用</button>
+            </div>
+          </div>
+        </div>
+      `
+        host.append(container)
+      })()
+
+      function toggleEdit(section, btn, chkSelector, delSelector) {
+        const editing = section.getAttribute('data-editing') === 'true'
+        const next = !editing
+        section.setAttribute('data-editing', next ? 'true' : 'false')
+        btn.textContent = next ? '完成' : '编辑'
+        section.querySelectorAll(chkSelector).forEach((el) => {
+          el.classList.toggle('hidden', next)
+        })
+        section.querySelectorAll(delSelector).forEach((el) => {
+          el.classList.toggle('hidden', !next)
+        })
+      }
+
+      kwBtn.addEventListener('click', () => {
+        toggleEdit(kwSection, kwBtn, '.kw-action-chk', '.kw-action-del')
+      })
+      auBtn.addEventListener('click', () => {
+        toggleEdit(auSection, auBtn, '.au-action-chk', '.au-action-del')
+      })
+
+      const quickBtn = document.getElementById('toggleQuickEdit')
+      const quickSection = document.getElementById('quick-section')
+      quickBtn.addEventListener('click', () => {
+        toggleEdit(
+          quickSection,
+          quickBtn,
+          '.quick-action-chk',
+          '.quick-action-del'
+        )
+      })
+
+      // 行点击热区：除输入控件外点击切换复选框状态；悬停高亮
+      function setupRowToggle(section, chkSelector) {
+        const tbody = section.querySelector('tbody')
+        if (!tbody) return
+        tbody.querySelectorAll('tr').forEach((tr) => {
+          tr.addEventListener('click', (e) => {
+            const editing = section.getAttribute('data-editing') === 'true'
+            const target = e.target
+            if (
+              editing ||
+              target.closest('input,button,select,textarea') ||
+              target.closest('svg')
+            ) {
+              return
+            }
+            const chk = tr.querySelector(chkSelector)
+            if (chk) {
+              chk.checked = !chk.checked
+            }
+          })
+        })
+      }
+
+      setupRowToggle(kwSection, '.kw-action-chk')
+      setupRowToggle(auSection, '.au-action-chk')
+      setupRowToggle(
+        document.getElementById('quick-section'),
+        '.quick-action-chk'
+      )
+    </script>
+  </body>
+</html>

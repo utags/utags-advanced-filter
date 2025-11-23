@@ -29,17 +29,17 @@ export function createDatePresetInput(opts: {
   root.className = cn('flex items-center text-sm')
   const chk = document.createElement('input')
   chk.type = 'checkbox'
-  chk.className = 'utaf-checkbox'
+  chk.className = 'utaf-checkbox utaf-toggle'
   chk.checked = state.enabled
   const chkId = `utaf-datepreset-${Math.random().toString(36).slice(2, 8)}`
   chk.id = chkId
   const pre = document.createElement('label')
   pre.className = cn('utaf-label text-sm')
-  pre.htmlFor = chkId
+  // pre.htmlFor = chkId
   pre.textContent = opts.preLabel
   const input = document.createElement('input')
   input.className = cn(
-    'w-24 rounded-md border border-gray-300 px-2 py-1 text-xs'
+    'w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs'
   )
   const suf = document.createElement('span')
   suf.className = cn('text-sm')
@@ -69,9 +69,9 @@ export function createDatePresetInput(opts: {
     input.disabled = !state.enabled
     input.className = input.disabled
       ? cn(
-          'w-20 cursor-not-allowed rounded-md border border-gray-300 px-2 py-1 text-xs opacity-50'
+          'w-16 cursor-not-allowed rounded-md border border-gray-300 px-1 py-0.5 text-xs opacity-50'
         )
-      : cn('w-20 rounded-md border border-gray-300 px-2 py-1 text-xs')
+      : cn('w-16 rounded-md border border-gray-300 px-1 py-0.5 text-xs')
   }
 
   function setInputDisplay() {

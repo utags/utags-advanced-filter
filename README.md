@@ -4,14 +4,16 @@ A tool that filters and hides list-style content in real time on any website. It
 
 Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
 
-![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-20-09-44-00.png)
+![screenshots](https://wsrv.nl/?url=https://raw.githubusercontent.com/utags/utags-advanced-filter/refs/heads/main/assets/screenshot-2025-11-23-08-31-00.png)
 
 ## Key Features
 
 - Real-time in-page filtering with condition stacking and instant stats.
 - Master switch and safe reset with delayed reveal and second confirmation.
 - Per-site persistent settings; performance cache avoids repeated parsing.
-- Keyword filter: list management, per-item toggle, editable scores, threshold; title/description scope; case sensitivity and regex (`/regex/flags`); negative scores to offset hiding.
+- Global scoring: a global threshold at the top (default 15). Each filter contributes a score when matched — Keywords (default 5 per item), Updated/Created/Installs (default 20 per category), Authors (per-author score, default 20). With defaults, a single matched non-keyword condition hides immediately; users can lower category or per-author scores so items hide only when multiple conditions are matched together.
+- Negative scores: Keywords and per-author scores can be negative to offset hiding, enabling nuanced combinations.
+- Keyword filter: list management, per-item toggle, editable scores; title/description scope; case sensitivity and regex (`/regex/flags`); negative scores to offset hiding.
 - Author filter: table management (ID, name) with per-author enable/disable, inline edit, delete, and a dedicated “Add” row; header master checkbox; author picker from the current page.
 - Date filters: Updated and Created (older/recent) with mode (days/months), presets, and custom days.
 - Install counts: hide by total installs and daily installs thresholds.
