@@ -68,7 +68,7 @@ if (
 
 export const config: PlasmoCSConfig = {
   run_at: 'document_end',
-  // matches: ['https://greasyfork.org/*'],
+  matches: ['https://greasyfork.org/*', 'https://sleazyfork.org/*'],
   all_frames: false,
 }
 
