@@ -25,6 +25,7 @@ import {
   setAttribute,
   throttle,
 } from 'browser-extension-utils'
+import hostStyleText from 'data-text:./content-host.scss'
 import styleText from 'data-text:./content.scss'
 import tailwindCssText from 'data-text:./tailwind.css'
 import iconNoBgSvgText from 'data-text:./ui/icon-no-bg.svg'
@@ -207,12 +208,6 @@ function isGreasyForkSearchPage() {
   if (host !== 'greasyfork.org' && host !== 'sleazyfork.org') return false
   const path = location.pathname || ''
   return path.endsWith('/scripts') || path.includes('/scripts/by-site/')
-}
-
-function addGreasyForkFilterStyles() {
-  addStyle(`
-      .fsfts-hidden { display: none !important; }
-    `)
 }
 
 function parseTimeElementToTs(el) {
@@ -499,10 +494,10 @@ function applyCombinedFilters(
     const hide = sum >= Math.max(scoreThreshold, 0)
     const finalHide = swapShownHidden ? !hide : hide
     if (finalHide) {
-      item.classList.add('fsfts-hidden')
+      item.classList.add('utaf-hidden')
       hidden += 1
     } else {
-      item.classList.remove('fsfts-hidden')
+      item.classList.remove('utaf-hidden')
       visible += 1
     }
   }
@@ -518,7 +513,6 @@ function createDivider() {
 
 async function injectGreasyForkFilters() {
   if (!isGreasyForkSearchPage()) return
-  addGreasyForkFilterStyles()
 
   const saved = await loadFilterSettings()
   let currentMonths = Number(
@@ -659,7 +653,7 @@ async function injectGreasyForkFilters() {
 
   const host = document.createElement('div')
   host.id = 'utaf-host'
-  host.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2147483647;'
+  host.style.cssText = 'position:fixed;top:12px;right:12px;z-index:99999;'
   const shadow = host.attachShadow({ mode: 'open' })
   document.body.append(host)
 
@@ -667,7 +661,7 @@ async function injectGreasyForkFilters() {
   tw.textContent = tailwindCssText
   shadow.append(tw)
   const globalCss = document.createElement('style')
-  globalCss.textContent = styleText
+  globalCss.textContent = hostStyleText
   shadow.append(globalCss)
 
   const panel = document.createElement('div')
