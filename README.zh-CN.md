@@ -1,5 +1,7 @@
 # UTags Advanced Filter
 
+> [English](https://github.com/utags/utags-advanced-filter?tab=readme-ov-file#utags-advanced-filter) | 中文
+
 一个在任意网站对列表型内容进行实时过滤与隐藏的工具，提供用户脚本和浏览器扩展两种版本。区别于站点自身的搜索/筛选，它在页面内直接隐藏不满足条件的条目，支持即时切换与叠加条件查看过滤后的结果。
 
 当前已适配 Greasy Fork 的脚本列表，后续将通过“规则”适配更多站点。

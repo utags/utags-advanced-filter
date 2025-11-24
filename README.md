@@ -1,5 +1,7 @@
 # UTags Advanced Filter
 
+> English | [中文](https://github.com/utags/utags-advanced-filter/blob/main/README.zh-CN.md)
+
 A tool that filters and hides list-style content in real time on any website. It is available as both a userscript and a browser extension. Unlike a site's own search or filtering, it hides items directly on the page and supports instant toggling and stacking conditions to view filtered results.
 
 Currently adapted for Greasy Fork script lists. More sites will be supported via a rules system.
