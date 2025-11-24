@@ -2,7 +2,7 @@
   "name": "utags-advanced-filter",
   "displayName": "UTags Advanced Filter",
   "displayName:zh-CN": "UTags Advanced Filter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page.",
   "description_userscript": "Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.",
   "description_userscript:zh-CN": "对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。",
