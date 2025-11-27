@@ -4,7 +4,7 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.1.2
+// @version              0.1.3
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
@@ -52,11 +52,11 @@
   var regexCache = /* @__PURE__ */ new Map()
   function initAvailableLocales(array) {
     availableLocales = array
-      .map((locale2) => locale2.trim().toLowerCase())
+      .map((locale) => locale.trim().toLowerCase())
       .filter(Boolean)
   }
-  function isLocale(locale2) {
-    return locale2 ? availableLocales.includes(locale2.toLowerCase()) : false
+  function isLocale(locale) {
+    return locale ? availableLocales.includes(locale.toLowerCase()) : false
   }
   function extractLocaleFromNavigator() {
     if (typeof navigator === "undefined") {
@@ -101,8 +101,8 @@
   }
   function resolveMessageMaps(messageMaps, targetLanguage, baseLanguage) {
     const normalizedMaps = Object.fromEntries(
-      Object.entries(messageMaps).map(([locale2, messages16]) => [
-        locale2.toLowerCase(),
+      Object.entries(messageMaps).map(([locale, messages16]) => [
+        locale.toLowerCase(),
         messages16,
       ])
     )
@@ -421,7 +421,7 @@
     return GM.registerMenuCommand(name, callback, options)
   }
   var style_default =
-    '#browser_extension_settings_container{--browser-extension-settings-background-color:#f2f2f7;--browser-extension-settings-text-color:#444;--browser-extension-settings-link-color:#217dfc;--sb-track-color:#00000000;--sb-thumb-color:#33334480;--sb-size:2px;--font-family:"helvetica neue","microsoft yahei",arial,sans-serif;border-radius:5px;box-shadow:0 10px 39px 10px rgba(62,66,66,.22)!important;display:none;height:600px;max-height:90%;overflow:hidden;position:fixed;right:30px;top:10px;z-index:100000}#browser_extension_settings_container .browser_extension_settings_wrapper{background-color:var(--browser-extension-settings-background-color);display:flex;font-family:var(--font-family);height:100%;overflow:hidden}#browser_extension_settings_container .browser_extension_settings_wrapper h1,#browser_extension_settings_container .browser_extension_settings_wrapper h2{border:none;color:var(--browser-extension-settings-text-color);font-family:var(--font-family);letter-spacing:normal;line-height:normal;padding:0}#browser_extension_settings_container .browser_extension_settings_wrapper h1{font-size:26px;font-weight:800;margin:18px 0}#browser_extension_settings_container .browser_extension_settings_wrapper h2{font-size:18px;font-weight:600;margin:14px 0}#browser_extension_settings_container .browser_extension_settings_wrapper footer{background-color:var(--browser-extension-settings-background-color);color:var(--browser-extension-settings-text-color);display:flex;flex-direction:column;font-family:var(--font-family);font-size:11px;justify-content:center;margin:10px auto 0}#browser_extension_settings_container .browser_extension_settings_wrapper footer a{color:var(--browser-extension-settings-link-color)!important;font-family:var(--font-family);padding:0;text-decoration:none}#browser_extension_settings_container .browser_extension_settings_wrapper footer p{color:var(--browser-extension-settings-text-color);font-family:var(--font-family);font-size:11px;line-height:13px;margin:2px;padding:0;text-align:center}#browser_extension_settings_container .browser_extension_settings_wrapper a.navigation_go_previous{color:var(--browser-extension-settings-link-color);cursor:pointer;display:none}#browser_extension_settings_container .browser_extension_settings_wrapper a.navigation_go_previous:before{content:"< "}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container{background-color:var(--browser-extension-settings-background-color);box-sizing:border-box;color:var(--browser-extension-settings-text-color);overflow-x:auto;padding:10px 15px}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div{background-color:#fff;border-top:1px solid #ccc;font-size:14px;padding:6px 15px}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a:visited,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a:visited{align-items:center;color:var(--browser-extension-settings-text-color);cursor:pointer;display:flex;font-family:var(--font-family);justify-content:space-between;text-decoration:none}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a:hover,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a:visited:hover,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a:hover,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a:visited:hover{color:var(--browser-extension-settings-text-color);text-decoration:none}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a span,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div a:visited span,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a span,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div a:visited span{font-family:var(--font-family);line-height:24px;margin-right:10px}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div.active,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div:hover,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div.active,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div:hover{background-color:#e4e4e6}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div.active a,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div.active a{cursor:default}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div:first-of-type,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div:first-of-type{border-top:none;border-top-left-radius:10px;border-top-right-radius:10px}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .installed_extension_list div:last-of-type,#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container .related_extension_list div:last-of-type{border-bottom-left-radius:10px;border-bottom-right-radius:10px}#browser_extension_settings_container .thin_scrollbar{scrollbar-color:var(--sb-thumb-color) var(--sb-track-color);scrollbar-width:thin}#browser_extension_settings_container .thin_scrollbar::-webkit-scrollbar{width:var(--sb-size)}#browser_extension_settings_container .thin_scrollbar::-webkit-scrollbar-track{background:var(--sb-track-color);border-radius:10px}#browser_extension_settings_container .thin_scrollbar::-webkit-scrollbar-thumb{background:var(--sb-thumb-color);border-radius:10px}#browser_extension_settings_main{background-color:var(--browser-extension-settings-background-color);box-sizing:border-box;color:var(--browser-extension-settings-text-color);font-family:var(--font-family);min-width:250px;overflow-x:hidden;overflow-y:auto;padding:10px 15px}#browser_extension_settings_main h2{margin:5px 0 0;text-align:center}#browser_extension_settings_main .option_groups{background-color:#fff;border-radius:10px;display:flex;flex-direction:column;margin:10px 0 0;padding:6px 15px}#browser_extension_settings_main .option_groups .action{color:var(--browser-extension-settings-link-color);cursor:pointer;font-size:14px;padding:6px 0}#browser_extension_settings_main .bes_external_link{font-size:14px;padding:6px 0}#browser_extension_settings_main .bes_external_link a,#browser_extension_settings_main .bes_external_link a:hover,#browser_extension_settings_main .bes_external_link a:visited{color:var(--browser-extension-settings-link-color);cursor:pointer;font-family:var(--font-family);text-decoration:none}#browser_extension_settings_main .option_groups textarea{border:1px solid #a9a9a9;border-radius:4px;box-sizing:border-box;font-size:12px;height:100px;margin:10px 0;width:100%}#browser_extension_settings_main .select_option,#browser_extension_settings_main .switch_option{align-items:center;display:flex;font-size:14px;justify-content:space-between;padding:6px 0}#browser_extension_settings_main .option_groups>*{border-top:1px solid #ccc}#browser_extension_settings_main .option_groups>:first-child{border-top:none}#browser_extension_settings_main .bes_option>.bes_icon{height:24px;margin-right:10px;width:24px}#browser_extension_settings_main .bes_option>.bes_title{flex-grow:1;margin-right:10px}#browser_extension_settings_main .bes_option>.bes_select{background-color:#fff;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;height:24px;margin:0;padding:0 2px}#browser_extension_settings_main .option_groups .bes_tip{border:none;font-size:14px;margin:0;max-width:none;padding:0 15px 0 0;position:relative}#browser_extension_settings_main .option_groups .bes_tip .bes_tip_anchor{cursor:help;text-decoration:underline}#browser_extension_settings_main .option_groups .bes_tip .bes_tip_content{background-color:#fff;border-radius:5px;bottom:15px;box-shadow:0 10px 39px 10px rgba(62,66,66,.22)!important;color:var(--browser-extension-settings-text-color);display:none;left:0;padding:10px;position:absolute;text-align:left}#browser_extension_settings_main .option_groups .bes_tip .bes_tip_anchor:hover+.bes_tip_content,#browser_extension_settings_main .option_groups .bes_tip .bes_tip_content:hover{display:block}#browser_extension_settings_main .option_groups .bes_tip p,#browser_extension_settings_main .option_groups .bes_tip pre{margin:revert;padding:revert}#browser_extension_settings_main .option_groups .bes_tip pre{background-color:#f5f5f5;border:none;font-family:Consolas,panic sans,bitstream vera sans mono,Menlo,microsoft yahei,monospace;font-size:13px;letter-spacing:.015em;line-height:120%;overflow:auto;overflow-wrap:normal;padding:.5em;white-space:pre;word-break:normal}#browser_extension_settings_main .bes_switch_container{--button-width:51px;--button-height:24px;--toggle-diameter:20px;--color-off:#e9e9eb;--color-on:#34c759;flex:none;height:var(--button-height);margin:0;padding:0;position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--button-width)}#browser_extension_settings_main input[type=checkbox]{height:0;opacity:0;position:absolute;width:0}#browser_extension_settings_main .bes_switch{background-color:var(--color-off);border:none;border-radius:calc(var(--button-height)/2);cursor:pointer;display:block;height:100%;transition:all .2s ease-out;width:100%}#browser_extension_settings_main .bes_switch:before{display:none}#browser_extension_settings_main .bes_slider{background:#fff;border-radius:50%;box-shadow:0 3px 8px rgba(0,0,0,.15),0 3px 1px rgba(0,0,0,.06);cursor:pointer;height:var(--toggle-diameter);left:2px;position:absolute;top:calc(50% - var(--toggle-diameter)/2);transition:all .2s ease-out;width:var(--toggle-diameter)}#browser_extension_settings_main input[type=checkbox]:checked+.bes_switch{background-color:var(--color-on)}#browser_extension_settings_main input[type=checkbox]:checked+.bes_switch .bes_slider{left:calc(var(--button-width) - var(--toggle-diameter) - 2px)}#browser_extension_side_menu{min-height:80px;opacity:0;padding-top:20px;position:fixed;right:0;top:80px;width:30px;z-index:10000}#browser_extension_side_menu:hover{opacity:1}#browser_extension_side_menu button{background-color:transparent;background-image:none;border:none;cursor:pointer;height:24px;padding:0;width:24px}#browser_extension_side_menu button svg{height:24px;width:24px}#browser_extension_side_menu button:hover{opacity:70%}#browser_extension_side_menu button:active{opacity:100%}@media(max-width:500px){#browser_extension_settings_container{right:10px}#browser_extension_settings_container .browser_extension_settings_wrapper a.navigation_go_previous{display:block}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container{display:none}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container.bes_active{display:block}#browser_extension_settings_container .browser_extension_settings_wrapper .extension_list_container.bes_active+div{display:none}}'
+    ':host{--browser-extension-settings-background-color:#f2f2f7;--browser-extension-settings-text-color:#444;--browser-extension-settings-link-color:#217dfc;--browser-extension-settings-border-radius:8px;--sb-track-color:#00000000;--sb-thumb-color:#33334480;--sb-size:2px;--font-family:"helvetica neue","microsoft yahei",arial,sans-serif;border-radius:var(--browser-extension-settings-border-radius);box-shadow:0 10px 39px 10px rgba(62,66,66,.22)!important;display:none;position:fixed;right:30px;top:10px;z-index:200000}:host .browser_extension_settings_v2_wrapper{background-color:var(--browser-extension-settings-background-color);border-radius:var(--browser-extension-settings-border-radius);display:flex;font-family:var(--font-family)}:host .browser_extension_settings_v2_wrapper h1,:host .browser_extension_settings_v2_wrapper h2{border:none;color:var(--browser-extension-settings-text-color);font-family:var(--font-family);letter-spacing:normal;line-height:normal;padding:0}:host .browser_extension_settings_v2_wrapper h1{font-size:26px;font-weight:800;margin:18px 0}:host .browser_extension_settings_v2_wrapper h2{font-size:18px;font-weight:600;margin:14px 0}:host .browser_extension_settings_v2_wrapper footer{background-color:var(--browser-extension-settings-background-color);color:var(--browser-extension-settings-text-color);display:flex;flex-direction:column;font-family:var(--font-family);font-size:11px;justify-content:center;margin:10px auto 0}:host .browser_extension_settings_v2_wrapper footer a{color:var(--browser-extension-settings-link-color)!important;font-family:var(--font-family);padding:0;text-decoration:none}:host .browser_extension_settings_v2_wrapper footer p{color:var(--browser-extension-settings-text-color);font-family:var(--font-family);font-size:11px;line-height:13px;margin:2px;padding:0;text-align:center}:host .thin_scrollbar{scrollbar-color:var(--sb-thumb-color) var(--sb-track-color);scrollbar-width:thin}:host .thin_scrollbar::-webkit-scrollbar{width:var(--sb-size)}:host .thin_scrollbar::-webkit-scrollbar-track{background:var(--sb-track-color);border-radius:10px}:host .thin_scrollbar::-webkit-scrollbar-thumb{background:var(--sb-thumb-color);border-radius:10px}.browser_extension_settings_v2_main{background-color:var(--browser-extension-settings-background-color);border-radius:var(--browser-extension-settings-border-radius);box-sizing:border-box;color:var(--browser-extension-settings-text-color);font-family:var(--font-family);max-height:90vh;min-width:300px;overflow-x:hidden;overflow-y:auto;padding:10px 15px}.browser_extension_settings_v2_main h2{margin:5px 0 0;text-align:center}.browser_extension_settings_v2_main .option_groups{background-color:#fff;border-radius:10px;display:flex;flex-direction:column;margin:10px 0 0;padding:6px 15px}.browser_extension_settings_v2_main .option_groups .action{color:var(--browser-extension-settings-link-color);cursor:pointer;font-size:14px;padding:6px 0}.browser_extension_settings_v2_main .bes_external_link{font-size:14px;padding:6px 0}.browser_extension_settings_v2_main .bes_external_link a,.browser_extension_settings_v2_main .bes_external_link a:hover,.browser_extension_settings_v2_main .bes_external_link a:visited{color:var(--browser-extension-settings-link-color);cursor:pointer;font-family:var(--font-family);text-decoration:none}.browser_extension_settings_v2_main .option_groups textarea{background-color:var(--browser-extension-settings-background-color);border:1px solid #a9a9a9;border-radius:4px;box-sizing:border-box;color:var(--browser-extension-settings-text-color);font-size:12px;height:100px;margin:10px 0;padding:4px 8px;width:100%}.browser_extension_settings_v2_main .select_option,.browser_extension_settings_v2_main .switch_option{align-items:center;display:flex;font-size:14px;justify-content:space-between;padding:6px 0}.browser_extension_settings_v2_main .option_groups>*{border-top:1px solid #ccc}.browser_extension_settings_v2_main .option_groups>:first-child{border-top:none}.browser_extension_settings_v2_main .bes_option>.bes_icon{height:24px;margin-right:10px;width:24px}.browser_extension_settings_v2_main .bes_option>.bes_title{flex-grow:1;margin-right:10px}.browser_extension_settings_v2_main .bes_option>.bes_select{background-color:#fff;border:1px solid #ccc;border-radius:6px;box-sizing:border-box;color:var(--browser-extension-settings-text-color);height:24px;margin:0;padding:0 2px}.browser_extension_settings_v2_main .option_groups .bes_tip{border:none;font-size:14px;margin:0;max-width:none;padding:0 15px 0 0;position:relative}.browser_extension_settings_v2_main .option_groups .bes_tip .bes_tip_anchor{cursor:help;text-decoration:underline}.browser_extension_settings_v2_main .option_groups .bes_tip .bes_tip_content{background-color:#fff;border-radius:5px;bottom:15px;box-shadow:0 10px 39px 10px rgba(62,66,66,.22)!important;color:var(--browser-extension-settings-text-color);display:none;left:0;max-height:300px;overflow-y:auto;padding:10px;position:absolute;text-align:left}.browser_extension_settings_v2_main .option_groups .bes_tip .bes_tip_anchor:hover+.bes_tip_content,.browser_extension_settings_v2_main .option_groups .bes_tip .bes_tip_content:hover{display:block}.browser_extension_settings_v2_main .option_groups .bes_tip p,.browser_extension_settings_v2_main .option_groups .bes_tip pre{margin:revert;padding:revert}.browser_extension_settings_v2_main .option_groups .bes_tip pre{background-color:#f5f5f5;border:none;font-family:Consolas,panic sans,bitstream vera sans mono,Menlo,microsoft yahei,monospace;font-size:13px;letter-spacing:.015em;line-height:120%;overflow:auto;overflow-wrap:normal;padding:.5em;white-space:pre;word-break:normal}.browser_extension_settings_v2_main .bes_switch_container{--button-width:51px;--button-height:24px;--toggle-diameter:20px;--color-off:#e9e9eb;--color-on:#34c759;flex:none;height:var(--button-height);margin:0;padding:0;position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--button-width)}.browser_extension_settings_v2_main input[type=checkbox]{height:0;opacity:0;position:absolute;width:0}.browser_extension_settings_v2_main .bes_switch{background-color:var(--color-off);border:none;border-radius:calc(var(--button-height)/2);cursor:pointer;display:block;height:100%;transition:all .2s ease-out;width:100%}.browser_extension_settings_v2_main .bes_switch:before{display:none}.browser_extension_settings_v2_main .bes_slider{background:#fff;border-radius:50%;box-shadow:0 3px 8px rgba(0,0,0,.15),0 3px 1px rgba(0,0,0,.06);cursor:pointer;height:var(--toggle-diameter);left:2px;position:absolute;top:calc(50% - var(--toggle-diameter)/2);transition:all .2s ease-out;width:var(--toggle-diameter)}.browser_extension_settings_v2_main input[type=checkbox]:checked+.bes_switch{background-color:var(--color-on)}.browser_extension_settings_v2_main input[type=checkbox]:checked+.bes_switch .bes_slider{left:calc(var(--button-width) - var(--toggle-diameter) - 2px)}@media(max-width:500px){:host{right:10px}.browser_extension_settings_v2_main{max-height:85%}}'
   function createSwitch(options = {}) {
     const container = createElement("label", { class: "bes_switch_container" })
     const checkbox = createElement(
@@ -449,7 +449,7 @@
     div.append(createSwitch(options))
     return div
   }
-  var besVersion = 62
+  var besVersion = 71
   var messages = {
     "settings.title": "Settings",
     "settings.otherExtensions": "Other Extensions",
@@ -789,82 +789,24 @@
   initAvailableLocales(locales)
   console.log("[settings] prefferedLocale:", getPrefferedLocale())
   var i = initI18n(localeMap, getPrefferedLocale())
-  function resetI18n(locale2) {
+  function resetI18n(locale) {
     console.log(
       "[settings] prefferedLocale:",
       getPrefferedLocale(),
       "locale:",
-      locale2
+      locale
     )
-    i = initI18n(localeMap, locale2 || getPrefferedLocale())
+    i = initI18n(localeMap, locale || getPrefferedLocale())
   }
-  var lang = navigator.language
-  var locale
-  if (lang === "zh-TW" || lang === "zh-HK") {
-    locale = "zh-TW"
-  } else if (lang.includes("zh")) {
-    locale = "zh-CN"
-  } else {
-    locale = "en"
+  var prefix = "browser_extension_settings_v2_"
+  var getSettingsElement = () => {
+    const wrapper = getSettingsWrapper()
+    return (
+      (wrapper == null
+        ? void 0
+        : wrapper.querySelector(".".concat(prefix, "main"))) || void 0
+    )
   }
-  var relatedExtensions = [
-    {
-      id: "utags",
-      title: i("settings.extensions.utags.title"),
-      url: "https://greasyfork.org/".concat(
-        locale,
-        "/scripts/460718-utags-add-usertags-to-links"
-      ),
-    },
-    {
-      id: "links-helper",
-      title: i("settings.extensions.links-helper.title"),
-      description:
-        "\u5728\u65B0\u6807\u7B7E\u9875\u4E2D\u6253\u5F00\u7B2C\u4E09\u65B9\u7F51\u7AD9\u94FE\u63A5\uFF0C\u56FE\u7247\u94FE\u63A5\u8F6C\u56FE\u7247\u6807\u7B7E\u7B49",
-      url: "https://greasyfork.org/".concat(
-        locale,
-        "/scripts/464541-links-helper"
-      ),
-    },
-    {
-      id: "v2ex.rep",
-      title: i("settings.extensions.v2ex.rep.title"),
-      url: "https://greasyfork.org/".concat(
-        locale,
-        "/scripts/466589-v2ex-rep-%E4%B8%93%E6%B3%A8%E6%8F%90%E5%8D%87-v2ex-%E4%B8%BB%E9%A2%98%E5%9B%9E%E5%A4%8D%E6%B5%8F%E8%A7%88%E4%BD%93%E9%AA%8C"
-      ),
-    },
-    {
-      id: "v2ex.min",
-      title: i("settings.extensions.v2ex.min.title"),
-      url: "https://greasyfork.org/".concat(
-        locale,
-        "/scripts/463552-v2ex-min-v2ex-%E6%9E%81%E7%AE%80%E9%A3%8E%E6%A0%BC"
-      ),
-    },
-    {
-      id: "replace-ugly-avatars",
-      title: i("settings.extensions.replace-ugly-avatars.title"),
-      url: "https://greasyfork.org/".concat(
-        locale,
-        "/scripts/472616-replace-ugly-avatars"
-      ),
-    },
-    {
-      id: "more-by-pipecraft",
-      title: i("settings.extensions.more-by-pipecraft.title"),
-      url: "https://greasyfork.org/".concat(locale, "/users/1030884-pipecraft"),
-    },
-  ]
-  var prefix = "browser_extension_settings_"
-  var randomId = String(Math.round(Math.random() * 1e4))
-  var settingsContainerId = prefix + "container_" + randomId
-  var settingsElementId = prefix + "main_" + randomId
-  var getSettingsElement = () => $("#" + settingsElementId)
-  var getSettingsStyle = () =>
-    style_default
-      .replaceAll(/browser_extension_settings_container/gm, settingsContainerId)
-      .replaceAll(/browser_extension_settings_main/gm, settingsElementId)
   var storageKey = "settings"
   var settingsOptions
   var settingsTable = {}
@@ -893,29 +835,38 @@
     const settingsContainer = getSettingsContainer()
     if (settingsContainer) {
       settingsContainer.style.display = "none"
+      settingsContainer.remove()
     }
     removeEventListener(document, "click", onDocumentClick, true)
     removeEventListener(document, "keydown", onDocumentKeyDown, true)
-  }
-  function destroySettings() {
-    closeModal()
-    const settingsContainer = getSettingsContainer()
-    if (settingsContainer) {
-      settingsContainer.remove()
-    }
+    removeEventListener(
+      globalThis,
+      "beforeShowSettings",
+      onBeforeShowSettings,
+      true
+    )
   }
   function isSettingsShown() {
-    const settingsContainer = getSettingsContainer()
+    const settingsContainer = $(".".concat(prefix, "container"))
     if (settingsContainer) {
       return settingsContainer.style.display === "block"
     }
     return false
   }
   var onDocumentClick = (event) => {
-    const target = event.target
-    if (
-      target == null ? void 0 : target.closest(".".concat(prefix, "container"))
-    ) {
+    var _a
+    const path =
+      ((_a = event.composedPath) == null ? void 0 : _a.call(event)) || []
+    const insideContainer = path.some((node) => {
+      var _a2
+      return (
+        node instanceof HTMLElement &&
+        ((_a2 = node.classList) == null
+          ? void 0
+          : _a2.contains("".concat(prefix, "container")))
+      )
+    })
+    if (insideContainer) {
       return
     }
     closeModal()
@@ -939,13 +890,13 @@
         const type = item.type || "switch"
         switch (type) {
           case "switch": {
+            const root = getSettingsElement()
             const checkbox = $(
-              "#"
-                .concat(
-                  settingsElementId,
-                  ' .option_groups .switch_option[data-key="'
-                )
-                .concat(key, '"] input')
+              '.option_groups .switch_option[data-key="'.concat(
+                key,
+                '"] input'
+              ),
+              root
             )
             if (checkbox) {
               checkbox.checked = getSettingsValue(key)
@@ -953,13 +904,13 @@
             break
           }
           case "select": {
+            const root = getSettingsElement()
             const options = $$(
-              "#"
-                .concat(
-                  settingsElementId,
-                  ' .option_groups .select_option[data-key="'
-                )
-                .concat(key, '"] .bes_select option')
+              '.option_groups .select_option[data-key="'.concat(
+                key,
+                '"] .bes_select option'
+              ),
+              root
             )
             for (const option of options) {
               option.selected = option.value === String(getSettingsValue(key))
@@ -967,13 +918,10 @@
             break
           }
           case "textarea": {
+            const root = getSettingsElement()
             const textArea = $(
-              "#"
-                .concat(
-                  settingsElementId,
-                  ' .option_groups textarea[data-key="'
-                )
-                .concat(key, '"]')
+              '.option_groups textarea[data-key="'.concat(key, '"]'),
+              root
             )
             if (textArea) {
               textArea.value = getSettingsValue(key)
@@ -991,31 +939,51 @@
       settingsOptions.onViewUpdate(settingsMain)
     }
   }
-  function getSettingsContainer() {
+  function getSettingsContainer(create = false) {
     const container = $(".".concat(prefix, "container"))
     if (container) {
       const theVersion = parseInt10(container.dataset.besVersion, 0)
       if (theVersion < besVersion) {
-        container.id = settingsContainerId
         container.dataset.besVersion = String(besVersion)
       }
       return container
     }
-    return addElement2(doc.body, "div", {
-      id: settingsContainerId,
-      class: "".concat(prefix, "container"),
-      "data-bes-version": besVersion,
-      style: "display: none;",
-    })
+    if (create) {
+      return addElement2(doc.body, "div", {
+        class: "".concat(prefix, "container"),
+        "data-bes-version": besVersion,
+        style: "display: none;",
+      })
+    }
+  }
+  function getSettingsShadowRoot() {
+    const container = getSettingsContainer(true)
+    if (container == null ? void 0 : container.attachShadow) {
+      return container.shadowRoot || container.attachShadow({ mode: "open" })
+    }
+    return void 0
   }
   function getSettingsWrapper() {
-    const container = getSettingsContainer()
-    return (
-      $(".".concat(prefix, "wrapper"), container) ||
-      addElement2(container, "div", {
-        class: "".concat(prefix, "wrapper"),
-      })
-    )
+    const shadow = getSettingsShadowRoot()
+    if (!shadow) {
+      const container = getSettingsContainer(true)
+      return (
+        $(".".concat(prefix, "wrapper"), container) ||
+        addElement2(container, "div", { class: "".concat(prefix, "wrapper") })
+      )
+    }
+    let wrapper = shadow.querySelector(".".concat(prefix, "wrapper"))
+    if (!wrapper) {
+      wrapper = createElement("div", { class: "".concat(prefix, "wrapper") })
+      shadow.append(wrapper)
+      const existStyle = shadow.querySelector("style")
+      if (!existStyle) {
+        const styleElm = createElement("style")
+        styleElm.textContent = style_default
+        shadow.append(styleElm)
+      }
+    }
+    return wrapper
   }
   function createSettingsElement() {
     let settingsMain = getSettingsElement()
@@ -1025,7 +993,6 @@
         element.remove()
       }
       settingsMain = addElement2(wrapper, "div", {
-        id: settingsElementId,
         class: "".concat(prefix, "main thin_scrollbar"),
       })
       if (settingsOptions.title) {
@@ -1197,8 +1164,20 @@
       history.replaceState({}, "", location.href.replace(hashString, ""))
     }
   }
+  function onBeforeShowSettings() {
+    closeModal()
+  }
   async function showSettings() {
-    const settingsContainer = getSettingsContainer()
+    closeModal()
+    const event = new CustomEvent("beforeShowSettings")
+    globalThis.dispatchEvent(event)
+    addEventListener(
+      globalThis,
+      "beforeShowSettings",
+      onBeforeShowSettings,
+      true
+    )
+    const settingsContainer = getSettingsContainer(true)
     const settingsMain = createSettingsElement()
     await updateOptions()
     settingsContainer.style.display = "block"
@@ -1220,10 +1199,10 @@
       localeSelect.options = {
         [i("settings.systemLanguage")]: "",
       }
-      for (const locale2 of availableLocales3) {
-        const lowerCaseLocale = locale2.toLowerCase()
-        const displayName = localeNames[lowerCaseLocale] || locale2
-        localeSelect.options[displayName] = locale2
+      for (const locale of availableLocales3) {
+        const lowerCaseLocale = locale.toLowerCase()
+        const displayName = localeNames[lowerCaseLocale] || locale
+        localeSelect.options[displayName] = locale
       }
     }
   }
@@ -1235,7 +1214,7 @@
       console.log("lastLocale:", lastLocale, "newLocale:", newLocale)
       if (lastLocale !== newLocale) {
         const isShown = isSettingsShown()
-        destroySettings()
+        closeModal()
         resetI18n(newLocale)
         lastLocale = newLocale
         setTimeout(() => {
@@ -1254,16 +1233,14 @@
     setTimeout(() => {
       resetSettingsUI(optionsProvider)
     }, 50)
-    runWhenHeadExists(() => {
-      addStyle(getSettingsStyle())
+    void registerMenuCommand(i("settings.menu.settings"), showSettings, {
+      accessKey: "o",
     })
-    registerMenuCommand(i("settings.menu.settings"), showSettings, "o")
     handleShowSettingsUrl()
   }
   var content_host_default =
     ':host{color:#000;--utaf-col-user:auto;--utaf-col-score:56px;--utaf-col-select:48px}.utaf-checkbox{accent-color:#3b82f6;color-scheme:light;cursor:pointer;flex:0 0 auto;height:20px;vertical-align:middle;width:20px}.shadow-xl>.flex .utaf-checkbox{margin-right:calc(var(--spacing)*2)}.utaf-label{cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none}input,select,textarea{color-scheme:light}.utaf-reset-slot{align-items:center;display:inline-flex;justify-content:center;min-height:24px;min-width:24px;position:relative}.utaf-reset-btn{opacity:0;pointer-events:none;transition:opacity .2s ease}.utaf-reset-btn--visible{opacity:1;pointer-events:auto}.utaf-fab{align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.18);color:#111;display:inline-flex;height:32px;justify-content:center;opacity:.5;transition:opacity .2s ease;width:32px}.utaf-fab:hover{opacity:1}.utaf-btn-circle{align-items:center;border-radius:9999px;display:inline-flex;height:20px;justify-content:center;width:20px}.utaf-btn-danger{background:#fee2e2;border:1px solid #fecaca;color:#b91c1c}.utaf-btn-danger:hover{background:#fecaca}.utaf-col-user{width:var(--utaf-col-user)}.utaf-col-score{width:var(--utaf-col-score)}.utaf-col-select{width:var(--utaf-col-select)}.utaf-toggle{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#e5e7eb;border:1px solid #d1d5db;border-radius:9999px;cursor:pointer;display:inline-block;height:16px;outline:none;position:relative;transition:background-color .2s ease,border-color .2s ease;vertical-align:middle;width:28px}.utaf-toggle:before{background:#fff;border-radius:9999px;box-shadow:0 1px 2px rgba(0,0,0,.2);content:"";height:12px;left:1px;position:absolute;top:1px;transition:transform .2s ease;width:12px}.utaf-toggle:checked{background-color:#3b82f6;border-color:#3b82f6}.utaf-toggle:checked:before{transform:translateX(12px)}.utaf-toggle:disabled{cursor:not-allowed;opacity:.5}.utaf-toggle.hidden{display:none}.shadow-xl input[type=number]::-webkit-inner-spin-button,.shadow-xl input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.shadow-xl input[type=number]{-moz-appearance:textfield}'
-  var content_default =
-    ".bes_tip_content{max-height:300px;overflow-y:auto}.bes_textarea textarea{padding:4px 8px}.utaf-hidden{display:none!important}"
+  var content_default = ".utaf-hidden{display:none!important}"
   var tailwind_default =
     '/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */@layer properties;@layer theme, base, components, utilities;@layer theme{:host,:root{--font-sans:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-red-100:oklch(93.6% 0.032 17.717);--color-red-200:oklch(88.5% 0.062 18.334);--color-red-700:oklch(50.5% 0.213 27.518);--color-blue-500:oklch(62.3% 0.214 259.815);--color-blue-600:oklch(54.6% 0.245 262.881);--color-blue-700:oklch(48.8% 0.243 264.376);--color-gray-50:oklch(98.5% 0.002 247.839);--color-gray-100:oklch(96.7% 0.003 264.542);--color-gray-200:oklch(92.8% 0.006 264.531);--color-gray-300:oklch(87.2% 0.01 258.338);--color-gray-500:oklch(55.1% 0.027 264.364);--color-gray-600:oklch(44.6% 0.03 256.802);--color-gray-700:oklch(37.3% 0.034 259.733);--color-gray-800:oklch(27.8% 0.033 256.848);--color-gray-900:oklch(21% 0.034 264.665);--color-black:#000;--color-white:#fff;--spacing:0.25rem;--text-xs:0.75rem;--text-xs--line-height:1.33333;--text-sm:0.875rem;--text-sm--line-height:1.42857;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--default-transition-duration:150ms;--default-transition-timing-function:cubic-bezier(0.4,0,0.2,1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,::backdrop,::file-selector-button,:after,:before{border:0 solid;box-sizing:border-box;margin:0;padding:0}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:var(--default-font-family,ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-tap-highlight-color:transparent}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-size:1em;font-variation-settings:var(--default-mono-font-variation-settings,normal)}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}menu,ol,ul{list-style:none}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}::file-selector-button,button,input,optgroup,select,textarea{background-color:transparent;border-radius:0;color:inherit;font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::-moz-placeholder{opacity:1}::placeholder{opacity:1}@supports (not (-webkit-appearance:-apple-pay-button)) or (contain-intrinsic-size:1px){::-moz-placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}::placeholder{color:currentcolor;@supports (color:color-mix(in lab,red,red)){color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-meridiem-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}::file-selector-button,button,input:where([type=button],[type=reset],[type=submit]){-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.visible{visibility:visible}.sr-only{border-width:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;white-space:nowrap;width:1px}.absolute,.sr-only{position:absolute}.fixed{position:fixed}.relative{position:relative}.sticky{position:sticky}.top-0{top:calc(var(--spacing)*0)}.top-1{top:calc(var(--spacing)*1)}.left-1{left:calc(var(--spacing)*1)}.z-10{z-index:10}.z-50{z-index:50}.container{width:100%;@media (width >= 40rem){max-width:40rem}@media (width >= 48rem){max-width:48rem}@media (width >= 64rem){max-width:64rem}@media (width >= 80rem){max-width:80rem}@media (width >= 96rem){max-width:96rem}}.mx-auto{margin-inline:auto}.my-4{margin-block:calc(var(--spacing)*4)}.my-5{margin-block:calc(var(--spacing)*5)}.mt-1{margin-top:calc(var(--spacing)*1)}.mt-3{margin-top:calc(var(--spacing)*3)}.mt-4{margin-top:calc(var(--spacing)*4)}.-mr-5{margin-right:calc(var(--spacing)*-5)}.mr-2{margin-right:calc(var(--spacing)*2)}.mb-1{margin-bottom:calc(var(--spacing)*1)}.mb-2{margin-bottom:calc(var(--spacing)*2)}.mb-3{margin-bottom:calc(var(--spacing)*3)}.mb-4{margin-bottom:calc(var(--spacing)*4)}.-ml-3{margin-left:calc(var(--spacing)*-3)}.ml-auto{margin-left:auto}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.h-3{height:calc(var(--spacing)*3)}.h-4{height:calc(var(--spacing)*4)}.h-5{height:calc(var(--spacing)*5)}.h-6{height:calc(var(--spacing)*6)}.h-\\[0\\.5px\\]{height:.5px}.w-1{width:calc(var(--spacing)*1)}.w-1\\/3{width:33.33333%}.w-3{width:calc(var(--spacing)*3)}.w-4{width:calc(var(--spacing)*4)}.w-8{width:calc(var(--spacing)*8)}.w-10{width:calc(var(--spacing)*10)}.w-12{width:calc(var(--spacing)*12)}.w-14{width:calc(var(--spacing)*14)}.w-16{width:calc(var(--spacing)*16)}.w-20{width:calc(var(--spacing)*20)}.w-24{width:calc(var(--spacing)*24)}.w-36{width:calc(var(--spacing)*36)}.w-80{width:calc(var(--spacing)*80)}.w-\\[20rem\\]{width:20rem}.w-\\[320px\\]{width:320px}.w-full{width:100%}.max-w-\\[3rem\\]{max-width:3rem}.max-w-\\[4rem\\]{max-width:4rem}.max-w-\\[8rem\\]{max-width:8rem}.max-w-\\[10rem\\]{max-width:10rem}.max-w-\\[12rem\\]{max-width:12rem}.min-w-0{min-width:calc(var(--spacing)*0)}.min-w-\\[2\\.5rem\\]{min-width:2.5rem}.min-w-\\[3rem\\]{min-width:3rem}.min-w-\\[4rem\\]{min-width:4rem}.min-w-\\[5rem\\]{min-width:5rem}.min-w-\\[6rem\\]{min-width:6rem}.flex-1{flex:1}.shrink-0{flex-shrink:0}.table-fixed{table-layout:fixed}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-\\[auto_1fr_auto\\]{grid-template-columns:auto 1fr auto}.grid-cols-\\[auto_minmax\\(0\\,1fr\\)\\]{grid-template-columns:auto minmax(0,1fr)}.grid-cols-\\[minmax\\(0\\,1fr\\)_auto\\]{grid-template-columns:minmax(0,1fr) auto}.grid-cols-\\[minmax\\(0\\,1fr\\)_minmax\\(0\\,1fr\\)_auto\\]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}.grid-rows-1{grid-template-rows:repeat(1,minmax(0,1fr))}.grid-rows-2{grid-template-rows:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.gap-1{gap:calc(var(--spacing)*1)}.gap-2{gap:calc(var(--spacing)*2)}.gap-3{gap:calc(var(--spacing)*3)}.space-y-1{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*1*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*1*var(--tw-space-y-reverse))}}.space-y-2{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*2*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*2*var(--tw-space-y-reverse))}}.space-y-3{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*3*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*3*var(--tw-space-y-reverse))}}.space-y-4{:where(&>:not(:last-child)){--tw-space-y-reverse:0;margin-block-end:calc(var(--spacing)*4*(1 - var(--tw-space-y-reverse)));margin-block-start:calc(var(--spacing)*4*var(--tw-space-y-reverse))}}.gap-x-1{-moz-column-gap:calc(var(--spacing)*1);column-gap:calc(var(--spacing)*1)}.gap-x-2{-moz-column-gap:calc(var(--spacing)*2);column-gap:calc(var(--spacing)*2)}.gap-y-1{row-gap:calc(var(--spacing)*1)}.justify-self-end{justify-self:flex-end}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-full{border-radius:calc(infinity*1px)}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-gray-100{border-color:var(--color-gray-100)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.bg-black{background-color:var(--color-black)}.bg-black\\/30{background-color:color-mix(in srgb,#000 30%,transparent);@supports (color:color-mix(in lab,red,red)){background-color:color-mix(in oklab,var(--color-black) 30%,transparent)}}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-red-100{background-color:var(--color-red-100)}.bg-white{background-color:var(--color-white)}.p-2{padding:calc(var(--spacing)*2)}.p-3{padding:calc(var(--spacing)*3)}.p-4{padding:calc(var(--spacing)*4)}.px-1{padding-inline:calc(var(--spacing)*1)}.px-2{padding-inline:calc(var(--spacing)*2)}.px-3{padding-inline:calc(var(--spacing)*3)}.py-0{padding-block:calc(var(--spacing)*0)}.py-0\\.5{padding-block:calc(var(--spacing)*.5)}.py-1{padding-block:calc(var(--spacing)*1)}.py-2{padding-block:calc(var(--spacing)*2)}.pt-0{padding-top:calc(var(--spacing)*0)}.pt-1{padding-top:calc(var(--spacing)*1)}.pr-1{padding-right:calc(var(--spacing)*1)}.pr-3{padding-right:calc(var(--spacing)*3)}.pr-5{padding-right:calc(var(--spacing)*5)}.pb-3{padding-bottom:calc(var(--spacing)*3)}.pl-1{padding-left:calc(var(--spacing)*1)}.pl-3{padding-left:calc(var(--spacing)*3)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.align-middle{vertical-align:middle}.font-sans{font-family:var(--font-sans)}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.leading-5{--tw-leading:calc(var(--spacing)*5);line-height:calc(var(--spacing)*5)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.whitespace-nowrap{white-space:nowrap}.text-blue-500{color:var(--color-blue-500)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-red-700{color:var(--color-red-700)}.text-white{color:var(--color-white)}.opacity-50{opacity:50%}.opacity-70{opacity:70%}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow,.shadow-md{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,rgba(0,0,0,.1)),0 2px 4px -2px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,rgba(0,0,0,.1)),0 1px 2px -1px var(--tw-shadow-color,rgba(0,0,0,.1))}.shadow-sm,.shadow-xl{box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,rgba(0,0,0,.1)),0 8px 10px -6px var(--tw-shadow-color,rgba(0,0,0,.1))}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.transition-shadow{transition-duration:var(--tw-duration,var(--default-transition-duration));transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function))}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.last\\:border-0{&:last-child{border-style:var(--tw-border-style);border-width:0}}.hover\\:bg-blue-600{&:hover{@media (hover:hover){background-color:var(--color-blue-600)}}}.hover\\:bg-gray-50{&:hover{@media (hover:hover){background-color:var(--color-gray-50)}}}.hover\\:bg-gray-200{&:hover{@media (hover:hover){background-color:var(--color-gray-200)}}}.hover\\:bg-red-200{&:hover{@media (hover:hover){background-color:var(--color-red-200)}}}.hover\\:underline{&:hover{@media (hover:hover){text-decoration-line:underline}}}.focus\\:border-blue-500{&:focus{border-color:var(--color-blue-500)}}}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@layer properties{*,::backdrop,:after,:before{--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial}}'
   var icon_no_bg_default =
@@ -1389,8 +1366,8 @@
     en: en_default2,
   }
   var i2 = initI18n(localeMap2, getPrefferedLocale())
-  function resetI18n2(locale2) {
-    i2 = initI18n(localeMap2, locale2 || getPrefferedLocale())
+  function resetI18n2(locale) {
+    i2 = initI18n(localeMap2, locale || getPrefferedLocale())
   }
   function getAvailableLocales() {
     return availableLocales2
@@ -4158,8 +4135,8 @@
     }
   }
   function onSettingsChange() {
-    const locale2 = getSettingsValue("locale") || getPrefferedLocale()
-    resetI18n2(locale2)
+    const locale = getSettingsValue("locale") || getPrefferedLocale()
+    resetI18n2(locale)
   }
   async function main() {
     await initSettings(() => {

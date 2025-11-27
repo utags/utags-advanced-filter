@@ -4,7 +4,7 @@
 // @namespace            https://github.com/utags
 // @homepageURL          https://github.com/utags/utags-advanced-filter#readme
 // @supportURL           https://github.com/utags/utags-advanced-filter/issues
-// @version              0.1.2
+// @version              0.1.3
 // @description          Real-time filters for list items on any website. Hides items that don't match your criteria, without reloading the page. Supports Greasy Fork and will support more sites via rules.
 // @description:zh-CN    对网站的列表内容进行实时过滤与隐藏。无需刷新页面，即时隐藏不符合条件的条目。已支持 Greasy Fork，将通过规则适配更多站点。
 // @icon                 https://wsrv.nl/?w=128&h=128&url=https%3A%2F%2Fraw.githubusercontent.com%2Futags%2Futags-advanced-filter%2Frefs%2Fheads%2Fmain%2Fassets%2Ficon.png
