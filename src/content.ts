@@ -2596,8 +2596,7 @@ function initialize() {
 }
 
 function onSettingsChange() {
-  const locale =
-    (getSettingsValue('locale') as string | undefined) || getPrefferedLocale()
+  const locale = getSettingsValue('locale') || getPrefferedLocale()
   resetI18n(locale)
   // enableTreatSubdomainsSameSite = Boolean(
   //   getSettingsValue(`enableTreatSubdomainsAsSameSiteForCurrentSite_${host}`)
