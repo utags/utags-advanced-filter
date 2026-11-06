@@ -12,14 +12,14 @@ importers:
         specifier: ^0.1.3
         version: 0.1.3
       browser-extension-settings:
-        specifier: ^0.8.9
-        version: 0.8.9(react@19.2.3)
+        specifier: ^0.9.0
+        version: 0.9.0(react@19.2.3)
       browser-extension-storage:
-        specifier: ^0.2.8
-        version: 0.2.8(react@19.2.3)
+        specifier: ^0.2.10
+        version: 0.2.10(react@19.2.3)
       browser-extension-utils:
-        specifier: ^0.3.4
-        version: 0.3.4
+        specifier: ^0.5.2
+        version: 0.5.2
       lucide:
         specifier: ^0.562.0
         version: 0.562.0
@@ -2767,16 +2767,16 @@ packages:
     resolution: {integrity: sha512-lL7FldiL+Ln4cy/DSPSPRYfkZ2MqfW9cK/qc6QYE+TpHW4dio9H3BWi/1Uz9ju+3huv1F5uyErIq8FJItnc8sg==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
-  browser-extension-settings@0.8.9:
-    resolution: {integrity: sha512-xHVESDkMGgbKMUgqISjYH7IgHHHuiA4CjSM56oONYywAbDMhoZiTzFC//IOj91ChbVZ/fW4uvaya75lwbe+Ytw==}
+  browser-extension-settings@0.9.0:
+    resolution: {integrity: sha512-PLZ/WsPYaUjEko0W/02Sj9O0Qyzm7MbqfIQx6XMeaxed3MToUqON1hXSz+x1OcsA4EIhFKuom83UC300kgqJIQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
-  browser-extension-storage@0.2.8:
-    resolution: {integrity: sha512-jEX8Ze7rG65DZLuzofxBA2xLlo0VzS59tpuWwkwK//1VTjWQN93NCCn6LWHhaqUJWnZ4I1aHRLnvdttaAVINYA==}
+  browser-extension-storage@0.2.10:
+    resolution: {integrity: sha512-olsUC49NkoIpXbp/tT7S+b7zav6WLfuP7QmqE/mOcseTqwz0aGWHr+qvTZN2Bog5aI0C3sSBNggp7NbBaNuvSQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
-  browser-extension-utils@0.3.4:
-    resolution: {integrity: sha512-VuZWcD4AiZOLbl0bVaE522MlgRNtH+daBqIbC9DVr3yrZAjns0Jgx3veZtAg/Q0+4f/kzIkFTpn6thsM9H/vSQ==}
+  browser-extension-utils@0.5.2:
+    resolution: {integrity: sha512-Dr3Ms3V2h8F8aPUj0ApZa22ajTdHS99x6U+M9lJQZIPrzRcbgAq1eGAeFxC673UeyUpNXpDpevgO4/PEuHDACA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
   browserslist@4.22.1:
@@ -9009,21 +9009,21 @@ snapshots:
 
   browser-extension-i18n@0.1.3: {}
 
-  browser-extension-settings@0.8.9(react@19.2.3):
+  browser-extension-settings@0.9.0(react@19.2.3):
     dependencies:
       browser-extension-i18n: 0.1.3
-      browser-extension-storage: 0.2.8(react@19.2.3)
-      browser-extension-utils: 0.3.4
+      browser-extension-storage: 0.2.10(react@19.2.3)
+      browser-extension-utils: 0.5.2
     transitivePeerDependencies:
       - react
 
-  browser-extension-storage@0.2.8(react@19.2.3):
+  browser-extension-storage@0.2.10(react@19.2.3):
     dependencies:
       '@plasmohq/storage': 1.15.0(react@19.2.3)
     transitivePeerDependencies:
       - react
 
-  browser-extension-utils@0.3.4: {}
+  browser-extension-utils@0.5.2: {}
 
   browserslist@4.22.1:
     dependencies:
@@ -12605,7 +12605,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.15.0
       acorn-import-phases: 1.0.4(acorn@8.15.0)
-      browserslist: 4.28.0
+      browserslist: 4.28.1
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.18.3
       es-module-lexer: 1.7.0
