@@ -76,10 +76,10 @@ export const config: PlasmoCSConfig = {
 const getSettingsTable = (): SettingsTable => {
   const groupNumber = 1
   return {
-    enable: {
-      title: i('settings.enable'),
-      defaultValue: true,
-    },
+    // enable: {
+    //   title: i('settings.enable'),
+    //   defaultValue: true,
+    // },
     [`enableCurrentSite_${host}`]: {
       title: i('settings.enableCurrentSite'),
       defaultValue: true,
@@ -693,8 +693,8 @@ async function injectGreasyForkFilters() {
   masterChk.type = 'checkbox'
   masterChk.className = 'utaf-checkbox hidden'
   masterChk.id = 'utaf-master'
-  masterChk.setAttribute('title', '反选')
-  masterChk.setAttribute('aria-label', '反选')
+  masterChk.setAttribute('title', i('filter.invertSelection'))
+  masterChk.setAttribute('aria-label', i('filter.invertSelection'))
   const stats = document.createElement('div')
   stats.className = cn('text-xs text-gray-500')
   headerRow2.append(stats)
@@ -704,12 +704,12 @@ async function injectGreasyForkFilters() {
   chkSwap.className = 'utaf-checkbox utaf-toggle'
   chkSwap.id = 'utaf-swap'
   chkSwap.checked = swapShownHidden
-  chkSwap.setAttribute('title', '反向显示')
-  chkSwap.setAttribute('aria-label', '反向显示')
+  chkSwap.setAttribute('title', i('filter.swapShownHidden'))
+  chkSwap.setAttribute('aria-label', i('filter.swapShownHidden'))
   const lblSwap = document.createElement('label')
   lblSwap.className = cn('utaf-label text-xs')
   lblSwap.htmlFor = 'utaf-swap'
-  lblSwap.textContent = '反向显示'
+  lblSwap.textContent = i('filter.swapShownHidden')
   const swapRight = document.createElement('div')
   swapRight.className = cn('ml-auto flex items-center gap-2')
   swapRight.append(lblSwap)
@@ -721,8 +721,8 @@ async function injectGreasyForkFilters() {
   btnCollapse.className = cn(
     'rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200'
   )
-  btnCollapse.setAttribute('title', '折叠')
-  btnCollapse.setAttribute('aria-label', '折叠')
+  btnCollapse.setAttribute('title', i('filter.collapse'))
+  btnCollapse.setAttribute('aria-label', i('filter.collapse'))
   const iconCollapse = createIconElement(ChevronUp, {
     width: 16,
     height: 16,
@@ -733,8 +733,8 @@ async function injectGreasyForkFilters() {
   btnReset.className = cn(
     'utaf-reset-btn rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200'
   )
-  btnReset.setAttribute('title', '重置')
-  btnReset.setAttribute('aria-label', '重置')
+  btnReset.setAttribute('title', i('filter.reset'))
+  btnReset.setAttribute('aria-label', i('filter.reset'))
   const iconReset = createIconElement(RotateCcw, {
     width: 16,
     height: 16,
@@ -759,7 +759,7 @@ async function injectGreasyForkFilters() {
   thresholdRow.className = cn('flex items-center gap-2 text-xs')
   const lblGlobalThreshold = document.createElement('span')
   lblGlobalThreshold.className = cn('utaf-label text-xs')
-  lblGlobalThreshold.textContent = '当分数 >='
+  lblGlobalThreshold.textContent = i('filter.thresholdPrefix')
   const inputScoreThreshold = document.createElement('input')
   inputScoreThreshold.type = 'number'
   inputScoreThreshold.min = '0'
@@ -770,7 +770,9 @@ async function injectGreasyForkFilters() {
   )
   const lblThresholdAction = document.createElement('span')
   lblThresholdAction.className = cn('utaf-label utaf-threshold-action text-xs')
-  lblThresholdAction.textContent = swapShownHidden ? '时显示' : '时隐藏'
+  lblThresholdAction.textContent = swapShownHidden
+    ? i('filter.thresholdShow')
+    : i('filter.thresholdHide')
   thresholdRow.append(lblGlobalThreshold)
   thresholdRow.append(inputScoreThreshold)
   thresholdRow.append(lblThresholdAction)
@@ -799,8 +801,8 @@ async function injectGreasyForkFilters() {
 
   const fab = document.createElement('button')
   fab.className = 'utaf-fab'
-  fab.setAttribute('title', '打开筛选')
-  fab.setAttribute('aria-label', '打开筛选')
+  fab.setAttribute('title', i('filter.openFilter'))
+  fab.setAttribute('aria-label', i('filter.openFilter'))
   const iconFab = new DOMParser().parseFromString(
     iconNoBgSvgText,
     'image/svg+xml'
@@ -954,7 +956,7 @@ async function injectGreasyForkFilters() {
         }
       )
     )
-    stats.textContent = `显示 ${counts.visible} | 隐藏 ${counts.hidden}`
+    stats.textContent = i('filter.stats', counts.visible, counts.hidden)
     const states = [
       updatedEnabled,
       createdOlderEnabled,
@@ -1035,7 +1037,9 @@ async function injectGreasyForkFilters() {
   chkSwap.addEventListener('change', async () => {
     swapShownHidden = chkSwap.checked
     if (lblThresholdAction !== undefined) {
-      lblThresholdAction.textContent = swapShownHidden ? '时显示' : '时隐藏'
+      lblThresholdAction.textContent = swapShownHidden
+        ? i('filter.thresholdShow')
+        : i('filter.thresholdHide')
     }
 
     await saveFilterSettings({ swapShownHidden })
@@ -1044,8 +1048,7 @@ async function injectGreasyForkFilters() {
 
   const updatedComp = createDatePresetInput({
     shadow,
-    // preLabel: '隐藏',
-    preLabel: '更新时间 >',
+    preLabel: i('filter.updatedAfter'),
     monthsSuffix: '',
     daysSuffix: '',
     initial: {
@@ -1074,8 +1077,7 @@ async function injectGreasyForkFilters() {
 
   const olderComp = createDatePresetInput({
     shadow,
-    // preLabel: '隐藏',
-    preLabel: '创建时间 >',
+    preLabel: i('filter.createdAfter'),
     monthsSuffix: '',
     daysSuffix: '',
     initial: {
@@ -1104,8 +1106,7 @@ async function injectGreasyForkFilters() {
 
   const recentComp = createDatePresetInput({
     shadow,
-    // preLabel: '隐藏',
-    preLabel: '创建时间 <',
+    preLabel: i('filter.createdBefore'),
     monthsSuffix: '',
     daysSuffix: '',
     initial: {
@@ -1141,12 +1142,12 @@ async function injectGreasyForkFilters() {
     'flex items-center justify-between text-sm font-semibold text-gray-900'
   )
   const quickTitleText = document.createElement('span')
-  quickTitleText.textContent = '便捷筛选'
+  quickTitleText.textContent = i('filter.quickFilters')
   const quickRight = document.createElement('div')
   quickRight.className = cn('flex items-center gap-2')
   const lblQuickEnable = document.createElement('label')
   lblQuickEnable.className = cn('utaf-label text-xs leading-5')
-  lblQuickEnable.textContent = '启用'
+  lblQuickEnable.textContent = i('filter.enable')
   const chkQuick = document.createElement('input')
   chkQuick.type = 'checkbox'
   chkQuick.className = 'utaf-checkbox utaf-toggle'
@@ -1173,13 +1174,13 @@ async function injectGreasyForkFilters() {
   const lblMaster = document.createElement('label')
   // lblMaster.className = cn('utaf-label')
   // lblMaster.htmlFor = 'utaf-master'
-  lblMaster.textContent = '条件'
+  lblMaster.textContent = i('filter.condition')
   qth1.append(lblMaster)
   const qth2 = document.createElement('th')
   qth2.className = cn(
     'utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700'
   )
-  qth2.textContent = '分数'
+  qth2.textContent = i('filter.score')
   qthr.append(qth1)
   qthr.append(qth2)
   qthr.append(qth0)
@@ -1325,7 +1326,7 @@ async function injectGreasyForkFilters() {
   const lblTotalPre = document.createElement('label')
   // lblTotalPre.className = 'utaf-label'
   // lblTotalPre.htmlFor = 'utaf-total'
-  lblTotalPre.textContent = '总安装量 <'
+  lblTotalPre.textContent = i('filter.totalInstallsLessThan')
   const inputTotal = document.createElement('input')
   inputTotal.type = 'number'
   inputTotal.min = '0'
@@ -1378,7 +1379,7 @@ async function injectGreasyForkFilters() {
   const lblDailyPre = document.createElement('label')
   // lblDailyPre.className = 'utaf-label'
   // lblDailyPre.htmlFor = 'utaf-daily'
-  lblDailyPre.textContent = '日安装量 <'
+  lblDailyPre.textContent = i('filter.dailyInstallsLessThan')
   const inputDaily = document.createElement('input')
   inputDaily.type = 'number'
   inputDaily.min = '0'
@@ -1432,7 +1433,7 @@ async function injectGreasyForkFilters() {
   const usersLeft = document.createElement('div')
   usersLeft.className = cn('flex items-center gap-2')
   const usersTitleText = document.createElement('span')
-  usersTitleText.textContent = '包含作者'
+  usersTitleText.textContent = i('filter.authors')
   usersLeft.append(usersTitleText)
   usersFilterTitle.append(usersLeft)
   authorsSection.append(usersFilterTitle)
@@ -1440,7 +1441,7 @@ async function injectGreasyForkFilters() {
   authorsEnableRow.className = cn('flex items-center gap-2')
   const lblAuthorsEnable = document.createElement('label')
   lblAuthorsEnable.className = cn('utaf-label text-xs leading-5')
-  lblAuthorsEnable.textContent = '启用'
+  lblAuthorsEnable.textContent = i('filter.enable')
   const chkAuthorsEnable = document.createElement('input')
   chkAuthorsEnable.type = 'checkbox'
   chkAuthorsEnable.className = 'utaf-checkbox utaf-toggle'
@@ -1454,7 +1455,7 @@ async function injectGreasyForkFilters() {
   const btnOpenPicker = document.createElement('button')
   btnOpenPicker.className =
     'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200'
-  btnOpenPicker.textContent = '采集页面作者'
+  btnOpenPicker.textContent = i('filter.collectAuthors')
   authorsActions.append(btnOpenPicker)
   // authorsActions will be appended below the authors table
 
@@ -1470,19 +1471,19 @@ async function injectGreasyForkFilters() {
   const lblSelectAll = document.createElement('label')
   lblSelectAll.className = cn('utaf-label text-xs font-semibold')
   lblSelectAll.htmlFor = 'utaf-authors-selectall'
-  lblSelectAll.textContent = '全选/全不选'
+  lblSelectAll.textContent = i('filter.selectAll')
   const btnRefreshPicker = document.createElement('button')
   btnRefreshPicker.className =
     'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200'
-  btnRefreshPicker.textContent = '刷新'
+  btnRefreshPicker.textContent = i('filter.refresh')
   const btnAddSelected = document.createElement('button')
   btnAddSelected.className =
     'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200'
-  btnAddSelected.textContent = '添加选中'
+  btnAddSelected.textContent = i('filter.addSelected')
   const btnClosePicker = document.createElement('button')
   btnClosePicker.className =
     'inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-gray-100 px-1 py-0.5 text-xs text-gray-700 hover:bg-gray-200'
-  btnClosePicker.textContent = '关闭'
+  btnClosePicker.textContent = i('filter.close')
   authorsPickerControls.append(chkSelectAll)
   authorsPickerControls.append(lblSelectAll)
   authorsPickerControls.append(btnRefreshPicker)
@@ -1526,12 +1527,12 @@ async function injectGreasyForkFilters() {
   th1.className = cn(
     'utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
   )
-  th1.textContent = '用户'
+  th1.textContent = i('filter.user')
   const th3 = document.createElement('th')
   th3.className = cn(
     'utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700'
   )
-  th3.textContent = '分数'
+  th3.textContent = i('filter.score')
   const th4 = document.createElement('th')
   th4.className = cn(
     'utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700'
@@ -1827,10 +1828,10 @@ async function injectGreasyForkFilters() {
 
   function renderAuthorsTable() {
     tb.textContent = ''
-    for (const [i, a] of blockedAuthors.entries()) {
+    for (const [index, a] of blockedAuthors.entries()) {
       const tr = document.createElement('tr')
       tr.className = cn('utaf-au-row cursor-pointer hover:bg-gray-50')
-      tr.dataset.auIndex = String(i)
+      tr.dataset.auIndex = String(index)
       const tdUser = document.createElement('td')
       tdUser.className = cn(
         'utaf-col-user border-b border-gray-100 px-2 py-1 pr-3 align-middle'
@@ -1901,8 +1902,8 @@ async function injectGreasyForkFilters() {
 
       const btnDel = document.createElement('button')
       btnDel.className = cn('utaf-au-delete utaf-btn-circle utaf-btn-danger')
-      btnDel.title = '删除'
-      btnDel.setAttribute('aria-label', '删除')
+      btnDel.title = i('filter.delete')
+      btnDel.setAttribute('aria-label', i('filter.delete'))
       btnDel.textContent = ''
       btnDel.append(
         createIconElement(Trash2, {
@@ -1945,7 +1946,7 @@ async function injectGreasyForkFilters() {
     openPanelModal({
       shadow,
       panel,
-      title: '新增作者',
+      title: i('filter.addAuthor'),
       build({ content, btnCancel, btnOk }) {
         const form = buildAuthorForm(DEFAULTS.authorsDefaultScore)
         form.appendTo(content)
@@ -2034,7 +2035,7 @@ async function injectGreasyForkFilters() {
   const keywordsLeft = document.createElement('div')
   keywordsLeft.className = cn('flex items-center gap-2')
   const keywordsTitleText = document.createElement('span')
-  keywordsTitleText.textContent = '包含关键字'
+  keywordsTitleText.textContent = i('filter.keywords')
   keywordsLeft.append(keywordsTitleText)
   keywordsTitle.append(keywordsLeft)
   keywordsSection.append(keywordsTitle)
@@ -2070,19 +2071,19 @@ async function injectGreasyForkFilters() {
   chkKeywords.id = 'utaf-keywords-enable'
   const lblScopePre = document.createElement('span')
   lblScopePre.className = cn('utaf-label text-xs leading-5')
-  lblScopePre.textContent = '范围'
+  lblScopePre.textContent = i('filter.scope')
   const selectScope = document.createElement('select')
   selectScope.className =
     'h-5 px-2 py-0.5 border border-gray-300 rounded-md text-xs'
   const optTitle = document.createElement('option')
   optTitle.value = 'title'
-  optTitle.textContent = '标题'
+  optTitle.textContent = i('filter.scopeTitle')
   const optDesc = document.createElement('option')
   optDesc.value = 'description'
-  optDesc.textContent = '描述'
+  optDesc.textContent = i('filter.scopeDescription')
   const optBoth = document.createElement('option')
   optBoth.value = 'both'
-  optBoth.textContent = '标题+描述'
+  optBoth.textContent = i('filter.scopeTitleAndDescription')
   selectScope.append(optTitle)
   selectScope.append(optDesc)
   selectScope.append(optBoth)
@@ -2092,7 +2093,7 @@ async function injectGreasyForkFilters() {
   const lblEnable = document.createElement('label')
   lblEnable.className = cn('utaf-label text-xs leading-5')
   lblEnable.htmlFor = 'utaf-keywords-enable'
-  lblEnable.textContent = '启用'
+  lblEnable.textContent = i('filter.enable')
   rowEnable.append(lblEnable)
   rowEnable.append(chkKeywords)
 
@@ -2108,7 +2109,7 @@ async function injectGreasyForkFilters() {
   const lblCaseSensitive = document.createElement('label')
   lblCaseSensitive.className = cn('utaf-label text-xs leading-5')
   lblCaseSensitive.htmlFor = 'utaf-keywords-case'
-  lblCaseSensitive.textContent = '大小写敏感'
+  lblCaseSensitive.textContent = i('filter.caseSensitive')
   const rowCase = document.createElement('div')
   rowCase.className = cn('flex items-center justify-end gap-2')
   rowCase.append(lblCaseSensitive)
@@ -2146,12 +2147,12 @@ async function injectGreasyForkFilters() {
   kwTh1.className = cn(
     'utaf-col-user border-b border-gray-100 bg-gray-50 px-2 py-1 text-left text-sm whitespace-nowrap text-gray-700'
   )
-  kwTh1.textContent = '关键字'
+  kwTh1.textContent = i('filter.keyword')
   const kwTh2 = document.createElement('th')
   kwTh2.className = cn(
     'utaf-col-score border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700'
   )
-  kwTh2.textContent = '分数'
+  kwTh2.textContent = i('filter.score')
   const kwTh3 = document.createElement('th')
   kwTh3.className = cn(
     'utaf-col-select border-b border-gray-100 bg-gray-50 px-2 py-1 text-right text-sm whitespace-nowrap text-gray-700'
@@ -2277,10 +2278,10 @@ async function injectGreasyForkFilters() {
 
   function renderKeywordsTable() {
     kwTb.textContent = ''
-    for (const [i, k] of keywords.entries()) {
+    for (const [index, k] of keywords.entries()) {
       const tr = document.createElement('tr')
       tr.className = cn('utaf-kw-row cursor-pointer hover:bg-gray-50')
-      tr.dataset.kwIndex = String(i)
+      tr.dataset.kwIndex = String(index)
       const td1 = document.createElement('td')
       td1.className = cn(
         'utaf-col-user min-w-0 border-b border-gray-100 px-2 py-1 pr-3 align-middle'
@@ -2335,8 +2336,8 @@ async function injectGreasyForkFilters() {
 
       const btnDel = document.createElement('button')
       btnDel.className = cn('utaf-kw-delete utaf-btn-circle utaf-btn-danger')
-      btnDel.title = '删除'
-      btnDel.setAttribute('aria-label', '删除')
+      btnDel.title = i('filter.delete')
+      btnDel.setAttribute('aria-label', i('filter.delete'))
       btnDel.textContent = ''
       btnDel.append(
         createIconElement(Trash2, {
@@ -2379,7 +2380,7 @@ async function injectGreasyForkFilters() {
     openPanelModal({
       shadow,
       panel,
-      title: '新增关键字',
+      title: i('filter.addKeyword'),
       build({ content, btnCancel, btnOk }) {
         const form = buildKeywordForm(DEFAULTS.keywordsDefaultScore)
         form.appendTo(content)
@@ -2559,24 +2560,24 @@ async function injectGreasyForkFilters() {
   chkTotal.addEventListener('change', updateControlsDisabled)
   chkDaily.addEventListener('change', updateControlsDisabled)
 
-  async function resetAll() {
-    try {
-      await setValue(CONFIG.FILTERS_KEY, { uiCollapsed: false })
-    } catch {}
-
-    const prevHost = document.querySelector('#utaf-host')
-    if (prevHost && prevHost.parentNode) prevHost.remove()
-    await injectGreasyForkFilters()
-  }
-
   btnReset.addEventListener('click', async () => {
-    const ok = globalThis.confirm('确定要重置所有筛选设置吗？此操作不可撤销。')
+    const ok = globalThis.confirm(i('filter.resetConfirm'))
     if (!ok) return
     await resetAll()
   })
 
   void setCollapsed(uiCollapsed)
   applyAndUpdateStatus()
+}
+
+async function resetAll() {
+  try {
+    await setValue(CONFIG.FILTERS_KEY, { uiCollapsed: false })
+  } catch {}
+
+  const prevHost = document.querySelector('#utaf-host')
+  if (prevHost && prevHost.parentNode) prevHost.remove()
+  await injectGreasyForkFilters()
 }
 
 function initialize() {
@@ -2596,8 +2597,10 @@ function initialize() {
 }
 
 function onSettingsChange() {
-  const locale = getSettingsValue('locale') || getPrefferedLocale()
+  const locale =
+    getSettingsValue<string | undefined>('locale') || getPrefferedLocale()
   resetI18n(locale)
+  void resetAll()
   // enableTreatSubdomainsSameSite = Boolean(
   //   getSettingsValue(`enableTreatSubdomainsAsSameSiteForCurrentSite_${host}`)
   // )
@@ -2631,20 +2634,20 @@ async function main() {
         onSettingsChange()
       },
       onViewUpdate(settingsMainView) {
-        const group2 = $(`.option_groups:nth-of-type(2)`, settingsMainView)
-        if (group2) {
-          group2.style.display = getSettingsValue(
-            `enableCustomRulesForCurrentSite_${host}`
-          )
-            ? 'block'
-            : 'none'
-        }
+        // const group2 = $(`.option_groups:nth-of-type(2)`, settingsMainView)
+        // if (group2) {
+        //   group2.style.display = getSettingsValue(
+        //     `enableCustomRulesForCurrentSite_${host}`
+        //   )
+        //     ? 'block'
+        //     : 'none'
+        // }
       },
     }
   })
 
   if (
-    !getSettingsValue('enable') ||
+    // !getSettingsValue('enable') ||
     !getSettingsValue(`enableCurrentSite_${host}`)
   ) {
     return

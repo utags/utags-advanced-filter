@@ -1,3 +1,5 @@
+import { i } from './messages'
+
 function IndexPopup() {
   const openSettings = () => {
     const api: any = (globalThis as any).chrome ?? (globalThis as any).browser
@@ -35,7 +37,7 @@ function IndexPopup() {
       }}>
       <h1>UTags Advanced Filter</h1>
       <button onClick={openSettings} style={{ marginTop: 8, marginBottom: 20 }}>
-        设置
+        {i('popup.settings')}
       </button>
       <footer>
         Made with ❤️ by{' '}

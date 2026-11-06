@@ -1,3 +1,4 @@
+import { i } from '../messages'
 import { cn } from '../utils'
 
 export type PanelModalBuildResult = {
@@ -39,12 +40,12 @@ export function openPanelModal(opts: {
   btnCancel.className = cn(
     'rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-700 hover:bg-gray-200'
   )
-  btnCancel.textContent = '取消'
+  btnCancel.textContent = i('modal.cancel')
   const btnOk = document.createElement('button')
   btnOk.className = cn(
     'rounded-md bg-blue-500 px-2 py-1 text-xs text-white hover:bg-blue-600'
   )
-  btnOk.textContent = '确认'
+  btnOk.textContent = i('modal.confirm')
   actions.append(btnCancel)
   actions.append(btnOk)
 

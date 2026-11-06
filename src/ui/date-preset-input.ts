@@ -1,3 +1,4 @@
+import { i } from '../messages'
 import { cn } from '../utils'
 
 export type DatePresetState = {
@@ -78,17 +79,17 @@ export function createDatePresetInput(opts: {
     if (state.mode === 'months') {
       switch (state.months) {
         case 6: {
-          input.value = '半年'
+          input.value = i('datePreset.halfYear')
           break
         }
 
         case 12: {
-          input.value = '一年'
+          input.value = i('datePreset.oneYear')
           break
         }
 
         case 24: {
-          input.value = '两年'
+          input.value = i('datePreset.twoYears')
           break
         }
 
@@ -113,10 +114,10 @@ export function createDatePresetInput(opts: {
   }
 
   const optsList = [
-    { label: '半年', months: 6 },
-    { label: '一年', months: 12 },
-    { label: '两年', months: 24 },
-    { label: '自定义', months: 0 },
+    { label: i('datePreset.halfYear'), months: 6 },
+    { label: i('datePreset.oneYear'), months: 12 },
+    { label: i('datePreset.twoYears'), months: 24 },
+    { label: i('datePreset.custom'), months: 0 },
   ]
 
   for (const o of optsList) {
